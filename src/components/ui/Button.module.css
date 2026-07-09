@@ -1,0 +1,29 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+
+  text-decoration: none;
+  font-weight: 700;
+  border: 0;
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.secondary {
+  background: white;
+  color: var(--color-text);
+  border: 1px solid #e5e7eb;
+}
+
+.error {
+  color: #b42318;
+  font-size: 0.75rem;
+  font-weight: 600;
+}

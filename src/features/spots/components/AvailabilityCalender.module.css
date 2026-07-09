@@ -1,0 +1,172 @@
+.card {
+  margin-bottom: 28px;
+  padding: 20px;
+
+  border-radius: 24px;
+  background: #f4f6f2;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+
+  margin-bottom: 18px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.header span {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.weekdays,
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.weekdays {
+  margin-bottom: 8px;
+}
+
+.weekdays span {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.empty {
+  min-height: 38px;
+}
+
+.day {
+  min-height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.day:disabled {
+    cursor: not-allowed;
+}
+
+.available {
+  background: white;
+  color: var(--color-primary-dark);
+}
+
+.unavailable {
+  background: #fee4e2;
+  color: #b42318;
+  text-decoration: line-through;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.availableDot,
+.unavailableDot {
+  width: 10px;
+  height: 10px;
+
+  display: inline-block;
+  border-radius: 999px;
+}
+
+.availableDot {
+  background: white;
+}
+
+.unavailableDot {
+  background: #f97066;
+}
+
+.today {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.past {
+  background: #e5e7eb;
+  color: #9ca3af;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: 36px 120px 36px;
+  align-items: center;
+  gap: 10px;
+}
+
+.navigation span {
+  text-align: center;
+  color: var(--color-muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.navigation button {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+  background: white;
+
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+
+  transition: transform .15s ease;
+}
+
+.navigation button:hover {
+  transform: scale(1.05);
+}
+
+.navigation button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.selected {
+  background: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.inRange {
+  background: #ddf8bf;
+  color: var(--color-primary-dark);
+}

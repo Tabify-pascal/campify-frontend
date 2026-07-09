@@ -1,0 +1,47 @@
+.card {
+  margin: 24px auto 0;
+  max-width: 980px;
+  padding: 16px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 13px 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: white;
+
+  font: inherit;
+  color: var(--color-text);
+}
+
+@media (max-width: 820px) {
+  .card {
+    margin-top: 18px;
+    grid-template-columns: 1fr;
+  }
+}

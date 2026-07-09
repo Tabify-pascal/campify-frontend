@@ -1,0 +1,40 @@
+:root {
+  --color-bg: #eef4e8;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-muted: #6f756b;
+  --color-primary: #b9ef78;
+  --color-primary-dark: #1f2a1c;
+
+  --radius-pill: 999px;
+  --radius-card: 28px;
+
+  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.12);
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+

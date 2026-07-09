@@ -1,0 +1,42 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+
+  background: var(--color-surface);
+  border-radius: 36px;
+  box-shadow: var(--shadow-soft);
+}
+
+.content {
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.badge {
+  display: inline-block;
+
+  padding: 8px 14px;
+  margin-bottom: 18px;
+
+  border-radius: var(--radius-pill);
+  background: #f4f6f2;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.content h1 {
+  margin: 0 0 16px;
+
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.content p {
+  margin: 0;
+
+  color: var(--color-muted);
+  line-height: 1.7;
+}

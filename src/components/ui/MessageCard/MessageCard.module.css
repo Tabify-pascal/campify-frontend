@@ -1,0 +1,15 @@
+.card {
+  padding: 32px;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.link {
+  display: inline-block;
+  margin-top: 16px;
+
+  font-weight: 700;
+  text-decoration: none;
+}

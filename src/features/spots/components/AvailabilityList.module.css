@@ -1,0 +1,33 @@
+.card {
+  margin-bottom: 28px;
+  padding: 20px;
+
+  border-radius: 24px;
+  background: #f4f6f2;
+}
+
+.card h2 {
+  margin: 0 0 14px;
+  font-size: 1.3rem;
+}
+
+.card p {
+  margin: 0;
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dates span {
+  padding: 8px 12px;
+
+  border-radius: var(--radius-pill);
+  background: white;
+
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}

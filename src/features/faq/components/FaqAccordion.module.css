@@ -1,0 +1,61 @@
+.accordion {
+  display: grid;
+  gap: 16px;
+}
+
+.item {
+  overflow: hidden;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.question {
+  width: 100%;
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  border: 0;
+  background: transparent;
+
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-align: left;
+  color: var(--color-text);
+
+  cursor: pointer;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+
+  color: var(--color-primary-dark);
+  font-weight: 900;
+}
+
+.answer {
+  padding: 0 24px 24px;
+}
+
+.answer p {
+  margin: 0;
+
+  color: var(--color-muted);
+  line-height: 1.7;
+}
