@@ -6,6 +6,7 @@ import { useSpotAvailability } from "../queries/useSpotAvailability";
 
 import AvailabilityCalender from "../components/AvailabilityCalender";
 import { getMonthRange, rangeContainsUnavailableDate } from "../../../utils/dateUtils";
+import { getImageUrl } from "../../../utils/getImageUrl";
 
 import styles from "./SpotDetailPage.module.css";
 import { useState } from "react";
@@ -134,12 +135,10 @@ export default function SpotDetailPage() {
         <section className={styles.detail}>
             <div className={styles.image}>
                 <img
-                    src={spot.imageUrl || "/images/campify.png"}
+                    src={getImageUrl(spot.imageUrl)}
                     alt={spot.name}
                 />
             </div>
-
-
 
             <div className={styles.content}>
                 <span className={styles.badge}></span>

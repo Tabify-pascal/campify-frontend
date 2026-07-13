@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Spot } from "../types/Spot";
-
+import { getImageUrl } from "../../../utils/getImageUrl";
 import styles from "./SpotCard.module.css";
 
 type Props = {
@@ -15,8 +15,8 @@ export default function SpotCard({ spot, searchParams }: Props){
     return (
         <article className={styles.card}>
             <div className={styles.image}>
-                <img 
-                    src={spot.imageUrl || "/images/campify.png"}
+                <img
+                    src={getImageUrl(spot.imageUrl)}
                     alt={spot.name}
                 />
             </div>

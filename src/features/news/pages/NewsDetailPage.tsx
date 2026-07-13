@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import { useNewsItem } from "../queries/useNewsItem";
 import { formatDate } from "../../../utils/formatDate";
+import { getImageUrl } from "../../../utils/getImageUrl";
 
 import styles from "./NewsDetailPage.module.css";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
@@ -29,7 +30,7 @@ export default function NewsDetailPage(){
         <article className={styles.article}>
             <div className={styles.image}>
                 <img 
-                    src={newsItem.imageUrl || "/images/news/nieuws.jpg"}
+                    src={getImageUrl(newsItem.imageUrl) || "/images/news/nieuws.jpg"}
                     alt={newsItem.title}
                 />
             </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { NewsItem } from "../types/NewsItem";
 import { formatDate } from "../../../utils/formatDate" 
-
+import { getImageUrl } from "../../../utils/getImageUrl";
 import styles from "./NewsCard.module.css";
 
 type Props = {
@@ -13,7 +13,7 @@ export default function NewsCard({ newsItem }: Props){
         <article className={styles.card}>
             <div className={styles.image}>
                 <img
-                    src={newsItem.imageUrl || "/images/news/nieuws.jpg"}
+                    src={getImageUrl(newsItem.imageUrl)}
                     alt={newsItem.title}
                     loading="lazy"
                 />

@@ -8,6 +8,7 @@ import SpotForm from "../components/SpotForm";
 import { useUpdateSpot } from "../mutations/useUpdateSpot";
 
 import type { SpotFormData } from "../schemas/spotSchema";
+import { getImageUrl } from "../../../../utils/getImageUrl";
 
 export default function AdminSpotEditPage() {
     const { spotId } = useParams();
@@ -77,7 +78,7 @@ export default function AdminSpotEditPage() {
                 waterConnection: spot.waterConnection,
                 features: spot.features.map((feature) => feature.name),
             }}
-            currentImageUrl={spot.imageUrl}
+            currentImageUrl={getImageUrl(spot.imageUrl)}
             onSubmit={handleSubmit}
             isSubmitting={updateSpotMutation.isPending}
             submitLabel="Wijzigingen opslaan"

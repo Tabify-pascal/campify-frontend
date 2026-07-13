@@ -120,7 +120,13 @@ export default function SpotForm({  defaultValues,
                         </small>
                     )}
 
-                    <FormError message={errors.image?.message} />
+                    <FormError
+                        message={
+                        typeof errors.image?.message === "string"
+                            ? errors.image.message
+                            : undefined
+                        }
+                    />
                 </div>
 
                 <div className={styles.checkboxGroup}>
