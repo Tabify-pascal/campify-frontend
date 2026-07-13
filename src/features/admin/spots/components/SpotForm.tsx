@@ -7,34 +7,43 @@ import styles from "./SpotForm.module.css";
 import { spotSchema, type SpotFormData, type SpotFormInput } from "../schemas/spotSchema"
 
 type Props = {
-    defaultValues?: SpotFormInput;
-    onSubmit: (data: SpotFormData) => void;
-    isSubmitting?: boolean;
-    submitLabel?: string;
+  defaultValues?: Partial<SpotFormInput>;
+  currentImageUrl?: string;
+  onSubmit: (data: SpotFormData) => void;
+  isSubmitting?: boolean;
+  submitLabel?: string;
+  requireImage?: boolean;
 };
 
-export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submitLabel }: Props) {
-    const { register, handleSubmit, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
+export default function SpotForm({  defaultValues,
+  onSubmit,
+  isSubmitting = false,
+  submitLabel = "Opslaan",
+  currentImageUrl,
+  requireImage = false }: Props) {
+    const { register, handleSubmit, setValue, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
         resolver: zodResolver(spotSchema),
         defaultValues: {
-            name: "",
-            description: "",
-            capacity: 2,
-            pricePerNight: 30,
-            size: 100,
-            imageUrl: "/images/campify.png",
-            electricity: true,
-            waterConnection: false,
-            ...defaultValues,
+        name: "",
+        description: "",
+        capacity: 2,
+        pricePerNight: 30,
+        size: 100,
+        electricity: true,
+        waterConnection: false,
+        features: [],
+        ...defaultValues,
         },
     });
+
+
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.field}>
                 <label htmlFor="name">Naam</label>
                 <input id="name" {...register("name")} />
-                <FormError error={errors.name} />
+                <FormError message={errors.name?.message} />
             </div>
 
             <div className={styles.field}>
@@ -44,7 +53,7 @@ export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submit
                     rows={5}
                     {...register("description")}
                 />
-                <FormError error={errors.description} />
+                <FormError message={errors.description?.message} />
             </div>
 
             <div className={styles.row}>
@@ -56,7 +65,7 @@ export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submit
                         min="1"
                         {...register("capacity")}
                     />
-                    <FormError error={errors.capacity} />
+                    <FormError message={errors.capacity?.message} />
                 </div>
 
                 <div className={styles.field}>
@@ -68,7 +77,7 @@ export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submit
                         step="0.01"
                         {...register("pricePerNight")}
                     />
-                    <FormError error={errors.pricePerNight} />
+                    <FormError message={errors.pricePerNight?.message} />
                 </div>
 
                 <div className={styles.field}>
@@ -79,17 +88,39 @@ export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submit
                         min="1"
                         {...register("size")}
                     />
-                    <FormError error={errors.size} />
+                    <FormError message={errors.size?.message} />
                 </div>
 
-                <div className={styles.field}>
-                    <label htmlFor="imageUrl">Afbeelding URL</label>
-                    <input
-                        id="imageUrl"
-                        placeholder="/images/campify.png"
-                        {...register("imageUrl")}
+                {currentImageUrl && (
+                <div className={styles.currentImage}>
+                    <span>Huidige afbeelding</span>
+
+                    <img
+                    src={currentImageUrl}
+                    alt="Huidige campingplaats"
                     />
-                    <FormError error={errors.imageUrl} />
+                </div>
+                )}
+
+                <div className={styles.field}>
+                    <label htmlFor="image">
+                        {requireImage ? "Afbeelding" : "Nieuwe afbeelding"}
+                    </label>
+
+                    <input
+                        id="image"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        {...register("image")}
+                    />
+
+                    {!requireImage && currentImageUrl && (
+                        <small>
+                        Laat dit veld leeg om de huidige afbeelding te behouden.
+                        </small>
+                    )}
+
+                    <FormError message={errors.image?.message} />
                 </div>
 
                 <div className={styles.checkboxGroup}>
@@ -108,6 +139,25 @@ export default function SpotForm({ defaultValues, onSubmit, isSubmitting, submit
                         />
                         <span>Wateraansluiting aanwezig</span>
                     </label>
+                </div>
+
+                <div className={styles.field}>
+                    <label htmlFor="features">Kenmerken</label>
+
+                    <input
+                        id="features"
+                        placeholder="Aan de bosrand, Ruime plek, Geschikt voor gezinnen"
+                        onChange={(event) => {
+                        const features = event.target.value
+                            .split(",")
+                            .map((feature) => feature.trim())
+                            .filter(Boolean);
+
+                        setValue("features", features);
+                        }}
+                    />
+
+                    <FormError message={errors.features?.message} />
                 </div>
             </div>
             <Button

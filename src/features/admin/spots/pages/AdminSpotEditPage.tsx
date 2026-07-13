@@ -67,19 +67,20 @@ export default function AdminSpotEditPage() {
                 />
             )}
             <SpotForm
-                defaultValues={{
-                    name: spot.name,
-                    description: spot.description,
-                    capacity: spot.capacity,
-                    pricePerNight: spot.pricePerNight,
-                    size: spot.size,
-                    imageUrl: spot.imageUrl,
-                    electricity: spot.electricity,
-                    waterConnection: spot.waterConnection,
-                }}
-                onSubmit={handleSubmit}
-                isSubmitting={updateSpotMutation.isPending}
-                submitLabel="Wijzigingen opslaan"
+            defaultValues={{
+                name: spot.name,
+                description: spot.description,
+                capacity: spot.capacity,
+                pricePerNight: spot.pricePerNight,
+                size: spot.size,
+                electricity: spot.electricity,
+                waterConnection: spot.waterConnection,
+                features: spot.features.map((feature) => feature.name),
+            }}
+            currentImageUrl={spot.imageUrl}
+            onSubmit={handleSubmit}
+            isSubmitting={updateSpotMutation.isPending}
+            submitLabel="Wijzigingen opslaan"
             />
         </>
     )

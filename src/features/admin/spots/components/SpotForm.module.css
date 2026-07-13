@@ -70,6 +70,27 @@
   height: 18px;
 }
 
+.currentImage {
+  margin-bottom: 24px;
+}
+
+.currentImage span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.currentImage img {
+  width: 220px;
+  height: 150px;
+
+  object-fit: cover;
+  display: block;
+
+  border-radius: 18px;
+}
+
 @media (max-width: 800px) {
   .row {
     grid-template-columns: 1fr;

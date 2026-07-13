@@ -1,14 +1,23 @@
 import { z } from "zod";
 
 export const spotSchema = z.object({
-    name: z.string().min(2, "Naam is verplicht"),
-    description: z.string().min(10, "Beschrijving is te kort"),
-    capacity: z.coerce.number().min(1, "Capacititeit moet minstens 1 zijn"),
-    pricePerNight: z.coerce.number().min(1, "Prijs moet minimaal 1 zijn"),
-    size: z.coerce.number().min(1, "Oppervlakte moet minimaal 1 zijn"),
-    imageUrl: z.string(),
-    electricity: z.boolean(),
-    waterConnection: z.boolean(),
+  name: z.string().min(2, "Naam moet minimaal 2 tekens bevatten"),
+  description: z
+    .string()
+    .min(10, "Beschrijving moet minimaal 10 tekens bevatten"),
+
+  capacity: z.coerce.number().int().min(1),
+  pricePerNight: z.coerce.number().int().min(1),
+  size: z.coerce.number().int().min(1),
+
+  image: z
+    .instanceof(FileList)
+    .optional(),
+
+  electricity: z.boolean(),
+  waterConnection: z.boolean(),
+
+  features: z.array(z.string().min(1)),
 });
 
 export type SpotFormInput = z.input<typeof spotSchema>;

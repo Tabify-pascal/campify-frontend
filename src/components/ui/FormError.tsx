@@ -1,20 +1,14 @@
-import type { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import styles from "./FormError.module.css";
 
 type FormErrorProps = {
-    error?:
-    | FieldError
-    | Merge<FieldError, FieldErrorsImpl<any>>;
+  message?: string;
 };
 
-export default function FormError({ error }: FormErrorProps){
-    if(!error?.message){
-        return null;
-    }
 
-    return (
-        <span className={styles.error}>
-            {String(error.message)}
-        </span>
-    );
+export default function FormError({ message }: FormErrorProps) {
+  if (!message) {
+    return null;
+  }
+
+  return <span className={styles.error}>{message}</span>;
 }

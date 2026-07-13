@@ -12,6 +12,9 @@ export default function AdminSpotCreatePage() {
     const createSpotMutation = useCreateSpot();
 
     function handleSubmit(data: SpotFormData) {
+         if (!data.image?.[0]) {
+            return;
+        }
         createSpotMutation.mutate(data, {
             onSuccess: () => {
                 navigate("/admin/spots");
@@ -39,6 +42,7 @@ export default function AdminSpotCreatePage() {
                 onSubmit={handleSubmit}
                 isSubmitting={createSpotMutation.isPending}
                 submitLabel="Campingplaats toevoegen"
+                requireImage
             />
 
         </>
