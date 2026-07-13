@@ -16,6 +16,12 @@ import FaqPage from "../../features/faq/pages/FaqPage";
 import NewsPage from "../../features/news/pages/NewsPage";
 import NewsDetailPage from "../../features/news/pages/NewsDetailPage";
 
+// ADMIN
+
+import AdminSpotsPage from "../../features/admin/spots/pages/AdminSpotsPage";
+import AdminSpotCreatePage from "../../features/admin/spots/pages/AdminSpotCreatePage";
+import AdminSpotEditPage from "../../features/admin/spots/pages/AdminSpotEditPage";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +63,18 @@ const router = createBrowserRouter([
       {
         path: "/nieuws/:newsId",
         element: <NewsDetailPage />,
+      },
+      {
+        path: "admin/spots",
+        element: <AdminSpotsPage />,
+      },
+      {
+        path: "admin/spots/new",
+        element: <AdminSpotCreatePage />,
+      },
+      {
+        path: "admin/spots/:spotId/edit",
+        element: <AdminSpotEditPage />,
       },
     ]
   },
