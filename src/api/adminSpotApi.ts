@@ -14,7 +14,14 @@ function createSpotFormData(data: SpotFormData) {
     formData.append("electricity", String(data.electricity));
     formData.append("waterConnection", String(data.waterConnection));
 
-    formData.append("features", JSON.stringify(data.features));
+    formData.append(
+        "features",
+        JSON.stringify(
+            data.features
+            .map(({ name }) => name.trim())
+            .filter((name) => name.length > 0)
+        )
+    );
 
     const image = data.image?.[0];
 

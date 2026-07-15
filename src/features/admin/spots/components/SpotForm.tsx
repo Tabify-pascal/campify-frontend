@@ -3,36 +3,38 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
 import FormError from "../../../../components/ui/FormError";
 import styles from "./SpotForm.module.css";
+import FeatureFields from "./FeatureFields";
 
 import { spotSchema, type SpotFormData, type SpotFormInput } from "../schemas/spotSchema"
 
 type Props = {
-  defaultValues?: Partial<SpotFormInput>;
-  currentImageUrl?: string;
-  onSubmit: (data: SpotFormData) => void;
-  isSubmitting?: boolean;
-  submitLabel?: string;
-  requireImage?: boolean;
+    defaultValues?: Partial<SpotFormInput>;
+    currentImageUrl?: string;
+    onSubmit: (data: SpotFormData) => void;
+    isSubmitting?: boolean;
+    submitLabel?: string;
+    requireImage?: boolean;
 };
 
-export default function SpotForm({  defaultValues,
-  onSubmit,
-  isSubmitting = false,
-  submitLabel = "Opslaan",
-  currentImageUrl,
-  requireImage = false }: Props) {
-    const { register, handleSubmit, setValue, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
+export default function SpotForm({ 
+    defaultValues,
+    onSubmit,
+    isSubmitting = false,
+    submitLabel = "Opslaan",
+    currentImageUrl,
+    requireImage = false }: Props) {
+    const { register, handleSubmit, setValue, control, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
         resolver: zodResolver(spotSchema),
         defaultValues: {
-        name: "",
-        description: "",
-        capacity: 2,
-        pricePerNight: 30,
-        size: 100,
-        electricity: true,
-        waterConnection: false,
-        features: [],
-        ...defaultValues,
+            name: "",
+            description: "",
+            capacity: 2,
+            pricePerNight: 30,
+            size: 100,
+            electricity: true,
+            waterConnection: false,
+            features: [],
+            ...defaultValues,
         },
     });
 
@@ -92,14 +94,14 @@ export default function SpotForm({  defaultValues,
                 </div>
 
                 {currentImageUrl && (
-                <div className={styles.currentImage}>
-                    <span>Huidige afbeelding</span>
+                    <div className={styles.currentImage}>
+                        <span>Huidige afbeelding</span>
 
-                    <img
-                    src={currentImageUrl}
-                    alt="Huidige campingplaats"
-                    />
-                </div>
+                        <img
+                            src={currentImageUrl}
+                            alt="Huidige campingplaats"
+                        />
+                    </div>
                 )}
 
                 <div className={styles.field}>
@@ -116,15 +118,15 @@ export default function SpotForm({  defaultValues,
 
                     {!requireImage && currentImageUrl && (
                         <small>
-                        Laat dit veld leeg om de huidige afbeelding te behouden.
+                            Laat dit veld leeg om de huidige afbeelding te behouden.
                         </small>
                     )}
 
                     <FormError
                         message={
-                        typeof errors.image?.message === "string"
-                            ? errors.image.message
-                            : undefined
+                            typeof errors.image?.message === "string"
+                                ? errors.image.message
+                                : undefined
                         }
                     />
                 </div>
@@ -147,24 +149,11 @@ export default function SpotForm({  defaultValues,
                     </label>
                 </div>
 
-                <div className={styles.field}>
-                    <label htmlFor="features">Kenmerken</label>
-
-                    <input
-                        id="features"
-                        placeholder="Aan de bosrand, Ruime plek, Geschikt voor gezinnen"
-                        onChange={(event) => {
-                        const features = event.target.value
-                            .split(",")
-                            .map((feature) => feature.trim())
-                            .filter(Boolean);
-
-                        setValue("features", features);
-                        }}
-                    />
-
-                    <FormError message={errors.features?.message} />
-                </div>
+                <FeatureFields
+                    control={control}
+                    register={register}
+                    errors={errors}
+                />
             </div>
             <Button
                 as="button"
@@ -175,6 +164,4 @@ export default function SpotForm({  defaultValues,
             </Button>
         </form>
     )
-
-
 }

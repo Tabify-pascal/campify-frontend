@@ -56,7 +56,7 @@ export default function AdminSpotEditPage() {
         <>
             <PageHeader
                 title={`Bewerk ${spot.name}`}
-                description="Pas de gegevens van deze campingplaats aan/"
+                description="Pas de gegevens van deze campingplaats aan"
             />
 
             {updateSpotMutation.isError && (
@@ -76,7 +76,9 @@ export default function AdminSpotEditPage() {
                 size: spot.size,
                 electricity: spot.electricity,
                 waterConnection: spot.waterConnection,
-                features: spot.features.map((feature) => feature.name),
+                features: spot.features.map((feature) => ({
+                    name: feature.name,
+                })),
             }}
             currentImageUrl={getImageUrl(spot.imageUrl)}
             onSubmit={handleSubmit}
