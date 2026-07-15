@@ -17,7 +17,13 @@ export const spotSchema = z.object({
   electricity: z.boolean(),
   waterConnection: z.boolean(),
 
-  features: z.array(z.string().min(1)),
+  features: z
+    .array(
+      z.object({
+        name: z.string(),
+      })
+    )
+    .default([]),
 });
 
 export type SpotFormInput = z.input<typeof spotSchema>;

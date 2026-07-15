@@ -19,7 +19,12 @@ export async function api<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    // throw new Error(`API Error: ${response.status}`);
+    const errorBody = await response.text();
+
+    throw new Error(
+      `API Error: ${response.status}${errorBody ? ` - ${errorBody}` : ""}`
+    );
   }
 
   if (response.status === 204) {
