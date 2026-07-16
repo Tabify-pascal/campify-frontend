@@ -33,7 +33,7 @@ export function updateNews(id: string, data: NewsFormData){
 }
 
 export function deleteNews(id: string) {
-    return adminApi<void>(`/admin/spots/${id}`, {
+    return adminApi<void>(`/admin/news/${id}`, {
         method: "DELETE",
     });
 }
