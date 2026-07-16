@@ -1,0 +1,56 @@
+.actions {
+  margin-bottom: 24px;
+}
+
+.tableCard {
+  overflow-x: auto;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 18px 20px;
+  text-align: left;
+  border-bottom: 1px solid #edf0ea;
+}
+
+.table th {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.rowActions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.rowActions a,
+.rowActions button {
+  border: 0;
+  background: transparent;
+
+  color: var(--color-primary-dark);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.rowActions button {
+  color: #b42318;
+}
+
+.rowActions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
