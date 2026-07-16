@@ -16,11 +16,17 @@ import FaqPage from "../../features/faq/pages/FaqPage";
 import NewsPage from "../../features/news/pages/NewsPage";
 import NewsDetailPage from "../../features/news/pages/NewsDetailPage";
 
-// ADMIN
+// // // // ADMIN // // // // //
 
+// Spots
 import AdminSpotsPage from "../../features/admin/spots/pages/AdminSpotsPage";
 import AdminSpotCreatePage from "../../features/admin/spots/pages/AdminSpotCreatePage";
 import AdminSpotEditPage from "../../features/admin/spots/pages/AdminSpotEditPage";
+
+// News
+import AdminNewsPage from "../../features/admin/news/pages/AdminNewsPage";
+import AdminNewsCreatePage from "../../features/admin/news/pages/AdminNewsCreatePage";
+import AdminNewsEditPage from "../../features/admin/news/pages/AdminNewsEditPage";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +82,18 @@ const router = createBrowserRouter([
         path: "admin/spots/:spotId/edit",
         element: <AdminSpotEditPage />,
       },
+      {
+        path: "admin/news",
+        element: <AdminNewsPage/>,
+      },
+      {
+        path: "admin/news/new",
+        element: <AdminNewsCreatePage/>,
+      },
+      {
+        path: "admin/news/:newsId/edit",
+        element: <AdminNewsEditPage/>,
+      }
     ]
   },
 

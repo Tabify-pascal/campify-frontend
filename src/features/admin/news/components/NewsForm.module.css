@@ -1,0 +1,63 @@
+.form {
+  padding: 32px;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 14px 16px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  background: white;
+  color: var(--color-text);
+  font: inherit;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field small {
+  color: var(--color-muted);
+}
+
+.currentImage {
+  margin-bottom: 24px;
+}
+
+.currentImage span {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.currentImage img {
+  width: 260px;
+  height: 170px;
+
+  object-fit: cover;
+  display: block;
+
+  border-radius: 18px;
+}
