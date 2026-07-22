@@ -16,7 +16,14 @@ import FaqPage from "../../features/faq/pages/FaqPage";
 import NewsPage from "../../features/news/pages/NewsPage";
 import NewsDetailPage from "../../features/news/pages/NewsDetailPage";
 
+// Auth
+
+import AdminLoginPage from "../../features/auth/pages/loginPage";
+
 // // // // ADMIN // // // // //
+import ProtectedAdminRoute from "../../features/auth/route/ProtectedAdminRoute";
+import AdminLayout from "../../features/auth/components/AdminLayout";
+import AdminDashboardPage from "../../features/admin/dashboard/pages/Dashboard";
 
 // Spots
 import AdminSpotsPage from "../../features/admin/spots/pages/AdminSpotsPage";
@@ -71,28 +78,48 @@ const router = createBrowserRouter([
         element: <NewsDetailPage />,
       },
       {
-        path: "admin/spots",
-        element: <AdminSpotsPage />,
+        path: "/admin/login",
+        element: <AdminLoginPage />,
       },
       {
-        path: "admin/spots/new",
-        element: <AdminSpotCreatePage />,
-      },
-      {
-        path: "admin/spots/:spotId/edit",
-        element: <AdminSpotEditPage />,
-      },
-      {
-        path: "admin/news",
-        element: <AdminNewsPage/>,
-      },
-      {
-        path: "admin/news/new",
-        element: <AdminNewsCreatePage/>,
-      },
-      {
-        path: "admin/news/:newsId/edit",
-        element: <AdminNewsEditPage/>,
+        element: <ProtectedAdminRoute />,
+        children: [
+          {
+            path: "/admin",
+            element: <AdminLayout />,
+            children: [
+              
+              {
+                path: "spots",
+                element: <AdminSpotsPage />,
+              },
+              {
+                path: "spots/new",
+                element: <AdminSpotCreatePage />,
+              },
+              {
+                path: "spots/:spotId/edit",
+                element: <AdminSpotEditPage />,
+              },
+              {
+                path: "news",
+                element: <AdminNewsPage />,
+              },
+              {
+                path: "news/new",
+                element: <AdminNewsCreatePage />,
+              },
+              {
+                path: "news/:newsId/edit",
+                element: <AdminNewsEditPage />,
+              },
+              {
+                index: true,
+                element: <AdminDashboardPage/>
+              },
+            ]
+          }
+        ]
       }
     ]
   },

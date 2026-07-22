@@ -7,10 +7,22 @@ import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import { useSpots } from "../../../spots/queries/useSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
 
+import Pagination from "../../../../components/ui/Pagination/Pagination";
+import { usePagination } from "../../../../hooks/usePagination";
+
 import styles from "./AdminSpotsPage.module.css";
 
 export default function AdminSpotsPage() {
     const { data: spots = [], isLoading, error } = useSpots();
+    const {
+        currentPage,
+        totalPages,
+        paginatedItems,
+        goToPage,
+    } = usePagination({
+        items: spots,
+        itemsPerPage: 5,
+    });
     const deleteSpotMutation = useDeleteSpot();
 
     if (isLoading) return <p>Laden...</p>;
@@ -50,7 +62,7 @@ export default function AdminSpotsPage() {
                     </thead>
 
                     <tbody>
-                        {spots.map((spot) => (
+                        {paginatedItems.map((spot) => (
                             <tr key={spot.id}>
                                 <td>{spot.name}</td>
                                 <td>{spot.capacity} personen</td>
@@ -75,6 +87,11 @@ export default function AdminSpotsPage() {
                         ))}
                     </tbody>
                 </table>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={goToPage}
+                />
             </div>
         </>
     );
