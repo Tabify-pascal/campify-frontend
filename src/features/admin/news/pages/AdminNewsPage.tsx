@@ -8,6 +8,8 @@ import { useNewsItems } from "../../../news/queries/useNewsItems";
 import { useDeleteNews } from "../mutations/useDeleteNews";
 
 import { formatDate } from "../../../../utils/formatDate";
+import Pagination from "../../../../components/ui/Pagination/Pagination";
+import { usePagination } from "../../../../hooks/usePagination";
 
 import styles from "./AdminNewsPage.module.css";
 
@@ -17,6 +19,16 @@ export default function AdminNewsPage() {
         isLoading,
         error,
     } = useNewsItems();
+
+    const {
+        currentPage,
+        totalPages,
+        paginatedItems,
+        goToPage,
+    } = usePagination({
+        items: newsItems,
+        itemsPerPage: 5,
+    });
 
     const deleteNewsMutation = useDeleteNews();
 
@@ -59,7 +71,7 @@ export default function AdminNewsPage() {
                     </thead>
 
                     <tbody>
-                        {newsItems.map((newsItem) => (
+                        {paginatedItems.map((newsItem) => (
                             <tr key={newsItem.id}>
                                 <td>{newsItem.title}</td>
 
@@ -89,6 +101,12 @@ export default function AdminNewsPage() {
                     </tbody>
                 </table>
             </div>
+
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={goToPage}
+            />
         </>
     )
 

@@ -149,12 +149,13 @@ export default function SpotForm({
                     </label>
                 </div>
 
-                <FeatureFields
+                
+            </div>
+            <FeatureFields
                     control={control}
                     register={register}
                     errors={errors}
                 />
-            </div>
             <Button
                 as="button"
                 type="submit"
