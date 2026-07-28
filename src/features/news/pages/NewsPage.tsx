@@ -4,13 +4,25 @@ import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 
 import styles from "./NewsPage.module.css";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
+import { usePagination } from "../../../hooks/usePagination";
+import Pagination from "../../../components/ui/Pagination/Pagination";
 
 export default function NewsPage(){
     const { 
-        data: newsItems,
+        data: newsItems = [],
         isLoading,
         error,
      } = useNewsItems();
+
+     const {
+        currentPage,
+        totalPages,
+        paginatedItems,
+        goToPage,
+    } = usePagination({
+        items: newsItems,
+        itemsPerPage: 6,
+    });
 
      if(isLoading){
         return <p>Laden...</p>
@@ -33,13 +45,20 @@ export default function NewsPage(){
         />
 
         <div className={styles.grid}>
-            {newsItems?.map((newsItem) => (
+            {paginatedItems?.map((newsItem) => (
                 <NewsCard
                     key={newsItem.id}
                     newsItem={newsItem}
                 />
             ))}
         </div>
+        <div className={styles.pagination}>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={goToPage}
+                    />
+                </div>
         </>
     );
 }

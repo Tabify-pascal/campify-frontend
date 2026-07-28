@@ -1,8 +1,9 @@
 import { NavLink, Outlet, useNavigate} from "react-router-dom";
 
-import Button from "../../../components/ui/Button";
-import { useLogout } from "../mutations/useLogout";
+import Button from "../ui/Button";
+import { useLogout } from "../../features/auth/mutations/useLogout"; 
 import styles from "./AdminLayout.module.css";
+import Header from "./Header";
 
 export default function AdminLayout(){
     const navigate = useNavigate();
@@ -32,6 +33,8 @@ export default function AdminLayout(){
     }
 
      return (
+        <>
+        <Header />
         <div className={styles.layout}>
             <aside className={styles.sidebar}>
                 <div className={styles.brand}>
@@ -96,5 +99,7 @@ export default function AdminLayout(){
                 </div>
             </main>
         </div>
+        </>
+        
     );
 }

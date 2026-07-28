@@ -1,24 +1,36 @@
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LockKeyhole } from "lucide-react";
 
-import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import Button from "../../../components/ui/Button";
 import FormError from "../../../components/ui/FormError";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import { useLogin } from "../mutations/useLogin";
-import { loginSchema, type LoginFormData, type LoginFormInput } from "../schemas/loginSchema";
+import {
+    loginSchema,
+    type LoginFormData,
+    type LoginFormInput,
+} from "../schemas/loginSchema";
 
-type LocationState = { from?: { pathname?: string};};
+import styles from "./loginPage.module.css";
 
-export default function AdminLoginPage(){
+type LocationState = {
+    from?: {
+        pathname?: string;
+    };
+};
+
+export default function AdminLoginPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const loginMutation = useLogin();
 
     const {
-        register, handleSubmit, formState: { errors },
+        register,
+        handleSubmit,
+        formState: { errors },
     } = useForm<LoginFormInput, unknown, LoginFormData>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -27,70 +39,121 @@ export default function AdminLoginPage(){
         },
     });
 
-    function onSubmit(data: LoginFormData){
+    function onSubmit(data: LoginFormData) {
         loginMutation.mutate(data, {
             onSuccess: () => {
                 const state = location.state as LocationState | null;
+
                 navigate(
                     state?.from?.pathname ?? "/admin",
-                    { replace : true}
+                    { replace: true },
                 );
             },
         });
     }
 
-    return(
-        <>
-            <PageHeader
-                title="Admin Login"
-                description="Log in om de beheeromgeving te openen."
-            />
-            {loginMutation.isError && (
-                <MessageCard
-                    title="Inloggen mislukt"
-                    message="Controleer je e-mail"
-                    linkText="Terug naar de homepage"
-                    linkTo="/"
-                />
-            )}
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label htmlFor="email">
-                        E-mailadres
-                    </label>
-                    <input
-                        id="email"
-                        type="email"
-                        autoComplete="email"
-                        {...register("email")}
+    return (
+        <main className={styles.page}>
+            <section className={styles.loginCard}>
+                <div className={styles.iconWrapper}>
+                    <LockKeyhole
+                        size={26}
+                        aria-hidden="true"
                     />
-                    <FormError message={errors.email?.message} />
                 </div>
 
-                <div>
-                    <label htmlFor="password">
-                        Wachtwoord
-                    </label>
+                <div className={styles.header}>
+                    <p className={styles.eyebrow}>
+                        Campify beheeromgeving
+                    </p>
 
-                    <input
-                        id="password"
-                        type="password"
-                        autoComplete="current=password"
-                        {...register("password")}
+                    <h1 className={styles.title}>
+                        Welkom terug
+                    </h1>
+
+                    <p className={styles.description}>
+                        Log in om campingplaatsen, nieuws en
+                        reserveringen te beheren.
+                    </p>
+                </div>
+
+                {loginMutation.isError && (
+                    <MessageCard
+                        title="Inloggen mislukt"
+                        message="Controleer je e-mailadres en wachtwoord."
+                        linkText="Terug naar de homepage"
+                        linkTo="/"
                     />
+                )}
+
+                <form
+                    className={styles.form}
+                    onSubmit={handleSubmit(onSubmit)}
+                    noValidate
+                >
+                    <div className={styles.formGroup}>
+                        <label
+                            className={styles.label}
+                            htmlFor="email"
+                        >
+                            E-mailadres
+                        </label>
+
+                        <input
+                            className={styles.input}
+                            id="email"
+                            type="email"
+                            autoComplete="email"
+                            aria-invalid={Boolean(errors.email)}
+                            {...register("email")}
+                        />
+
+                        <FormError
+                            message={errors.email?.message}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label
+                            className={styles.label}
+                            htmlFor="password"
+                        >
+                            Wachtwoord
+                        </label>
+
+                        <input
+                            className={styles.input}
+                            id="password"
+                            type="password"
+                            autoComplete="current-password"
+                            aria-invalid={Boolean(errors.password)}
+                            {...register("password")}
+                        />
+
+                        <FormError
+                            message={errors.password?.message}
+                        />
+                    </div>
 
                     <Button
                         as="button"
                         type="submit"
+                        className={styles.submitButton}
                         disabled={loginMutation.isPending}
                     >
-                        {loginMutation.isPending 
-                            ?   "Inloggen..."
+                        {loginMutation.isPending
+                            ? "Inloggen..."
                             : "Inloggen"}
                     </Button>
-                </div>
-            </form>
-        </>
+                </form>
+
+                <Link
+                    className={styles.homeLink}
+                    to="/"
+                >
+                    Terug naar Campify
+                </Link>
+            </section>
+        </main>
     );
 }

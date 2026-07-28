@@ -27,3 +27,12 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
+
+.danger {
+    background-color: #b91c1c;
+    color: white;
+}
+
+.danger:hover {
+    background-color: #991b1b;
+}

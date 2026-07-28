@@ -1,7 +1,7 @@
 import { Link, type LinkProps } from "react-router-dom";
 import styles from "./Button.module.css";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "danger";
 
 type ButtonAsLinkProps = LinkProps & {
   as?: "link";

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "../../components/layout/Layout";
+import AdminLayout from "../../components/layout/AdminLayout";
 import HomePage from "../../features/root/pages/HomePage";
 import NotFoundPage from "../../features/root/pages/NotFoundPage";
 
@@ -22,7 +23,6 @@ import AdminLoginPage from "../../features/auth/pages/loginPage";
 
 // // // // ADMIN // // // // //
 import ProtectedAdminRoute from "../../features/auth/route/ProtectedAdminRoute";
-import AdminLayout from "../../features/auth/components/AdminLayout";
 import AdminDashboardPage from "../../features/admin/dashboard/pages/Dashboard";
 
 // Spots
@@ -34,6 +34,10 @@ import AdminSpotEditPage from "../../features/admin/spots/pages/AdminSpotEditPag
 import AdminNewsPage from "../../features/admin/news/pages/AdminNewsPage";
 import AdminNewsCreatePage from "../../features/admin/news/pages/AdminNewsCreatePage";
 import AdminNewsEditPage from "../../features/admin/news/pages/AdminNewsEditPage";
+
+// Reservations
+import AdminReservationsPage from "../../features/admin/reservations/pages/AdminReservationsPage";
+
 
 const router = createBrowserRouter([
   {
@@ -77,52 +81,57 @@ const router = createBrowserRouter([
         path: "/nieuws/:newsId",
         element: <NewsDetailPage />,
       },
+
+    ]
+  },
+  {
+    path: "/admin/login",
+    element: <AdminLoginPage />,
+  },
+  {
+    element: <ProtectedAdminRoute />,
+    children: [
       {
-        path: "/admin/login",
-        element: <AdminLoginPage />,
-      },
-      {
-        element: <ProtectedAdminRoute />,
+        path: "/admin",
+        element: <AdminLayout />,
         children: [
           {
-            path: "/admin",
-            element: <AdminLayout />,
-            children: [
-              
-              {
-                path: "spots",
-                element: <AdminSpotsPage />,
-              },
-              {
-                path: "spots/new",
-                element: <AdminSpotCreatePage />,
-              },
-              {
-                path: "spots/:spotId/edit",
-                element: <AdminSpotEditPage />,
-              },
-              {
-                path: "news",
-                element: <AdminNewsPage />,
-              },
-              {
-                path: "news/new",
-                element: <AdminNewsCreatePage />,
-              },
-              {
-                path: "news/:newsId/edit",
-                element: <AdminNewsEditPage />,
-              },
-              {
-                index: true,
-                element: <AdminDashboardPage/>
-              },
-            ]
-          }
+            path: "spots",
+            element: <AdminSpotsPage />,
+          },
+          {
+            path: "spots/new",
+            element: <AdminSpotCreatePage />,
+          },
+          {
+            path: "spots/:spotId/edit",
+            element: <AdminSpotEditPage />,
+          },
+          {
+            path: "news",
+            element: <AdminNewsPage />,
+          },
+          {
+            path: "news/new",
+            element: <AdminNewsCreatePage />,
+          },
+          {
+            path: "news/:newsId/edit",
+            element: <AdminNewsEditPage />,
+          },
+          {
+            path: "reservations",
+            element: <AdminReservationsPage />,
+          },
+          {
+            index: true,
+            element: <AdminDashboardPage />
+          },
         ]
       }
     ]
-  },
+  }
+
 
 
 ]);
