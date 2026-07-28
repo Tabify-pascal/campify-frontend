@@ -65,8 +65,6 @@ export default function ReservationPage() {
         );
     }
 
-    
-
     return (
         <section className={styles.page}>
             <div className={styles.summary}>
@@ -87,39 +85,39 @@ export default function ReservationPage() {
                     <div className={styles.field}>
                         <label htmlFor="firstName">Voornaam</label>
                         <input id="firstName" {...register("firstName")} />
-                        {errors.firstName && <FormError error={errors.firstName}/>}
+                        {errors.firstName && <FormError message={errors.firstName?.message}/>}
                     </div>
 
                     <div className={styles.field}>
                         <label htmlFor="lastName">Achternaam</label>
                         <input id="lastName" {...register("lastName")} />
-                        {errors.lastName && <FormError error={errors.lastName}/>}
+                        {errors.lastName && <FormError message={errors.lastName?.message}/>}
                     </div>
                 </div>
 
                 <div className={styles.field}>
                     <label htmlFor="email">E-mail</label>
                     <input id="email" type="email" {...register("email")} />
-                    {errors.email && <FormError error={errors.email}/>}
+                    {errors.email && <FormError message={errors.email?.message}/>}
                 </div>
 
                 <div className={styles.field}>
                     <label htmlFor="phone">Telefoon</label>
                     <input id="phone" {...register("phone")} />
-                    {errors.phone && <FormError error={errors.phone}/>}
+                    {errors.phone && <FormError message={errors.phone?.message}/>}
                 </div>
 
                 <div className={styles.row}>
                     <div className={styles.field}>
                         <label htmlFor="arrivalDate">Aankomst</label>
                         <input id="arrivalDate" type="date" {...register("arrivalDate")} readOnly={Boolean(arrivalDate)}/>
-                        {errors.arrivalDate && <FormError error={errors.arrivalDate}/>}
+                        {errors.arrivalDate && <FormError message={errors.arrivalDate?.message}/>}
                     </div>
 
                     <div className={styles.field}>
                         <label htmlFor="departureDate">Vertrek</label>
                         <input id="departureDate" type="date" {...register("departureDate")} readOnly={Boolean(departureDate)}/>
-                        {errors.departureDate && <FormError error={errors.departureDate}/>}
+                        {errors.departureDate && <FormError message={errors.departureDate?.message}/>}
                     </div>
                 </div>
 
@@ -134,7 +132,7 @@ export default function ReservationPage() {
                             )
                         )}
                     </select>
-                    {errors.guests && <FormError error={errors.guests}/>}
+                    {errors.guests && <FormError message={errors.guests?.message}/>}
                 </div>
 
                 <div className={styles.field}>
