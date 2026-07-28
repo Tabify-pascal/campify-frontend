@@ -57,25 +57,25 @@ export default function ContactPage() {
                     <div className={styles.field}>
                         <label htmlFor="name">Naam</label>
                         <input id="name" {...register("name")} />
-                        <FormError error={errors.name} />
+                        <FormError message={errors.name?.message} />
                     </div>
 
                     <div className={styles.field}>
                         <label htmlFor="email">E-mail</label>
                         <input id="email" { ...register("email")} />
-                        <FormError error={errors.subject}/>
+                        <FormError message={errors.subject?.message}/>
                     </div>
 
                     <div className={styles.field}>
                         <label htmlFor="subject">Onderwerp</label>
                         <input id="subject" {...register("subject")} />
-                        <FormError error={errors.subject}/>
+                        <FormError message={errors.subject?.message}/>
                     </div>
 
                     <div className={ styles.field}>
                         <label htmlFor="message">Bericht</label>
                         <textarea id="message" rows={6} {...register("message")} />
-                        <FormError error={errors.message} />
+                        <FormError message={errors.message?.message} />
                     </div>
 
                     <Button as="button" type="submit">
