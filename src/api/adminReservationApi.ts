@@ -9,13 +9,6 @@ export function getAdminReservationById(reservationId: string){
     return adminApi<AdminReservation>(`/admin/reservations/${reservationId}`);
 }
 
-// export function updateAdminReservationStatus(reservationId : string, status: ReservationStatus ) {
-//     return adminApi<ReservationStatus>(`/admin/reservations/${reservationId}/status`, {
-//         method: "PATCH",
-//         body: JSON.stringify({status,})
-//     });
-// } 
-
 export function updateAdminReservationStatus(
     reservationId: string, 
     status: ReservationStatus

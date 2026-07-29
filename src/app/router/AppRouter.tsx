@@ -38,6 +38,9 @@ import AdminNewsEditPage from "../../features/admin/news/pages/AdminNewsEditPage
 // Reservations
 import AdminReservationsPage from "../../features/admin/reservations/pages/AdminReservationsPage";
 
+// FAQS
+import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
+
 
 const router = createBrowserRouter([
   {
@@ -96,6 +99,10 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           {
+            index: true,
+            element: <AdminDashboardPage />
+          },
+          {
             path: "spots",
             element: <AdminSpotsPage />,
           },
@@ -123,10 +130,11 @@ const router = createBrowserRouter([
             path: "reservations",
             element: <AdminReservationsPage />,
           },
-          {
-            index: true,
-            element: <AdminDashboardPage />
-          },
+          { 
+            path: "faqs",
+            element: <AdminFaqPage />,
+          },         
+
         ]
       }
     ]
