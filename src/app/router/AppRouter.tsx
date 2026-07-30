@@ -41,6 +41,7 @@ import AdminReservationsPage from "../../features/admin/reservations/pages/Admin
 // FAQS
 import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
 import AdminFaqEditPage from "../../features/admin/faqs/pages/AdminFaqEditPage";
+import AdminFaqCreatePage from "../../features/admin/faqs/pages/AdminCreateFaq";
 
 
 const router = createBrowserRouter([
@@ -138,15 +139,15 @@ const router = createBrowserRouter([
           {
             path: "faqs/:faqId/edit",
             element: <AdminFaqEditPage/>,
+          },
+          {
+            path: "faqs/new",
+            element: <AdminFaqCreatePage/>,
           }       
-
         ]
       }
     ]
   }
-
-
-
 ]);
 
 export default function AppRouter() {

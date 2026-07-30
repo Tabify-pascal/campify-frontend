@@ -8,8 +8,6 @@ import FaqForm from "../components/FaqForm";
 import { useUpdateFaq } from "../mutations/useUpdateFaq";
 import type { FaqFormData } from "../schemas/faqSchema";
 
-import styles from "./AdminFaqEditPage.module.css"
-
 export default function AdminFaqEditPage(){
     const { faqId } = useParams();
     const navigate = useNavigate();

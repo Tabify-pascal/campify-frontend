@@ -6,11 +6,12 @@ import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
 import { useSpots } from "../../../spots/queries/useSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
+import { Trash2, Pencil } from "lucide-react";
 
 import Pagination from "../../../../components/ui/Pagination/Pagination";
 import { usePagination } from "../../../../hooks/usePagination";
 
-import styles from "./AdminSpotsPage.module.css";
+import styles from "../../AdminIndexPage.module.css";
 
 export default function AdminSpotsPage() {
     const { data: spots = [], isLoading, error } = useSpots();
@@ -71,7 +72,7 @@ export default function AdminSpotsPage() {
                                 <td>
                                     <div className={styles.rowActions}>
                                         <Link to={`/admin/spots/${spot.id}/edit`}>
-                                            Bewerken 
+                                            <Pencil size={18}/>
                                         </Link>
 
                                         <button
@@ -79,7 +80,7 @@ export default function AdminSpotsPage() {
                                             onClick={() => deleteSpotMutation.mutate(spot.id)}
                                             disabled={deleteSpotMutation.isPending}
                                         >
-                                            Verwijderen
+                                            <Trash2 size={18}/>
                                         </button>
                                     </div>
                                 </td>

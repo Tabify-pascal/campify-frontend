@@ -32,6 +32,12 @@ export default function AdminDashboardPage(){
                             <p className={styles.cardText}>Bekijk en beheer binnengekomen reserveringen.</p>
                         </article>
                     </Link>
+                    <Link to="/admin/faqs" className={styles.cardLink}>
+                        <article className={styles.card}>
+                            <h3 className={styles.cardTitle}>Veelgestelde vragen</h3>
+                            <p className={styles.cardText}>Bekijk en beheer binnengekomen reserveringen.</p>
+                        </article>
+                    </Link>
                 </div>
             </section>
         </div>
