@@ -40,6 +40,7 @@ import AdminReservationsPage from "../../features/admin/reservations/pages/Admin
 
 // FAQS
 import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
+import AdminFaqEditPage from "../../features/admin/faqs/pages/AdminFaqEditPage";
 
 
 const router = createBrowserRouter([
@@ -133,7 +134,11 @@ const router = createBrowserRouter([
           { 
             path: "faqs",
             element: <AdminFaqPage />,
-          },         
+          },  
+          {
+            path: "faqs/:faqId/edit",
+            element: <AdminFaqEditPage/>,
+          }       
 
         ]
       }

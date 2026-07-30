@@ -63,7 +63,7 @@ export default function AdminSpotEditPage() {
                 <MessageCard
                     title="Wijzigingen konden niet worden opgeslagen"
                     message="Controleer de ingevulde gegevens en probeer opnieuw."
-                    linkTo="admin/spots"
+                    linkTo="/admin/spots"
                     linkText="Terug naar overzicht"
                 />
             )}
