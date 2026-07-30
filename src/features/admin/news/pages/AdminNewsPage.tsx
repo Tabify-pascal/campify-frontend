@@ -6,12 +6,13 @@ import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
 import { useNewsItems } from "../../../news/queries/useNewsItems";
 import { useDeleteNews } from "../mutations/useDeleteNews";
+import { Trash2, Pencil } from "lucide-react";
 
 import { formatDate } from "../../../../utils/formatDate";
 import Pagination from "../../../../components/ui/Pagination/Pagination";
 import { usePagination } from "../../../../hooks/usePagination";
 
-import styles from "./AdminNewsPage.module.css";
+import styles from "../../AdminIndexPage.module.css";
 
 export default function AdminNewsPage() {
     const {
@@ -82,7 +83,7 @@ export default function AdminNewsPage() {
                                         <Link
                                             to={`/admin/news/${newsItem.id}/edit`}
                                         >
-                                            Bewerken
+                                            <Pencil size={18}/>
                                         </Link>
 
                                         <button
@@ -92,7 +93,7 @@ export default function AdminNewsPage() {
                                             }
                                             disabled={deleteNewsMutation.isPending}
                                         >
-                                            Verwijderen
+                                            <Trash2 size={18}/>
                                         </button>
                                     </div>
                                 </td>

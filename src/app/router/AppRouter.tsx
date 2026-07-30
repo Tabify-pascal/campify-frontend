@@ -38,6 +38,11 @@ import AdminNewsEditPage from "../../features/admin/news/pages/AdminNewsEditPage
 // Reservations
 import AdminReservationsPage from "../../features/admin/reservations/pages/AdminReservationsPage";
 
+// FAQS
+import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
+import AdminFaqEditPage from "../../features/admin/faqs/pages/AdminFaqEditPage";
+import AdminFaqCreatePage from "../../features/admin/faqs/pages/AdminCreateFaq";
+
 
 const router = createBrowserRouter([
   {
@@ -96,6 +101,10 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           {
+            index: true,
+            element: <AdminDashboardPage />
+          },
+          {
             path: "spots",
             element: <AdminSpotsPage />,
           },
@@ -123,17 +132,22 @@ const router = createBrowserRouter([
             path: "reservations",
             element: <AdminReservationsPage />,
           },
+          { 
+            path: "faqs",
+            element: <AdminFaqPage />,
+          },  
           {
-            index: true,
-            element: <AdminDashboardPage />
+            path: "faqs/:faqId/edit",
+            element: <AdminFaqEditPage/>,
           },
+          {
+            path: "faqs/new",
+            element: <AdminFaqCreatePage/>,
+          }       
         ]
       }
     ]
   }
-
-
-
 ]);
 
 export default function AppRouter() {

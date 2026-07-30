@@ -76,6 +76,12 @@ export default function AdminLayout(){
                     >
                         Reserveringen
                     </NavLink>
+                    <NavLink
+                        to="/admin/faqs"
+                        className={getNavLinkClass}
+                    >
+                        Veelgestelde vragen
+                    </NavLink>
                 </nav>
 
                 <div className={styles.footer}>

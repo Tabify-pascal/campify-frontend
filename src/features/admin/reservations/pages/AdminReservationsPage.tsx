@@ -11,9 +11,11 @@ import { usePagination } from "../../../../hooks/usePagination";
 import { useDeleteReservation } from "../mutations/useDeleteReservation";
 import { formatDate } from "../../../../utils/formatDate";
 
-import { Trash2 } from "lucide-react";
+import { Trash2, Pencil } from "lucide-react";
 
-import styles from "./AdminReservationsPage.module.css";
+import styles from "../../AdminIndexPage.module.css";
+import statusStyles from "./AdminStatusDisplay.module.css";
+
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 
 export default function AdminReservationsPage() {
@@ -64,12 +66,12 @@ export default function AdminReservationsPage() {
     }
 
     return (
-        <div className={styles.page}>
+        <>
             <PageHeader
                 title="Reserveringen beheren"
                 description="Beheer alle reserveringen."
             />
-            <div className={styles.tableWrapper}>
+            <div className={styles.tableCard}>
                 <table className={styles.table}>
                     <thead>
                         <tr>
@@ -94,33 +96,32 @@ export default function AdminReservationsPage() {
                             paginatedItems.map((reservation) => (
                                 <tr key={reservation.id}>
                                     <td>{reservation.spot.name}</td>
-                                    <td className={styles.date}>
+                                    <td>
                                         {formatDate(reservation.arrivalDate)}
                                     </td>
 
-                                    <td className={styles.date}>
+                                    <td>
                                         {formatDate(reservation.departureDate)}
                                     </td>
                                     <td>{reservation.guests}</td>
                                     <td>
-                                        <span className={`${styles.status} ${styles[
-                                        reservation.status.toLowerCase() as
-                                        | "pending"
-                                        | "confirmed"
-                                        | "cancelled"
-                                    ]
-                                        }`}>{reservation.status}
+                                        <span className={`${statusStyles.status} ${statusStyles[
+                                            reservation.status.toLowerCase() as
+                                            | "pending"
+                                            | "confirmed"
+                                            | "cancelled"
+                                        ]
+                                            }`}>{reservation.status}
                                         </span>
-                                        </td>
+                                    </td>
                                     <td>
                                         <div className={styles.rowActions}>
-                                            <Link to={`/admin/reservations/${reservation.id}`} className={styles.detailsLink}>
-                                                Bekijken
+                                            <Link to={`/admin/reservations/${reservation.id}`} >
+                                                <Pencil size={18} />
                                             </Link>
 
                                             <button
                                                 type="button"
-                                                className={styles.deleteButton}
                                                 onClick={() => setReservationToDelete(reservation)}
                                             >
                                                 <Trash2 size={18} />
@@ -128,8 +129,7 @@ export default function AdminReservationsPage() {
                                         </div>
                                     </td>
                                 </tr>
-                            )
-                            )
+                            ))
                         )}
                     </tbody>
                 </table>
@@ -154,7 +154,6 @@ export default function AdminReservationsPage() {
                 onClose={() => setReservationToDelete(null)}
                 onConfirm={handleConfirmDelete}
             />
-        </div>
+        </>
     )
 }
-

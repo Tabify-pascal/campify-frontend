@@ -23,7 +23,7 @@ export default function SpotForm({
     submitLabel = "Opslaan",
     currentImageUrl,
     requireImage = false }: Props) {
-    const { register, handleSubmit, setValue, control, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
+    const { register, handleSubmit, control, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
         resolver: zodResolver(spotSchema),
         defaultValues: {
             name: "",
