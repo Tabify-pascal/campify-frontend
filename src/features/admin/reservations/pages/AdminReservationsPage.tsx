@@ -10,13 +10,14 @@ import { useAdminReservations } from "../queries/useAdminReservations";
 import { usePagination } from "../../../../hooks/usePagination";
 import { useDeleteReservation } from "../mutations/useDeleteReservation";
 import { formatDate } from "../../../../utils/formatDate";
+import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 
 import { Trash2, Pencil } from "lucide-react";
 
 import styles from "../../AdminIndexPage.module.css";
 import statusStyles from "./AdminStatusDisplay.module.css";
 
-import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
+
 
 export default function AdminReservationsPage() {
     const {
