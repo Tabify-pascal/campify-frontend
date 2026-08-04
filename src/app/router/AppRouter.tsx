@@ -37,6 +37,7 @@ import AdminNewsEditPage from "../../features/admin/news/pages/AdminNewsEditPage
 
 // Reservations
 import AdminReservationsPage from "../../features/admin/reservations/pages/AdminReservationsPage";
+import AdminReservationDetailPage from "../../features/admin/reservations/pages/AdminReservationDetailPage";
 
 // FAQS
 import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
@@ -131,6 +132,10 @@ const router = createBrowserRouter([
           {
             path: "reservations",
             element: <AdminReservationsPage />,
+          },
+          {
+            path: "reservations/:reservationId",
+            element: <AdminReservationDetailPage/>
           },
           { 
             path: "faqs",
