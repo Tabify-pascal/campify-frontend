@@ -72,7 +72,7 @@ export default function ContactPage() {
                     <div className={styles.field}>
                         <label htmlFor="email">E-mail</label>
                         <input id="email" { ...register("email")} />
-                        <FormError message={errors.subject?.message}/>
+                        <FormError message={errors.email?.message}/>
                     </div>
 
                     <div className={styles.field}>
