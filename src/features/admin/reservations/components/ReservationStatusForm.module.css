@@ -19,20 +19,28 @@
 .field select {
     width: 100%;
     min-height: 3rem;
-    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    padding: 0.75rem 2.75rem 0.75rem 1rem;
+
+    appearance: none;
 
     border: 1px solid var(--color-border, #e5e7eb);
     border-radius: 0.75rem;
 
     background-color: var(--color-surface, #ffffff);
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) 50%,
+        calc(100% - 13px) 50%;
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+
     color: var(--color-text);
     font: inherit;
-
     cursor: pointer;
-    transition:
-        border-color 150ms ease,
-        box-shadow 150ms ease,
-        background-color 150ms ease;
 }
 
 .field select:hover {
@@ -54,4 +62,15 @@
     cursor: not-allowed;
     opacity: 0.65;
     background-color: var(--color-surface-muted, #f4f6f2);
+}
+
+.field select option {
+    background: var(--color-surface, #ffffff);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.field select option:checked {
+    background: var(--color-primary);
+    color: white;
 }

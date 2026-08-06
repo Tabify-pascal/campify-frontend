@@ -9,13 +9,18 @@ import {
     contactSchema,
     type ContactFormData,
 } from "../schemas/contactSchema";
+import { useCreateContactMessage } from "../mutations/useCreateContactMessage";
 
 import styles from "./ContactPage.module.css"
+import { createContactMessage } from "../../../api/contact";
+import { reservationSchema } from "../../reservations/schemas/reservationSchema";
 
 export default function ContactPage() {
+    const createMessageMutation = useCreateContactMessage();
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
@@ -28,7 +33,11 @@ export default function ContactPage() {
     });
 
     function onSubmit(data: ContactFormData) {
-        console.log(data);
+        createMessageMutation.mutate(data, {
+            onSuccess: () => {
+                reset();
+            },
+        })
     }
 
     return (
