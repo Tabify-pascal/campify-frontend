@@ -15,7 +15,7 @@ import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import { Trash2, Pencil } from "lucide-react";
 
 import styles from "../../AdminIndexPage.module.css";
-import statusStyles from "./AdminStatusDisplay.module.css";
+import statusStyles from "../../AdminStatusDisplay.module.css";
 
 
 

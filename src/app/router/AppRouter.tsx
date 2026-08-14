@@ -44,6 +44,9 @@ import AdminFaqPage from "../../features/admin/faqs/pages/AdminFaqPage";
 import AdminFaqEditPage from "../../features/admin/faqs/pages/AdminFaqEditPage";
 import AdminFaqCreatePage from "../../features/admin/faqs/pages/AdminCreateFaq";
 
+// Messages
+import AdminMessagePage from "../../features/admin/messages/pages/adminMessagePage";
+import AdminMessageDetailPage from "../../features/admin/messages/pages/adminMessageDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -148,7 +151,15 @@ const router = createBrowserRouter([
           {
             path: "faqs/new",
             element: <AdminFaqCreatePage/>,
-          }       
+          },
+          {
+            path: "messages",
+            element: <AdminMessagePage/>,
+          },
+          {
+            path: "messages/:messageId",
+            element: <AdminMessageDetailPage/>,
+          }      
         ]
       }
     ]
