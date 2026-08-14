@@ -9,13 +9,16 @@ import {
     contactSchema,
     type ContactFormData,
 } from "../schemas/contactSchema";
+import { useCreateContactMessage } from "../mutations/useCreateContactMessage";
 
 import styles from "./ContactPage.module.css"
 
 export default function ContactPage() {
+    const createMessageMutation = useCreateContactMessage();
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
@@ -28,7 +31,11 @@ export default function ContactPage() {
     });
 
     function onSubmit(data: ContactFormData) {
-        console.log(data);
+        createMessageMutation.mutate(data, {
+            onSuccess: () => {
+                reset();
+            },
+        })
     }
 
     return (
@@ -63,7 +70,7 @@ export default function ContactPage() {
                     <div className={styles.field}>
                         <label htmlFor="email">E-mail</label>
                         <input id="email" { ...register("email")} />
-                        <FormError message={errors.subject?.message}/>
+                        <FormError message={errors.email?.message}/>
                     </div>
 
                     <div className={styles.field}>

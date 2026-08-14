@@ -76,6 +76,14 @@ export default function AdminLayout(){
                     >
                         Reserveringen
                     </NavLink>
+
+                    <NavLink
+                        to="/admin/messages"
+                        className={getNavLinkClass}
+                    >
+                        Berichten
+                    </NavLink>
+
                     <NavLink
                         to="/admin/faqs"
                         className={getNavLinkClass}

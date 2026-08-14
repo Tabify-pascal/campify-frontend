@@ -11,7 +11,7 @@
     text-transform: uppercase;
 }
 
-.pending {
+.pending, .new {
     background: #fef3c7;
     color: #92400e;
 }
@@ -21,7 +21,12 @@
     color: #166534;
 }
 
-.cancelled {
+.read {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.cancelled, .closed {
     background: #fee2e2;
     color: #991b1b;
 }
