@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteAdminMessage } from "../../../../api/adminContact";
+import { deleteAdminMessage } from "../api/adminContact";
 
 export function useDeleteMessage(){
     const queryClient = useQueryClient();

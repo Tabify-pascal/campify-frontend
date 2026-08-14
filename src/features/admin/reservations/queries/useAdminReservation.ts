@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAdminReservationById } from "../../../../api/adminReservationApi";
+import { getAdminReservationById } from "../api/adminReservationApi";
 
 export function useAdminReservation(reservationId: string | undefined) {
     return useQuery({

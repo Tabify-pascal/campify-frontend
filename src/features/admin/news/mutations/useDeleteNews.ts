@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteNews } from "../../../../api/adminNewsApi";
+import { deleteNews } from "../api/adminNewsApi";
 
 export function useDeleteNews() {
     const queryClient = useQueryClient();

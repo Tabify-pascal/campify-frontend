@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSpot } from "../../../api/spotsApi";
+import { getSpot } from "../api/spotsApi"; 
 
 export function useSpot(spotId: string | undefined) {
     return useQuery({

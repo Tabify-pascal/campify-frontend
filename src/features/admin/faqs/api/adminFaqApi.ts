@@ -1,6 +1,6 @@
-import { adminApi } from "./adminClient";
-import type { FaqItem } from "../features/faq/types/FaqItem";
-import type { FaqFormData } from "../features/admin/faqs/schemas/faqSchema";
+import { adminApi } from "../../../../api/adminClient";
+import type { FaqItem } from "../../../faq/types/FaqItem";
+import type { FaqFormData } from "../schemas/faqSchema";
 
 export function getAdminFaqs(){
     return adminApi<FaqItem[]>(`/admin/faqs`);

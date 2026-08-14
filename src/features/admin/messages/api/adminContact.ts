@@ -1,5 +1,5 @@
-import { adminApi } from "./adminClient";
-import type { ContactMessageStatus, AdminContactMessage } from "../features/admin/messages/types/message";
+import { adminApi } from "../../../../api/adminClient";
+import type { ContactMessageStatus, AdminContactMessage } from "../types/message";
 
 export function getContactMessages(){
     return adminApi<AdminContactMessage[]>(`/admin/messages`);

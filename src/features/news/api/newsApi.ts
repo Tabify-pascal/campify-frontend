@@ -1,5 +1,5 @@
-import { api } from "./client";
-import type { NewsItem } from "../features/news/types/NewsItem";
+import { api } from "../../../api/client";
+import type { NewsItem } from "../types/NewsItem";
 
 export async function getNewsItems(): Promise<NewsItem[]> {
     return api<NewsItem[]>("/news");

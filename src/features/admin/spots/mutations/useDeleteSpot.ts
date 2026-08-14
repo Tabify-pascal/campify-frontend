@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteSpot } from "../../../../api/adminSpotApi";
+import { deleteSpot } from "../api/adminSpotApi";
 import type { Spot } from "../../../spots/types/Spot";
 
 export function useDeleteSpot(){

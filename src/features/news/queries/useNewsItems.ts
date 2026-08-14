@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getNewsItems } from "../../../api/newsApi";
+import { getNewsItems } from "../api/newsApi";
 
 export function useNewsItems(){
     return useQuery({

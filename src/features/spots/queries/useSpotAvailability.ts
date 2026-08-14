@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSpotavailability } from "../../../api/spotsApi";
+import { getSpotavailability } from "../api/spotsApi";
 
 export function useSpotAvailability(
     spotId: string | undefined,

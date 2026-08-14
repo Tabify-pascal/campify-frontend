@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteFaq } from "../../../../api/adminFaqApi";
+import { deleteFaq } from "../api/adminFaqApi";
 
 export function useDeleteFaq(){
     const queryClient = useQueryClient();

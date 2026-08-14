@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateFaq } from "../../../../api/adminFaqApi";
+import { updateFaq } from "../api/adminFaqApi";
 import { type FaqFormData } from "../schemas/faqSchema";
 
 type Variables = {

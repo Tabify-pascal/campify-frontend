@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"; 
-import { deleteAdminReservation } from "../../../../api/adminReservationApi"
+import { deleteAdminReservation } from "../api/adminReservationApi"
 
 export function useDeleteReservation() {
     const queryClient = useQueryClient();

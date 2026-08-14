@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createSpot } from "../../../../api/adminSpotApi";
+import { createSpot } from "../api/adminSpotApi";
 
 export function useCreateSpot() {
     const queryClient = useQueryClient();

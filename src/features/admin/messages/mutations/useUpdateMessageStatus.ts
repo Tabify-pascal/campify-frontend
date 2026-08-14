@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateAdminMessageStatus } from "../../../../api/adminContact";
+import { updateAdminMessageStatus } from "../api/adminContact";
 import type { ContactMessageStatus } from "../types/message";
 
 type UpdateMessageStatusInput = {
