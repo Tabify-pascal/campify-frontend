@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAdminMessageStatus } from "../api/adminContact";
 import type { ContactMessageStatus } from "../types/message";
+import { queryKeys } from "../../../../queryKeys";
 
 type UpdateMessageStatusInput = {
     messageId: string;
@@ -13,9 +14,9 @@ export function useUpdateMessageStatus(){
     return useMutation({
         mutationFn: ({ messageId, status}:UpdateMessageStatusInput) => updateAdminMessageStatus(messageId, status),
         onSuccess: (updatedMessage, variables) => {
-            queryClient.invalidateQueries({ queryKey: ["admin", "messages"]});
+            queryClient.invalidateQueries({ queryKey: queryKeys.admin.messages.all});
             queryClient.setQueryData(
-                ["admin", "messages", variables.messageId],
+                queryKeys.admin.messages.detail(variables.messageId),
                 updatedMessage
             );
         },
