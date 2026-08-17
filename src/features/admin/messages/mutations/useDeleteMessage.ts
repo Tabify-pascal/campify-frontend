@@ -8,8 +8,11 @@ export function useDeleteMessage(){
     return useMutation({
         mutationFn: deleteAdminMessage,
         onSuccess: async (_, deletedId) => {
-            await queryClient.invalidateQueries({ queryKey: queryKeys.admin.messages.all});
             queryClient.removeQueries({queryKey: queryKeys.admin.messages.detail(deletedId)});
+            await Promise.all([
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.messages.all}),
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.dashboard}),
+            ])
         },
     });
 }

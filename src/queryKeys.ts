@@ -47,5 +47,16 @@ export const queryKeys = {
         all: ["spots"] as const,
         detail: (spotId: string) =>
             ["spots", spotId] as const,
+        availability: (
+            spotId: string | undefined,
+            startDate: string,
+            endDate: string
+        ) => [
+            "spots",
+            spotId,
+            "availability",
+            startDate,
+            endDate,
+        ] as const,
     },
 } as const;

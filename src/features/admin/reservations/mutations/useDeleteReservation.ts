@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"; 
 import { deleteAdminReservation } from "../api/adminReservationApi"
+import { queryKeys } from "../../../../queryKeys";
 
 export function useDeleteReservation() {
     const queryClient = useQueryClient();
@@ -7,8 +8,11 @@ export function useDeleteReservation() {
     return useMutation({
         mutationFn: deleteAdminReservation,
         onSuccess: async (_, deletedId) => {
-            await queryClient.invalidateQueries({ queryKey: ["admin", "reservations"]});
-            queryClient.removeQueries({queryKey: ["admin", "reservations", deletedId] });
+            queryClient.removeQueries({queryKey: queryKeys.admin.reservations.detail(deletedId)});
+            await Promise.all ([
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.reservations.all}),
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.dashboard}),       
+            ]);
         },
     });
 }

@@ -13,12 +13,12 @@ export function useUpdateMessageStatus(){
 
     return useMutation({
         mutationFn: ({ messageId, status}:UpdateMessageStatusInput) => updateAdminMessageStatus(messageId, status),
-        onSuccess: (updatedMessage, variables) => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.admin.messages.all});
+        onSuccess: async(updatedMessage, variables) => {
             queryClient.setQueryData(
                 queryKeys.admin.messages.detail(variables.messageId),
                 updatedMessage
             );
+            await queryClient.invalidateQueries({ queryKey: queryKeys.admin.messages.all});
         },
     });    
 }

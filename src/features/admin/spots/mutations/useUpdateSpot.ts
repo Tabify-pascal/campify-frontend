@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateSpot } from "../api/adminSpotApi";
+import { queryKeys } from "../../../../queryKeys";
 
 type UpdateSpotVariables = {
     id: string;
@@ -15,13 +16,18 @@ export function useUpdateSpot(){
 
         onSuccess: async (updatedSpot) => {
             queryClient.setQueryData(
-                ["spots", updatedSpot.id],
+                queryKeys.admin.spots.detail(updatedSpot.id),
                 updatedSpot
             );
 
-            await queryClient.invalidateQueries({
-                queryKey: ["spots"],
-            });
+            await Promise.all([
+                queryClient.invalidateQueries({
+                    queryKey: queryKeys.admin.spots.all,
+                }),
+                queryClient.invalidateQueries({
+                    queryKey: queryKeys.spots.all
+                }),
+            ]);
         },
     });
 }
