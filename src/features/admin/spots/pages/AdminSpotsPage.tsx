@@ -1,17 +1,29 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import Button from "../../../../components/ui/Button";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
+import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
+import { usePagination } from "../../../../hooks/usePagination";
+
+import AdminTable from "../../components/AdminTable/AdminTable";
+import AdminEditButton from "../../components/AdminActionButton/AdminEditButton";
+import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
 
 import { useSpots } from "../../../spots/queries/useSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
-import { Trash2, Pencil } from "lucide-react";
 
-import Pagination from "../../../../components/ui/Pagination/Pagination";
-import { usePagination } from "../../../../hooks/usePagination";
+import type { Spot } from "../../../spots/types/Spot";
 
 import styles from "../../AdminIndexPage.module.css";
+
+const columns = [
+    {key: "name", label: "Naam"},
+    {key: "capacity", label: "Capaciteit"},
+    {key: "price", label: "Prijs"},
+    {key: "size", label: "Oppervlakte"},
+    {key: "actions", label: "Acties"},
+];
 
 export default function AdminSpotsPage() {
     const { data: spots = [], isLoading, error } = useSpots();
@@ -24,7 +36,21 @@ export default function AdminSpotsPage() {
         items: spots,
         itemsPerPage: 5,
     });
-    const deleteSpotMutation = useDeleteSpot();
+
+    const [spotToDelete, setSpotToDelete ] = useState<Spot | null>(null);
+    const deleteSpot = useDeleteSpot();
+
+        function handleConfirmDelete() {
+        if (!spotToDelete) {
+            return;
+        }
+
+        deleteSpot.mutate(spotToDelete.id, {
+            onSuccess: () => {
+                setSpotToDelete(null);
+            },
+        });
+    }
 
     if (isLoading) return <p>Laden...</p>;
 
@@ -32,7 +58,7 @@ export default function AdminSpotsPage() {
         return (
             <MessageCard
                 title="Campingplaatsen konden niet worden geladen"
-                message="Probeer het later opniew."
+                message="Probeer het later opnieuw."
                 linkTo="/"
                 linkText="Terug naar home"
             />
@@ -42,7 +68,7 @@ export default function AdminSpotsPage() {
     return (
         <>
             <PageHeader
-                title="Admin campingplaatsen"
+                title="Campingplaatsen beheren"
                 description="Beheer campingplaatsen: toevoegen, aanpassen en verwijderen"
             />
 
@@ -50,50 +76,46 @@ export default function AdminSpotsPage() {
                 <Button to="/admin/spots/new">Nieuwe plek toevoegen</Button>
             </div>
 
-            <div className={styles.tableCard}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Naam</th>
-                            <th>Capaciteit</th>
-                            <th>Prijs</th>
-                            <th>Oppervalkte</th>
-                            <th>Acties</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {paginatedItems.map((spot) => (
-                            <tr key={spot.id}>
-                                <td>{spot.name}</td>
-                                <td>{spot.capacity} personen</td>
-                                <td>€ {spot.pricePerNight}</td>
-                                <td>{spot.size}m²</td>
-                                <td>
-                                    <div className={styles.rowActions}>
-                                        <Link to={`/admin/spots/${spot.id}/edit`}>
-                                            <Pencil size={18}/>
-                                        </Link>
-
-                                        <button
-                                            type="button"
-                                            onClick={() => deleteSpotMutation.mutate(spot.id)}
-                                            disabled={deleteSpotMutation.isPending}
-                                        >
-                                            <Trash2 size={18}/>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={goToPage}
-                />
-            </div>
+            <AdminTable
+                columns={columns}
+                items={paginatedItems}
+                getKey={(spot) => spot.id}
+                emptyMessage="Er zijn nog geen kampeerplaatsen."
+                pagination={{
+                    currentPage,
+                    totalPages,
+                    onPageChange: goToPage,
+                }}
+                renderRow={(spot) => (
+                    <>
+                        <td>{spot.name}</td>
+                        <td>{spot.capacity}</td>
+                        <td>€ {spot.pricePerNight}</td>
+                        <td>{spot.size}</td>
+                        <td>
+                            <div className={styles.rowActions}>
+                                <AdminEditButton
+                                    to={`/admin/spots/${spot.id}/edit`}
+                                    label="Kampeerplaats bewerken"
+                                />
+                                <AdminDeleteButton
+                                    onClick={()=> setSpotToDelete(spot)}
+                                    label="Kampeerplaats verwijderen"
+                                />
+                            </div>
+                        </td>
+                    </>
+                )}
+            />
+            <DeleteModal
+                isOpen={spotToDelete !== null}
+                title="Kampeerplaats verwijderen"
+                message="Weet je zeker dat je deze kampeerplaats wilt verwijderen?"
+                itemName={spotToDelete?.name}
+                isPending={deleteSpot.isPending}
+                onClose={() => setSpotToDelete(null)}
+                onConfirm={handleConfirmDelete}
+            />
         </>
     );
 }
