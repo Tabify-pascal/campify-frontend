@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateAdminReservationStatus } from "../../../../api/adminReservationApi";
+import { updateAdminReservationStatus } from "../api/adminReservationApi";
 import type { ReservationStatus } from "../types/AdminReservation";
+import { queryKeys } from "../../../../queryKeys";
 
 type UpdateReservationStatusInput = {
     reservationId: string;
@@ -13,11 +14,15 @@ export function useUpdateReservationStatus(){
     return useMutation({
         mutationFn:({ reservationId, status}: UpdateReservationStatusInput) => updateAdminReservationStatus(reservationId, status),
         onSuccess: async (updatedReservation, variables) => {
-            queryClient.invalidateQueries({ queryKey: ["admin", "reservations"]});
             queryClient.setQueryData(
-                ["admin", "reservations", variables.reservationId],
+                queryKeys.admin.reservations.detail(variables.reservationId),
                 updatedReservation
             );
+            await Promise.all([
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.reservations.all}),
+                queryClient.invalidateQueries({ queryKey: queryKeys.admin.dashboard}),
+            ])
+            
         },
     });
 }

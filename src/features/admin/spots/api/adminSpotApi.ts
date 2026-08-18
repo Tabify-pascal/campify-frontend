@@ -1,6 +1,6 @@
-import { adminApi } from "./adminClient";
-import type { Spot } from "../features/spots/types/Spot";
-import type { SpotFormData } from "../features/admin/spots/schemas/spotSchema";
+import { adminApi } from "../../../../api/adminClient";
+import type { Spot } from "../../../spots/types/Spot";
+import type { SpotFormData } from "../schemas/spotSchema";
 
 function createSpotFormData(data: SpotFormData) {
     const formData = new FormData();

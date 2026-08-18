@@ -1,6 +1,6 @@
-import { adminApi } from "./adminClient";
-import type { NewsItem } from "../features/news/types/NewsItem";
-import type { NewsFormData } from "../features/admin/news/schemas/newsSchema";
+import { adminApi } from "../../../../api/adminClient";
+import type { NewsItem } from "../../../news/types/NewsItem";
+import type { NewsFormData } from "../schemas/newsSchema";
 
 function createNewsFormData(data: NewsFormData){
     const formData = new FormData();

@@ -1,5 +1,5 @@
-import { api } from "./client";
-import type { ReservationFormData } from "../features/reservations/schemas/reservationSchema";
+import { api } from "../../../api/client";
+import type { ReservationFormData } from "../schemas/reservationSchema";
 
 export type CreateReservationInput = ReservationFormData & {
     spotId: string;

@@ -1,6 +1,6 @@
-import { api } from "./client";
-import type { Spot } from "../features/spots/types/Spot";
-import type { Availability } from "../features/spots/types/Availability";
+import { api } from "../../../api/client";
+import type { Spot } from "../types/Spot";
+import type { Availability } from "../types/Availability";
 
 export type GetSpotsParams = {
   arrivalDate?: string | null;

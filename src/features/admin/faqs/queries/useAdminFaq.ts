@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAdminFaqById } from "../../../../api/adminFaqApi";
+import { getAdminFaqById } from "../api/adminFaqApi";
 
 export function useAdminFaq(faqId: string | undefined) {
     return useQuery({

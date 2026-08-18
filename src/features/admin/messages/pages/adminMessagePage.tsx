@@ -1,30 +1,29 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
-import Pagination from "../../../../components/ui/Pagination/Pagination";
 
 import { usePagination } from "../../../../hooks/usePagination";
 import type { AdminContactMessage } from "../types/message";
 import { useContactMessages } from "../queries/useContactMessages";
 import { useDeleteMessage } from "../mutations/useDeleteMessage";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
-
-import { Trash2, Eye } from "lucide-react";
-import { formatDate } from "../../../../utils/formatDate"; 
+import { formatDate } from "../../../../utils/formatDate";
 
 import styles from "../../AdminIndexPage.module.css";
-import statusStyles from "../../AdminStatusDisplay.module.css";
+import AdminStatusBadge from "../../components/AdminStatusBadge/AdminStatusBadge";
+import AdminTable from "../../components/AdminTable/AdminTable";
+import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
+import AdminViewButton from "../../components/AdminActionButton/AdminViewButton";
 
-export default function AdminMessagePage(){
+export default function AdminMessagePage() {
     const {
         data: messages = [],
         isLoading,
         error,
     } = useContactMessages();
 
-    const { 
+    const {
         currentPage,
         totalPages,
         paginatedItems,
@@ -34,11 +33,19 @@ export default function AdminMessagePage(){
         itemsPerPage: 5,
     });
 
-    const [ messageToDelete, setMessageToDelete] = useState<AdminContactMessage | null>(null);
+    const columns = [
+        { key: "name", label: "Name" },
+        { key: "subject", label: "Onderwerp" },
+        { key: "status", label: "Status" },
+        { key: "createdAt", label: "Aangemaakt" },
+        { key: "actions", label: "Acties" }
+    ];
+
+    const [messageToDelete, setMessageToDelete] = useState<AdminContactMessage | null>(null);
     const deleteMessage = useDeleteMessage();
 
-    function handleConfirmDelete(){
-        if(!messageToDelete){
+    function handleConfirmDelete() {
+        if (!messageToDelete) {
             return
         }
 
@@ -66,86 +73,54 @@ export default function AdminMessagePage(){
 
     return (
         <>
-        <PageHeader
-            title="Berichten beheren"
-            description="Beheer alle berichten"
-        />
-        <div className={styles.tableCard}>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Onderwerp</th>
-                        <th>Status</th>
-                        <th>Aangemaakt</th>
-                        <th>Acties</th>
-                    </tr>
-                </thead>
+            <PageHeader
+                title="Berichten beheren"
+                description="Beheer alle berichten"
+            />
 
-                <tbody>
-                    {paginatedItems.length === 0 ? (
-                        <tr>
-                            <td colSpan={5}>
-                                Er zijn nog geen berichten.
-                            </td>
-                        </tr>
-                    ) : (
-                        paginatedItems.map((message) => (
-                            <tr key={message.id}>
-                                <td>{message.name}</td>
-                                <td>{message.subject}</td>
-                                <td>
-                                    <span
-                                        className={`${statusStyles.status} ${
-                                            statusStyles[
-                                                message.status.toLowerCase() as
-                                                    | "new"
-                                                    | "read"
-                                                    | "closed"
-                                            ]
-                                        }`}
-                                    >
-                                        {message.status}
-                                    </span>
-                                </td>
-                                <td>{formatDate(message.createdAt)}</td>
-                                <td>
-                                    <div className={styles.rowActions}>
-                                             <Link to={`/admin/messages/${message.id}`} aria-label="Bericht bekijken" title="Bekijken">
-                                                <Eye size={18} />
-                                            </Link>
+            <AdminTable
+                columns={columns}
+                items={paginatedItems}
+                getKey={(message) => message.id}
+                emptyMessage="Er zijn nog geen berichten."
+                pagination={{
+                    currentPage,
+                    totalPages,
+                    onPageChange: goToPage,
+                }}
+                renderRow={(message) => (
+                    <>
+                        <td>{message.name}</td>
+                        <td>{message.subject}</td>
+                        <td><AdminStatusBadge status={message.status} /></td>
+                        <td>{formatDate(message.createdAt)}</td>
+                        <td>
+                            <div className={styles.rowActions}>
+                                <AdminViewButton
+                                    to={`/admin/messages/${message.id}`}
+                                    label="Status bewerken"
+                                />
 
-                                            <button
-                                               type="button"
-                                               aria-label="Bericht verwijderen"
-                                               title="Verwijderen"
-                                                onClick={() => setMessageToDelete(message)}                                            >
-                                                 <Trash2 size={18}/>
-                                           </button>
-                                        </div>
-                                   </td>
-                                 </tr>
-                            ))
-                       )}
-                   </tbody>
-            </table>
-            <div className={styles.pagination}>
-                <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={goToPage}
-                />
-            </div>
-        </div>
-        <DeleteModal
-            isOpen={messageToDelete !== null}
-            title="Bericht verwijderen"
-            message="Weet je zeker dat je dit bericht wilt verwijderen?"
-            itemName={messageToDelete?.subject}
-            isPending={deleteMessage.isPending}
-            onClose={() => setMessageToDelete(null)}
-            onConfirm={handleConfirmDelete}
-        />
+                                <AdminDeleteButton
+                                    onClick={() => setMessageToDelete(message)}
+                                    label="Bericht verwijderen"
+                                />
+                            </div>
+                        </td>
+                    </>
+                )}
+            />
+
+            <DeleteModal
+                isOpen={messageToDelete !== null}
+                title="Bericht verwijderen"
+                message="Weet je zeker dat je dit bericht wilt verwijderen?"
+                itemName={messageToDelete?.subject}
+                isPending={deleteMessage.isPending}
+                onClose={() => setMessageToDelete(null)}
+                onConfirm={handleConfirmDelete}
+            />
         </>
-    )
+    );
 }
+

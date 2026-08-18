@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getSpots, type GetSpotsParams } from "../../../api/spotsApi";
+import { getSpots, type GetSpotsParams } from "../api/spotsApi";
 
 
 export function useSpots(params?: GetSpotsParams) {

@@ -1,0 +1,66 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+
+    background: transparent;
+    color: var(--color-text-muted);
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition:
+        color 150ms ease,
+        border-color 150ms ease,
+        background-color 150ms ease;
+}
+
+.edit {
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+
+.edit:hover {
+    color: #166534;
+    border-color: #22c55e;
+    background-color: #f0fdf4;
+}
+
+.delete {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.delete:hover {
+    color: #b91c1c;
+    border-color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 2px;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.view {
+    color: #2563eb;
+    border-color: #bfdbfe;
+}
+
+.view:hover {
+    color: #1d4ed8;
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}

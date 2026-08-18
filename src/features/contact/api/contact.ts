@@ -1,5 +1,5 @@
-import { api } from "./client";
-import type { ContactFormData } from "../features/contact/schemas/contactSchema";
+import { api } from "../../../api/client";
+import type { ContactFormData } from "../schemas/contactSchema";
 
 export type ContactMessage = ContactFormData & {
     id: string;

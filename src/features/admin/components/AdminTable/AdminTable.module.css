@@ -1,0 +1,56 @@
+.tableCard {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.table th {
+    background: var(--color-surface-muted);
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr {
+    transition: background-color 150ms ease;
+}
+
+.table tbody tr:hover {
+    background: var(--color-surface-muted);
+}
+
+.emptyState {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.pagination {
+    padding: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+

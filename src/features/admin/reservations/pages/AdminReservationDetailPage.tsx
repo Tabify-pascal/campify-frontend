@@ -22,7 +22,7 @@ export default function AdminReservationDetailPage() {
         data: reservation,
         isLoading,
         error,
-    } = useAdminReservation(reservationId);
+    } = useAdminReservation(reservationId!);
 
     const updateStatusMutation = useUpdateReservationStatus();
     const deleteReservationMutation = useDeleteReservation();

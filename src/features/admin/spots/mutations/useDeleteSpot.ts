@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteSpot } from "../../../../api/adminSpotApi";
+import { deleteSpot } from "../api/adminSpotApi";
 import type { Spot } from "../../../spots/types/Spot";
+import { queryKeys } from "../../../../queryKeys";
 
-export function useDeleteSpot(){
+export function useDeleteSpot() {
     const queryClient = useQueryClient();
 
     return useMutation({
@@ -10,14 +11,19 @@ export function useDeleteSpot(){
         onSuccess: async (_, deletedSpotId) => {
 
             queryClient.setQueriesData<Spot[]>(
-                {queryKey: ["spots"]},
-                (currentSpots) => 
+                { queryKey: queryKeys.admin.spots.all },
+                (currentSpots) =>
                     currentSpots?.filter((spot) => spot.id !== deletedSpotId) ?? []
             );
 
-            await queryClient.invalidateQueries({
-                queryKey: ["spots"],
-            });
+            await Promise.all([
+                queryClient.invalidateQueries({
+                    queryKey: queryKeys.admin.spots.all,
+                }),
+                queryClient.invalidateQueries({
+                    queryKey: queryKeys.spots.all,
+                }),
+            ]);
         },
     });
 }
