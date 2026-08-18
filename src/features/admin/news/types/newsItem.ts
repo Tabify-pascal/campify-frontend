@@ -1,4 +1,4 @@
-export type NewsItem = {
+export type AdminNewsItem = {
     id: string;
     title: string;
     excerpt: string;

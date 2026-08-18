@@ -14,7 +14,7 @@ export function updateAdminReservationStatus(
     status: ReservationStatus
 ) {
     return adminApi<AdminReservation>(
-        `/admin/reservation/${reservationId}/status`,
+        `/admin/reservations/${reservationId}/status`,
         {
             method: "PATCH",
             body: JSON.stringify({ status}),

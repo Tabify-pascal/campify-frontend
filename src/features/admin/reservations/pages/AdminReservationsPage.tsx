@@ -1,23 +1,30 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
-import Pagination from "../../../../components/ui/Pagination/Pagination";
-
-import type { AdminReservation } from "../types/AdminReservation";
-import { useAdminReservations } from "../queries/useAdminReservations";
-import { usePagination } from "../../../../hooks/usePagination";
-import { useDeleteReservation } from "../mutations/useDeleteReservation";
 import { formatDate } from "../../../../utils/formatDate";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 
-import { Trash2, Pencil } from "lucide-react";
+import AdminTable from "../../components/AdminTable/AdminTable";
+import AdminStatusBadge from "../../components/AdminStatusBadge/AdminStatusBadge";
+import AdminViewButton from "../../components/AdminActionButton/AdminViewButton";
+import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
+import { usePagination } from "../../../../hooks/usePagination";
+
+import { useAdminReservations } from "../queries/useAdminReservations";
+import { useDeleteReservation } from "../mutations/useDeleteReservation";
+
+import type { AdminReservation } from "../types/AdminReservation";
 
 import styles from "../../AdminIndexPage.module.css";
-import statusStyles from "../../AdminStatusDisplay.module.css";
 
-
+const columns = [
+    {key: "spot", label: "Spot"},
+    {key: "arrivalDate", label: "Aankomst"},
+    {key: "guests", label: "Gasten"},
+    {key: "status", label: "Status"},
+    {key: "actions", label: "Acties"}
+];
 
 export default function AdminReservationsPage() {
     const {
@@ -60,8 +67,8 @@ export default function AdminReservationsPage() {
             <MessageCard
                 title="Reserveringen konden niet worden geladen."
                 message="Probeer het later opnieuw"
-                linkTo="/"
-                linkText="Terug naar home"
+                linkTo="/admin"
+                linkText="Terug naar het dashboard"
             />
         );
     }
@@ -72,76 +79,38 @@ export default function AdminReservationsPage() {
                 title="Reserveringen beheren"
                 description="Beheer alle reserveringen."
             />
-            <div className={styles.tableCard}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Spot</th>
-                            <th>Aankomst</th>
-                            <th>Vertrek</th>
-                            <th>Gasten</th>
-                            <th>Status</th>
-                            <th>Acties</th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        {paginatedItems.length === 0 ? (
-                            <tr>
-                                <td colSpan={6}>
-                                    Er zijn nog geen reserveringen.
-                                </td>
-                            </tr>
-                        ) : (
-
-                            paginatedItems.map((reservation) => (
-                                <tr key={reservation.id}>
-                                    <td>{reservation.spot.name}</td>
-                                    <td>
-                                        {formatDate(reservation.arrivalDate)}
-                                    </td>
-
-                                    <td>
-                                        {formatDate(reservation.departureDate)}
-                                    </td>
-                                    <td>{reservation.guests}</td>
-                                    <td>
-                                        <span className={`${statusStyles.status} ${statusStyles[
-                                            reservation.status.toLowerCase() as
-                                            | "pending"
-                                            | "confirmed"
-                                            | "cancelled"
-                                        ]
-                                            }`}>{reservation.status}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div className={styles.rowActions}>
-                                            <Link to={`/admin/reservations/${reservation.id}`} >
-                                                <Pencil size={18} />
-                                            </Link>
-
-                                            <button
-                                                type="button"
-                                                onClick={() => setReservationToDelete(reservation)}
-                                            >
-                                                <Trash2 size={18} />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
-                <div className={styles.pagination}>
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={goToPage}
-                    />
-                </div>
-            </div>
+            <AdminTable
+                columns={columns}
+                items={paginatedItems}
+                getKey={(reservation) => reservation.id}
+                emptyMessage="Er zijn nog geen reserveringen."
+                pagination={{
+                    currentPage,
+                    totalPages,
+                    onPageChange: goToPage
+                }}
+                renderRow={(reservation) => (
+                    <>
+                        <td>{reservation.spot.name}</td>
+                        <td>{formatDate(reservation.arrivalDate)}</td>
+                        <td>{reservation.guests}</td>
+                        <td><AdminStatusBadge status={reservation.status}/></td>
+                        <td>
+                            <div className={styles.rowActions}>
+                                <AdminViewButton
+                                    to={`/admin/reservations/${reservation.id}`}
+                                    label="Reservering bekijken"
+                                />
+                                <AdminDeleteButton
+                                    onClick={() => setReservationToDelete(reservation)}
+                                    label="Reservering verwijderen"
+                                />
+                            </div>
+                        </td>
+                    </>
+                )}
+            />
             <DeleteModal
                 isOpen={reservationToDelete !== null}
                 title="Reservering verwijderen"
@@ -156,5 +125,5 @@ export default function AdminReservationsPage() {
                 onConfirm={handleConfirmDelete}
             />
         </>
-    )
+    );
 }
