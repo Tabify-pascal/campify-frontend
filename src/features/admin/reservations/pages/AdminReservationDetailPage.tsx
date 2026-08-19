@@ -12,7 +12,9 @@ import { useDeleteReservation } from "../mutations/useDeleteReservation";
 
 import type { ReservationStatusFormData } from "../schemas/reservationStatusSchema"; 
 import styles from "./AdminReservationDetailPage.module.css";
-import ReservationStatusForm from "../components/ReservationStatusForm";
+import AdminDangerSection from "../../components/AdminDangerSection/AdminDangerSection";
+import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
+import AdminStatusForm from "../../components/AdminStatusForm/AdminStatusForm";
 
 export default function AdminReservationDetailPage() {
     const { reservationId } = useParams();
@@ -89,145 +91,80 @@ export default function AdminReservationDetailPage() {
             )}
 
             <div className={styles.content}>
-                <section className={styles.card}>
-                    <h2 className={styles.cardTitle}>
-                        Reserveringsgegevens
-                    </h2>
-
-                    <dl className={styles.detailsGrid}>
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Naam
-                            </dt>
-                            <dd className={styles.value}>
-                                {reservation.firstName}{" "}
-                                {reservation.lastName}
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Campingplaats
-                            </dt>
-                            <dd className={styles.value}>
-                                {reservation.spot.name}
-                            </dd>
-                        </div>
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                E-mailadres
-                            </dt>
-                            <dd className={styles.value}>
+                <AdminDetailSection
+                    title="Reserveringsgegevens"
+                    items={[
+                        {
+                            label: "Naam",
+                            value: `${reservation.firstName} ${reservation.lastName}`
+                        }, 
+                        {
+                            label: "Kampeerplaats",
+                            value: reservation.spot.name
+                        },
+                        {
+                            label: "E-mail",
+                            value: (
                                 <a href={`mailto:${reservation.email}`}>
                                     {reservation.email}
                                 </a>
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Telefoonnummer
-                            </dt>
-                            <dd className={styles.value}>
-                                <a href={`tel:${reservation.phone}`}>
-                                    {reservation.phone}
-                                </a>
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Aankomst
-                            </dt>
-                            <dd className={styles.value}>
-                                {formatDate(reservation.arrivalDate)}
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Vertrek
-                            </dt>
-                            <dd className={styles.value}>
-                                {formatDate(reservation.departureDate)}
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Aantal gasten
-                            </dt>
-                            <dd className={styles.value}>
-                                {reservation.guests}
-                            </dd>
-                        </div>
-
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Status
-                            </dt>
-                            <dd className={styles.value}>
-                                {reservation.status}
-                            </dd>
-                        </div>
-
-                        <div
-                            className={`${styles.detailItem} ${styles.fullWidth}`}
-                        >
-                            <dt className={styles.label}>
-                                Opmerkingen
-                            </dt>
-                            <dd
-                                className={`${styles.value} ${styles.notes}`}
-                            >
-                                {reservation.notes ||
-                                    "Geen opmerkingen"}
-                            </dd>
-                        </div>
-                    </dl>
-                </section>
-
+                            ),
+                        },
+                        {
+                            label: "Telefoonnummer",
+                            value: reservation.phone
+                        },
+                        {
+                            label: "Aankomst",
+                            value: formatDate(reservation.arrivalDate),
+                        },
+                        {
+                            label: "Vertrek",
+                            value: formatDate(reservation.departureDate),
+                        },
+                        {
+                            label: "Aantal gasten",
+                            value: reservation.guests,
+                        }, 
+                        {
+                            label: "Status",
+                            value: reservation.status,
+                        },
+                        {
+                            label: "Opmerkingen",
+                            value: `${reservation.notes || "Geen opmerkingen"}`,
+                            preserveWhitespace: true,
+                            fullWidth: true,
+                        },
+                    ]}
+                />
                 <aside className={styles.sidebar}>
-                    <section className={styles.card}>
-                        <h2 className={styles.cardTitle}>
-                            Status beheren
-                        </h2>
+                    <AdminStatusForm
+                        defaultValue={reservation.status}
+                        options={[
+                            {
+                                value: "PENDING",
+                                label: "In behandeling"
+                            },
+                            {
+                                value: "CONFIRMED",
+                                label: "Bevestigd"
+                            },
+                            {
+                                value: "CANCELLED",
+                                label: "Geannuleerd"
+                            },
+                        ]}
+                        isSubmitting={updateStatusMutation.isPending}
+                        onSubmit={handleStatusSubmit}
+                    />
 
-                        <ReservationStatusForm
-                            defaultValues={{
-                                status: reservation.status,
-                            }}
-                            isSubmitting={
-                                updateStatusMutation.isPending
-                            }
-                            onSubmit={handleStatusSubmit}
-                        />
-                    </section>
-
-                    <section
-                        className={`${styles.card} ${styles.dangerCard}`}
-                    >
-                        <h2 className={styles.dangerTitle}>
-                            Reservering verwijderen
-                        </h2>
-
-                        <p className={styles.dangerText}>
-                            Verwijder alleen testreserveringen,
-                            spam of foutieve dubbele reserveringen.
-                            Gebruik voor een echte annulering de
-                            status ‘Geannuleerd’.
-                        </p>
-
-                        <button
-                            type="button"
-                            className={styles.deleteButton}
-                            onClick={() =>
-                                setIsDeleteModalOpen(true)
-                            }
-                        >
-                            Reservering verwijderen
-                        </button>
-                    </section>
+                    <AdminDangerSection
+                        title="Bericht verwijderen"
+                        buttonLabel="Verwijderen"
+                        description="Verwijder alleen testreserveringen, spam of foutieve dubbele reserveringen."
+                        onClick={() => setIsDeleteModalOpen(true)}
+                    />
                 </aside>
             </div>
             <DeleteModal

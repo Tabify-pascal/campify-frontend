@@ -11,8 +11,10 @@ import { useUpdateMessageStatus } from "../mutations/useUpdateMessageStatus";
 import { useDeleteMessage } from "../mutations/useDeleteMessage";
 
 import styles from "./adminMessageDetailPage.module.css";
-import MessageStatusForm from "../components/MessageStatusForm";
 import type { ContactMessageStatusFormData } from "../schemas/contactMessageStatusSchema";
+import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
+import AdminStatusForm from "../../components/AdminStatusForm/AdminStatusForm";
+import AdminDangerSection from "../../components/AdminDangerSection/AdminDangerSection";
 
 export default function AdminMessageDetailPage(){
     const {messageId} = useParams();
@@ -89,92 +91,63 @@ export default function AdminMessageDetailPage(){
             )}
 
             <div className={styles.content}>
-                <section className={styles.card}>
-                    <h2 className={styles.cardTitle}>
-                        Berichtgegevens
-                    </h2>
-                    <dl className={styles.detailsGrid}>
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Naam
-                            </dt>
-                            <dd className={styles.value}>
-                                {message.name}
-                            </dd>
-                        </div>
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Email
-                            </dt>
-                            <dd className={styles.value}>
+                <AdminDetailSection
+                    title="Berichtgegevens"
+                    items={[
+                        {
+                            label: "Naam",
+                            value: message.name, 
+                        },
+                        {
+                            label: "E-mail",
+                            value: (
                                 <a href={`mailto:${message.email}`}>
                                     {message.email}
                                 </a>
-                            </dd>
-                        </div>
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Onderwerp
-                            </dt>
-                            <dd className={styles.value}>
-                                {message.subject}
-                            </dd>
-                        </div>
-                        
-                        <div className={styles.detailItem}>
-                            <dt className={styles.label}>
-                                Datum
-                            </dt>
-                            <dd className={styles.value}>
-                                {formatDate(message.createdAt)}
-                            </dd>
-                        </div>
-                        <div className={`${styles.detailItem} ${styles.fullWidth}`}>
-                            <dt className={styles.label}>
-                                Bericht
-                            </dt>
-                            <dd className={`${styles.value} ${styles.message}`}>
-                                {message.message}
-                            </dd>
-                        </div>
-                        
-
-                    </dl>
-                </section>
+                            ),
+                        },
+                        {
+                            label: "Onderwerp",
+                            value: message.subject,
+                        },
+                        {
+                            label: "Datum",
+                            value: formatDate(message.createdAt),
+                        },
+                        {
+                            label: "Bericht",
+                            value: message.message,
+                            fullWidth: true,
+                        },                        
+                    ]}
+                />
 
                 <aside className={styles.sidebar}>
-                    <section className={styles.card}>
-                        <h2 className={styles.cardTitle}>
-                            Status beheren
-                        </h2>
+                    <AdminStatusForm
+                        defaultValue={message.status}
+                        options={[
+                            {
+                                value: "NEW",
+                                label: "Nieuw",
+                            },
+                            {
+                                value: "READ",
+                                label: "Gelezen", 
+                            },
+                            {
+                                value: "CLOSED",
+                                label: "Afgehandeld",
+                            },
+                        ]}
+                        isSubmitting={updateStatusMutation.isPending}
+                        onSubmit={handleStatusSubmit}
+                    />
 
-                        <MessageStatusForm
-                            defaultValues={{
-                                status: message.status
-                            }}
-                            isSubmitting={
-                                updateStatusMutation.isPending
-                            }
-                            onSubmit={
-                                handleStatusSubmit
-                            }
-                        />
-                    </section>
-
-                    <section
-                        className={`${styles.card} ${styles.dangerCard}`}
-                    >
-                        <h2 className={styles.dangerTitle}>
-                            Bericht verwijderen
-                        </h2>
-                        <button
-                            type="button"
-                            className={styles.deleteButton}
-                            onClick={()=> setIsDeleteModalOpen(true)}
-                        >
-                            Bericht verwijderen
-                        </button>
-                    </section>
+                    <AdminDangerSection
+                        title="Bericht verwijderen"
+                        buttonLabel="Verwijderen"
+                        onClick={() => setIsDeleteModalOpen(true)}
+                    />
                 </aside>
             </div>
 

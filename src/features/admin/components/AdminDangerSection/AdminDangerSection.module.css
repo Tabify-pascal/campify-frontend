@@ -1,0 +1,41 @@
+.card {
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border, #fecaca);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+
+.title {
+    margin: 0 0 0.5rem;
+    color: #991b1b;
+    font-size: 1.1rem;
+}
+
+.description {
+    margin: 0 0 1rem;
+    color: var(--color-text-muted, #64748b);
+    line-height: 1.6;
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #dc2626;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background: #b91c1c;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
