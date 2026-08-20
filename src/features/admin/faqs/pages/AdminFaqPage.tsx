@@ -13,6 +13,7 @@ import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import AdminTable from "../../components/AdminTable/AdminTable";
 import AdminEditButton from "../../components/AdminActionButton/AdminEditButton";
 import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 const columns = [
     { key: "question", label: "Vraag" },
@@ -39,7 +40,7 @@ export default function AdminFaqPage() {
         });
     }
 
-    if (isLoading) return <p>Laden...</p>;
+    if (isLoading) return <LoadingState/>;
 
     if (error) {
         return (

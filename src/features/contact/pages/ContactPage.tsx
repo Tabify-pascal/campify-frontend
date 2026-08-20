@@ -12,6 +12,7 @@ import {
 import { useCreateContactMessage } from "../mutations/useCreateContactMessage";
 
 import styles from "./ContactPage.module.css"
+import FormField from "../../../components/ui/Forms/FormField/Formfield";
 
 export default function ContactPage() {
     const createMessageMutation = useCreateContactMessage();
@@ -61,11 +62,13 @@ export default function ContactPage() {
                 </div>
 
                 <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                    <div className={styles.field}>
-                        <label htmlFor="name">Naam</label>
-                        <input id="name" {...register("name")} />
-                        <FormError message={errors.name?.message} />
-                    </div>
+                    <FormField
+                        label="Naam"
+                        htmlFor="name"
+                        error={errors.name?.message}
+                    >  
+                        <input id="name" {...register("name")} />   
+                    </FormField>
 
                     <div className={styles.field}>
                         <label htmlFor="email">E-mail</label>

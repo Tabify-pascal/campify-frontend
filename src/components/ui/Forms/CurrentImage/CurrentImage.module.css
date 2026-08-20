@@ -1,0 +1,22 @@
+.currentImage {
+    margin-bottom: 1.5rem;
+}
+
+.currentImage span {
+    display: block;
+    margin-bottom: 0.5rem;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.currentImage img {
+    display: block;
+
+    width: 220px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 1rem;
+}

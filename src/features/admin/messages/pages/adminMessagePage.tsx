@@ -15,6 +15,7 @@ import AdminStatusBadge from "../../components/AdminStatusBadge/AdminStatusBadge
 import AdminTable from "../../components/AdminTable/AdminTable";
 import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
 import AdminViewButton from "../../components/AdminActionButton/AdminViewButton";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminMessagePage() {
     const {
@@ -57,7 +58,7 @@ export default function AdminMessagePage() {
     }
 
     if (isLoading) {
-        return <p>Laden...</p>
+        return <LoadingState/>;
     }
 
     if (error) {

@@ -1,11 +1,20 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import Button from "../../../../components/ui/Button";
-import FormError from "../../../../components/ui/FormError";
-import styles from "./SpotForm.module.css";
+import FormField from "../../../../components/ui/Forms/FormField/Formfield";
+import FormRow from "../../../../components/ui/Forms/FormRow/FormRow";
+
 import FeatureFields from "./FeatureFields";
 
-import { spotSchema, type SpotFormData, type SpotFormInput } from "../schemas/spotSchema"
+import {
+    spotSchema,
+    type SpotFormData,
+    type SpotFormInput,
+} from "../schemas/spotSchema";
+
+import styles from "./SpotForm.module.css";
+import CurrentImage from "../../../../components/ui/Forms/CurrentImage/CurrentImage";
 
 type Props = {
     defaultValues?: Partial<SpotFormInput>;
@@ -16,14 +25,20 @@ type Props = {
     requireImage?: boolean;
 };
 
-export default function SpotForm({ 
+export default function SpotForm({
     defaultValues,
     onSubmit,
     isSubmitting = false,
     submitLabel = "Opslaan",
     currentImageUrl,
-    requireImage = false }: Props) {
-    const { register, handleSubmit, control, formState: { errors }, } = useForm<SpotFormInput, unknown, SpotFormData>({
+    requireImage = false,
+}: Props) {
+    const {
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<SpotFormInput, unknown, SpotFormData>({
         resolver: zodResolver(spotSchema),
         defaultValues: {
             name: "",
@@ -38,131 +53,145 @@ export default function SpotForm({
         },
     });
 
-
+    const imageError =
+        typeof errors.image?.message === "string"
+            ? errors.image.message
+            : undefined;
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.field}>
-                <label htmlFor="name">Naam</label>
-                <input id="name" {...register("name")} />
-                <FormError message={errors.name?.message} />
-            </div>
+        <form
+            className={styles.form}
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+        >
+            <FormField
+                label="Naam"
+                htmlFor="name"
+                error={errors.name?.message}
+            >
+                <input
+                    id="name"
+                    {...register("name")}
+                />
+            </FormField>
 
-            <div className={styles.field}>
-                <label htmlFor="description">Beschrijving</label>
+            <FormField
+                label="Beschrijving"
+                htmlFor="description"
+                error={errors.description?.message}
+            >
                 <textarea
                     id="description"
                     rows={5}
                     {...register("description")}
                 />
-                <FormError message={errors.description?.message} />
-            </div>
+            </FormField>
 
-            <div className={styles.row}>
-                <div className={styles.field}>
-                    <label htmlFor="capacity">Capaciteit</label>
+            <FormRow>
+                <FormField
+                    label="Capaciteit"
+                    htmlFor="capacity"
+                    error={errors.capacity?.message}
+                >
                     <input
                         id="capacity"
                         type="number"
                         min="1"
                         {...register("capacity")}
                     />
-                    <FormError message={errors.capacity?.message} />
-                </div>
+                </FormField>
 
-                <div className={styles.field}>
-                    <label htmlFor="pricePerNight">Prijs per nacht</label>
+                <FormField
+                    label="Prijs per nacht"
+                    htmlFor="pricePerNight"
+                    error={errors.pricePerNight?.message}
+                >
                     <input
-                        id="PricePerNight"
+                        id="pricePerNight"
                         type="number"
                         min="1"
                         step="0.01"
                         {...register("pricePerNight")}
                     />
-                    <FormError message={errors.pricePerNight?.message} />
-                </div>
+                </FormField>
+            </FormRow>
 
-                <div className={styles.field}>
-                    <label htmlFor="size">Oppervlakte in m²</label>
-                    <input
-                        id="size"
-                        type="number"
-                        min="1"
-                        {...register("size")}
-                    />
-                    <FormError message={errors.size?.message} />
-                </div>
-
-                {currentImageUrl && (
-                    <div className={styles.currentImage}>
-                        <span>Huidige afbeelding</span>
-
-                        <img
-                            src={currentImageUrl}
-                            alt="Huidige campingplaats"
-                        />
-                    </div>
-                )}
-
-                <div className={styles.field}>
-                    <label htmlFor="image">
-                        {requireImage ? "Afbeelding" : "Nieuwe afbeelding"}
-                    </label>
-
-                    <input
-                        id="image"
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp"
-                        {...register("image")}
-                    />
-
-                    {!requireImage && currentImageUrl && (
-                        <small>
-                            Laat dit veld leeg om de huidige afbeelding te behouden.
-                        </small>
-                    )}
-
-                    <FormError
-                        message={
-                            typeof errors.image?.message === "string"
-                                ? errors.image.message
-                                : undefined
-                        }
-                    />
-                </div>
-
-                <div className={styles.checkboxGroup}>
-                    <label className={styles.checkbox}>
-                        <input
-                            type="checkbox"
-                            {...register("electricity")}
-                        />
-                        <span>Elektriciteit aanwezig</span>
-                    </label>
-
-                    <label className={styles.checkbox}>
-                        <input
-                            type="checkbox"
-                            {...register("waterConnection")}
-                        />
-                        <span>Wateraansluiting aanwezig</span>
-                    </label>
-                </div>
-
-                
-            </div>
-            <FeatureFields
-                    control={control}
-                    register={register}
-                    errors={errors}
+            <FormField
+                label="Oppervlakte in m²"
+                htmlFor="size"
+                error={errors.size?.message}
+            >
+                <input
+                    id="size"
+                    type="number"
+                    min="1"
+                    {...register("size")}
                 />
+            </FormField>
+
+            {currentImageUrl && (
+                <CurrentImage
+                    src={currentImageUrl}
+                    alt="Huidige campingplaats"
+                />
+            )}
+
+            <FormField
+                label={
+                    requireImage
+                        ? "Afbeelding"
+                        : "Nieuwe afbeelding"
+                }
+                htmlFor="image"
+                error={imageError}
+                hint={
+                    !requireImage && currentImageUrl
+                        ? "Laat dit veld leeg om de huidige afbeelding te behouden."
+                        : undefined
+                }
+            >
+                <input
+                    id="image"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    {...register("image")}
+                />
+            </FormField>
+
+
+            <div className={styles.checkboxGroup}>
+                <label className={styles.checkbox}>
+                    <input
+                        type="checkbox"
+                        {...register("electricity")}
+                    />
+                    <span>Elektriciteit aanwezig</span>
+                </label>
+
+                <label className={styles.checkbox}>
+                    <input
+                        type="checkbox"
+                        {...register("waterConnection")}
+                    />
+                    <span>Wateraansluiting aanwezig</span>
+                </label>
+            </div>
+
+            <FeatureFields
+                control={control}
+                register={register}
+                errors={errors}
+            />
+
             <Button
                 as="button"
                 type="submit"
                 disabled={isSubmitting}
             >
-                {isSubmitting ? "Opslaan..." : submitLabel}
+                {isSubmitting
+                    ? "Opslaan..."
+                    : submitLabel}
             </Button>
         </form>
-    )
+    );
 }

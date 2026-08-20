@@ -17,6 +17,7 @@ import { useDeleteReservation } from "../mutations/useDeleteReservation";
 import type { AdminReservation } from "../types/AdminReservation";
 
 import styles from "../../AdminIndexPage.module.css";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 const columns = [
     {key: "spot", label: "Spot"},
@@ -59,7 +60,7 @@ export default function AdminReservationsPage() {
     }
 
     if (isLoading) {
-        return <p>Laden...</p>
+        return <LoadingState/>;
     }
 
     if (error) {

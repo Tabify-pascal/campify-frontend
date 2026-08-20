@@ -71,51 +71,6 @@
   font-size: 2rem;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  margin-bottom: 20px;
-}
-
-.field label {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-
-  padding: 14px 16px;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-
-  background: white;
-
-  font: inherit;
-}
-
-.field textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.field span {
-  color: #b42318;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 .error {
   margin-bottom: 20px;
   color: #b42318;

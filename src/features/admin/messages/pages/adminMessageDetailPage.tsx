@@ -15,6 +15,7 @@ import type { ContactMessageStatusFormData } from "../schemas/contactMessageStat
 import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
 import AdminStatusForm from "../../components/AdminStatusForm/AdminStatusForm";
 import AdminDangerSection from "../../components/AdminDangerSection/AdminDangerSection";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminMessageDetailPage(){
     const {messageId} = useParams();
@@ -32,7 +33,7 @@ export default function AdminMessageDetailPage(){
     const [ isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if (error || !message || !messageId) {

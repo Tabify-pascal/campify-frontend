@@ -10,6 +10,7 @@ import { useUpdateNews } from "../mutations/useUpdateNews";
 
 import type { NewsFormData } from "../schemas/newsSchema";
 import { getImageUrl } from "../../../../utils/getImageUrl";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminNewsEditPage(){
     const { newsId } = useParams();
@@ -24,7 +25,7 @@ export default function AdminNewsEditPage(){
     const updateNewsMutation = useUpdateNews();
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if (error || !news || !newsId) {

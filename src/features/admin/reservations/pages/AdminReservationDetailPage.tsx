@@ -15,6 +15,7 @@ import styles from "./AdminReservationDetailPage.module.css";
 import AdminDangerSection from "../../components/AdminDangerSection/AdminDangerSection";
 import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
 import AdminStatusForm from "../../components/AdminStatusForm/AdminStatusForm";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminReservationDetailPage() {
     const { reservationId } = useParams();
@@ -32,7 +33,7 @@ export default function AdminReservationDetailPage() {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if (error || !reservation || !reservationId) {

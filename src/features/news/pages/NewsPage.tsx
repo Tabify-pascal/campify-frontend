@@ -6,6 +6,7 @@ import styles from "./NewsPage.module.css";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 import { usePagination } from "../../../hooks/usePagination";
 import Pagination from "../../../components/ui/Pagination/Pagination";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function NewsPage() {
     const {
@@ -25,7 +26,7 @@ export default function NewsPage() {
     });
 
     if (isLoading) {
-        return <p>Laden...</p>
+        return <LoadingState/>;
     }
 
     if (error) {

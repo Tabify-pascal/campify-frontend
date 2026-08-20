@@ -9,6 +9,7 @@ import { useUpdateSpot } from "../mutations/useUpdateSpot";
 
 import type { SpotFormData } from "../schemas/spotSchema";
 import { getImageUrl } from "../../../../utils/getImageUrl";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminSpotEditPage() {
     const { spotId } = useParams();
@@ -23,7 +24,7 @@ export default function AdminSpotEditPage() {
     const updateSpotMutation = useUpdateSpot();
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if (error || !spot || !spotId) {
