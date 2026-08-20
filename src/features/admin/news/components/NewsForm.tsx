@@ -8,6 +8,7 @@ import { newsSchema, type NewsFormData, type NewsFormInput } from "../schemas/ne
 
 import styles from "./NewsForm.module.css";
 import CurrentImage from "../../../../components/ui/Forms/CurrentImage/CurrentImage";
+import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 
 type Props = {
@@ -94,29 +95,17 @@ export default function NewsForm({
         />
       </FormField>
 
-      {currentImageUrl && (
-        <CurrentImage
-          src={currentImageUrl}
-          alt="Huidige afbeelding van het nieuwsbericht"
-        />
-      )}
-      
-      <FormField
-        label={requireImage ? "Afbeelding" : "Nieuwe afbeelding"}
-        htmlFor="image"
-        error={errors.image?.message}
-      ><input
-          id="image"
-          type="file"
-          accept="image/jpeg,image/png,image/webp"
-          {...register("image")}
-        />
-        {!requireImage && currentImageUrl && (
-          <small>
-            Laat dit veld leeg om de huidige afbeelding te behouden.
-          </small>
-        )}
-      </FormField>
+      <ImageUploadField
+        id="image"
+        currentImageUrl={currentImageUrl}
+        currentImageAlt="Huidige afbeelding van het nieuwsbericht"
+        inputProps={register("image")}
+        error={
+          typeof errors.image?.message === "string"
+            ? errors.image.message
+            : undefined
+        }
+      />
 
       <Button
         as="button"

@@ -14,7 +14,7 @@ import {
 } from "../schemas/spotSchema";
 
 import styles from "./SpotForm.module.css";
-import CurrentImage from "../../../../components/ui/Forms/CurrentImage/CurrentImage";
+import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 type Props = {
     defaultValues?: Partial<SpotFormInput>;
@@ -52,11 +52,6 @@ export default function SpotForm({
             ...defaultValues,
         },
     });
-
-    const imageError =
-        typeof errors.image?.message === "string"
-            ? errors.image.message
-            : undefined;
 
     return (
         <form
@@ -129,35 +124,22 @@ export default function SpotForm({
                 />
             </FormField>
 
-            {currentImageUrl && (
-                <CurrentImage
-                    src={currentImageUrl}
-                    alt="Huidige campingplaats"
-                />
-            )}
-
-            <FormField
-                label={
-                    requireImage
-                        ? "Afbeelding"
-                        : "Nieuwe afbeelding"
+            <ImageUploadField
+                id="image"
+                currentImageUrl={currentImageUrl}
+                currentImageAlt="Huidige campingplaats"
+                inputProps={register("image")}
+                error={
+                    typeof errors.image?.message === "string"
+                        ? errors.image.message
+                        : undefined
                 }
-                htmlFor="image"
-                error={imageError}
                 hint={
                     !requireImage && currentImageUrl
                         ? "Laat dit veld leeg om de huidige afbeelding te behouden."
                         : undefined
                 }
-            >
-                <input
-                    id="image"
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp"
-                    {...register("image")}
-                />
-            </FormField>
-
+            />
 
             <div className={styles.checkboxGroup}>
                 <label className={styles.checkbox}>
