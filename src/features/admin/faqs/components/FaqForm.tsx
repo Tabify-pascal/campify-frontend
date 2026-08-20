@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
-import FormError from "../../../../components/ui/FormError";
 import { faqSchema, type FaqFormData, type FaqFormInput } from "../schemas/faqSchema";
 
 import styles from "./FaqForm.module.css";
@@ -53,7 +52,7 @@ export default function FaqForm({
                     {...register("answer")}
                 />
             </FormField>
-            
+
             <Button
                 as="button"
                 type="submit"

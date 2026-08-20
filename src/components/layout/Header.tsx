@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import styles from "./Header.module.css";
+import Button from "../ui/Button";
 
 export default function Header() {
     return (
@@ -11,9 +12,9 @@ export default function Header() {
             
             <Navigation />
             
-            <Link to="/reserveren" className={styles.cta}>
+            <Button to="/reserveren" className={styles.cta}>
                 Reserveer
-            </Link>
+            </Button>
         </header>
     );
 }
