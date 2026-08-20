@@ -5,6 +5,7 @@ import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import { usePagination } from "../../../hooks/usePagination";
 import Pagination from "../../../components/ui/Pagination/Pagination";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function FaqPage(){
     const { 
@@ -16,7 +17,7 @@ export default function FaqPage(){
     const { currentPage, totalPages, paginatedItems, goToPage } = usePagination({ items: faqItems, itemsPerPage: 5 });
 
     if(isLoading){
-        return <p>Laden...</p>
+        return <LoadingState/>;
     }
 
     if (error) {

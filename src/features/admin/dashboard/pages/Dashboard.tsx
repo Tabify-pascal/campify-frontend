@@ -5,6 +5,7 @@ import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import { useAdminDashboardStats } from "../queries/useAdminDashboardStats";
 
 import styles from "./Dashboard.module.css";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminDashboardPage(){
     const { 
@@ -14,7 +15,7 @@ export default function AdminDashboardPage(){
     } = useAdminDashboardStats();
 
     if (isLoading) { 
-        return <p>Dashboard laden....</p>;
+        return <LoadingState message="Dashboard laden..." />;
     }
 
     if (error || !stats ) {

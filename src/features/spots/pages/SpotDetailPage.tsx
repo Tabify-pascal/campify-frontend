@@ -10,6 +10,7 @@ import { getImageUrl } from "../../../utils/getImageUrl";
 
 import styles from "./SpotDetailPage.module.css";
 import { useState } from "react";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function SpotDetailPage() {
     const [ searchParams ] = useSearchParams();
@@ -77,7 +78,7 @@ export default function SpotDetailPage() {
     );
 
 
-    if (isLoading) return <p>Laden...</p>
+    if (isLoading) return <LoadingState/>;
 
     if (error || !spot) {
         return (

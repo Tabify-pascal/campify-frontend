@@ -7,8 +7,6 @@ import { useSpot } from "../../spots/queries/useSpot";
 import { useCreateReservation } from "../mutations/useCreateReservation";
 import ReservationStartPage from "../components/ReservationStartPage";
 
-import FormError from "../../../components/ui/FormError";
-
 import {
     reservationSchema,
     type ReservationFormData,
@@ -16,6 +14,8 @@ import {
 } from "../schemas/reservationSchema";
 
 import styles from "./ReservationPage.module.css";
+import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
+import FormField from "../../../components/ui/Forms/FormField/Formfield";
 
 export default function ReservationPage() {
     const [searchParams] = useSearchParams();
@@ -79,75 +79,122 @@ export default function ReservationPage() {
                 </div>
             </div>
 
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
                 <h2>Reserveringsgegevens</h2>
-                <div className={styles.row}>
-                    <div className={styles.field}>
-                        <label htmlFor="firstName">Voornaam</label>
-                        <input id="firstName" {...register("firstName")} />
-                        {errors.firstName && <FormError message={errors.firstName?.message}/>}
-                    </div>
+                <FormRow>
+                    <FormField
+                        label="Voornaam"
+                        htmlFor="firstName"
+                        error={errors.firstName?.message}
+                    >
+                        <input
+                            id="firstName"
+                            {...register("firstName")}
+                        />
+                    </FormField>
+                    <FormField
+                        label="Achternaam"
+                        htmlFor="lastName"
+                        error={errors.lastName?.message}
+                    >
+                        <input
+                            id="lastName"
+                            {...register("lastName")}
+                        />
+                    </FormField>
+                </FormRow>
+                <FormField
+                    label="E-mail"
+                    htmlFor="emial"
+                    error={errors.email?.message}
+                >
+                    <input
+                        id="email"
+                        type="email"
+                        {...register("email")}
+                    />
+                </FormField>
 
-                    <div className={styles.field}>
-                        <label htmlFor="lastName">Achternaam</label>
-                        <input id="lastName" {...register("lastName")} />
-                        {errors.lastName && <FormError message={errors.lastName?.message}/>}
-                    </div>
-                </div>
+                <FormField
+                    label="Telefoon"
+                    htmlFor="phone"
+                    error={errors.phone?.message}
+                >
+                    <input
+                        id="phone"
+                        type="tel"
+                        {...register("phone")}
+                    />
+                </FormField>
 
-                <div className={styles.field}>
-                    <label htmlFor="email">E-mail</label>
-                    <input id="email" type="email" {...register("email")} />
-                    {errors.email && <FormError message={errors.email?.message}/>}
-                </div>
+                <FormRow>
+                    <FormField
+                        label="Aankomst"
+                        htmlFor="arrivalDate"
+                        error={errors.arrivalDate?.message}
+                    >
+                        <input
+                            id="arrivalDate"
+                            type="date"
+                            readOnly={Boolean(arrivalDate)}
+                            {...register("arrivalDate")}
+                        />
+                    </FormField>
 
-                <div className={styles.field}>
-                    <label htmlFor="phone">Telefoon</label>
-                    <input id="phone" {...register("phone")} />
-                    {errors.phone && <FormError message={errors.phone?.message}/>}
-                </div>
+                    <FormField
+                        label="Vertrek"
+                        htmlFor="departureDate"
+                        error={errors.departureDate?.message}
+                    >
+                        <input
+                            id="departureDate"
+                            type="date"
+                            readOnly={Boolean(departureDate)}
+                            {...register("departureDate")}
+                        />
+                    </FormField>
+                </FormRow>
 
-                <div className={styles.row}>
-                    <div className={styles.field}>
-                        <label htmlFor="arrivalDate">Aankomst</label>
-                        <input id="arrivalDate" type="date" {...register("arrivalDate")} readOnly={Boolean(arrivalDate)}/>
-                        {errors.arrivalDate && <FormError message={errors.arrivalDate?.message}/>}
-                    </div>
-
-                    <div className={styles.field}>
-                        <label htmlFor="departureDate">Vertrek</label>
-                        <input id="departureDate" type="date" {...register("departureDate")} readOnly={Boolean(departureDate)}/>
-                        {errors.departureDate && <FormError message={errors.departureDate?.message}/>}
-                    </div>
-                </div>
-
-                <div className={styles.field}>
-                    <label htmlFor="guests">Aantal personen</label>
-                    <select id="guests" {...register("guests")}>
-                        {Array.from({ length: spot.capacity }, (_, index) => index + 1).map(
-                            (guestCount) => (
-                                <option key={guestCount} value={guestCount}>
-                                    {guestCount} {guestCount === 1 ? "persoon" : "personen"}
-                                </option>
-                            )
-                        )}
+                <FormField
+                    label="Aantal personen"
+                    htmlFor="guests"
+                    error={errors.guests?.message}
+                >
+                    <select
+                        id="guests"
+                        {...register("guests")}
+                    >
+                        {Array.from(
+                            { length: spot.capacity},
+                            (_, index) => index + 1
+                        ).map((guestCount) => (
+                            <option
+                                key={guestCount}
+                                value={guestCount}
+                            >
+                                {guestCount}{" "}{guestCount === 1 ? "persoon" : "personen"}
+                            </option>
+                        ))}
                     </select>
-                    {errors.guests && <FormError message={errors.guests?.message}/>}
-                </div>
+                </FormField>
 
-                <div className={styles.field}>
-                    <label htmlFor="notes">Opmerkingen</label>
-                    <textarea id="notes" rows={4} {...register("notes")} />
-                </div>
+                <FormField
+                    label="Opmerkingen"
+                    htmlFor="notes"
+                >
+                    <textarea
+                        id="notes"
+                        rows={4}
+                        {...register("notes")}
+                    />
+                </FormField>
 
-                {
-                    createReservationMutation.isError && (
-                        <p className={styles.error}>
-                            Reservering kon niet worden geplaatst.
-                            Controleer je gegevens of kies andere datums. 
-                        </p>
-                    )
-                }
+                {createReservationMutation.isError && (
+                    <p className={styles.error}>
+                        Reservering kon niet worden geplaatst.
+                        Controleer je gegevens of kies anderes datums.
+                    </p>
+                )}
 
                 <Button
                     as="button"

@@ -7,6 +7,7 @@ import { useAdminFaq } from "../queries/useAdminFaq";
 import FaqForm from "../components/FaqForm";
 import { useUpdateFaq } from "../mutations/useUpdateFaq";
 import type { FaqFormData } from "../schemas/faqSchema";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminFaqEditPage(){
     const { faqId } = useParams();
@@ -21,7 +22,7 @@ export default function AdminFaqEditPage(){
     const updateFaqMutation = useUpdateFaq();
 
     if(isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState message="FAQ's laden..." />;
     }
 
     if(error || !faq || !faqId) {

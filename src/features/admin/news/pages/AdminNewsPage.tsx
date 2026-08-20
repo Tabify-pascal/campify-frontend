@@ -17,6 +17,7 @@ import { useDeleteNews } from "../mutations/useDeleteNews";
 import type { NewsItem } from "../../../news/types/NewsItem";
 
 import styles from "../../AdminIndexPage.module.css";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 const columns = [
         { key: "title", label: "Titel"},
@@ -57,7 +58,7 @@ export default function AdminNewsPage() {
     }
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if (error) {

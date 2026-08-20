@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
-import FormError from "../../../../components/ui/FormError";
 import { faqSchema, type FaqFormData, type FaqFormInput } from "../schemas/faqSchema";
 
 import styles from "./FaqForm.module.css";
+import FormField from "../../../../components/ui/Forms/FormField/Formfield";
 
 type Props = {
     defaultValues?: Partial<FaqFormInput>;
@@ -31,21 +31,28 @@ export default function FaqForm({
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-            <div className={styles.field}>
-                <label htmlFor="question">Vraag</label>
+
+            <FormField
+                label="Vraag"
+                htmlFor="question"
+                error={errors.question?.message}
+            >
                 <input id="question" {...register("question")} />
-                <FormError message={errors.question?.message} />
-            </div>
-            <div className={styles.field}>
-                <label htmlFor="answer">Antwoord</label>
+            </FormField>
+
+            <FormField
+                label="Antwoord"
+                htmlFor="answer"
+                error={errors.answer?.message}
+            >
                 <textarea
                     id="answer"
                     rows={4}
                     aria-invalid={Boolean(errors.answer)}
                     {...register("answer")}
                 />
-                <FormError message={errors.answer?.message} />
-            </div>
+            </FormField>
+
             <Button
                 as="button"
                 type="submit"

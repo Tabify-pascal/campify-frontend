@@ -7,6 +7,7 @@ import Pagination from "../../../components/ui/Pagination/Pagination";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import styles from "./SpotsPage.module.css";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 
 export default function SpotsPage() {
@@ -17,7 +18,7 @@ export default function SpotsPage() {
   const { data: spots = [], isLoading, error } = useSpots({ arrivalDate, departureDate, guests });
   const { currentPage, totalPages, paginatedItems, goToPage } = usePagination({ items: spots, itemsPerPage: 6 });
 
-  if (isLoading) return <p>Laden...</p>;
+  if (isLoading) return <LoadingState/>;
 
   if (error) {
     return (

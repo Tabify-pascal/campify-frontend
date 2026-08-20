@@ -6,13 +6,14 @@ import { getImageUrl } from "../../../utils/getImageUrl";
 
 import styles from "./NewsDetailPage.module.css";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function NewsDetailPage(){
     const { newsId } = useParams();
     const { data: newsItem, isLoading, error } = useNewsItem(newsId);
 
     if (isLoading) {
-        return <p>Laden...</p>;
+        return <LoadingState/>;
     }
 
     if ( error || !newsItem) {

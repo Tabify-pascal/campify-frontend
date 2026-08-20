@@ -16,6 +16,7 @@ import { useDeleteSpot } from "../mutations/useDeleteSpot";
 import type { Spot } from "../../../spots/types/Spot";
 
 import styles from "../../AdminIndexPage.module.css";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 const columns = [
     {key: "name", label: "Naam"},
@@ -52,7 +53,7 @@ export default function AdminSpotsPage() {
         });
     }
 
-    if (isLoading) return <p>Laden...</p>;
+    if (isLoading) return <LoadingState/>;
 
     if (error) {
         return (

@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import { useCurrentUser } from "../queries/useCurrentUser";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function ProtectedAdminRoute(){
     const location = useLocation();
@@ -12,7 +13,7 @@ export default function ProtectedAdminRoute(){
     } = useCurrentUser();
 
     if (isLoading) {
-        return (<p>Beheeromgeving laden... </p>)
+        return <LoadingState message="Beheeromgeving laden..."/>;
     }
 
     if (isError || !user) {
