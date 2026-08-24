@@ -59,4 +59,9 @@ export const queryKeys = {
             endDate,
         ] as const,
     },
+
+    account: {
+        current: ["account", "current"] as const,
+        reservations: ["account", "reservations"] as const,
+    },
 } as const;
