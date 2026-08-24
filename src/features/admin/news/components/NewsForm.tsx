@@ -3,12 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import Button from "../../../../components/ui/Button";
 import FormField from "../../../../components/ui/Forms/FormField/Formfield";
+import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 import { newsSchema, type NewsFormData, type NewsFormInput } from "../schemas/newsSchema"
 
 import styles from "./NewsForm.module.css";
-import CurrentImage from "../../../../components/ui/Forms/CurrentImage/CurrentImage";
-import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
+
 
 
 type Props = {
@@ -23,7 +23,6 @@ type Props = {
 export default function NewsForm({
   defaultValues,
   currentImageUrl,
-  requireImage = false,
   isSubmitting = false,
   submitLabel = "Opslaan",
   onSubmit,
