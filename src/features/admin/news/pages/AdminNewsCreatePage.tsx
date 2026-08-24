@@ -25,8 +25,8 @@ export default function AdminNewsCreatePage() {
     return (
         <>
             <PageHeader
-                title="Nieuw nieuws item"
-                description="Maak een nieuw nieuws item aan."
+                title="Creëer een nieuws item"
+                description="Maak een nieuws item aan."
             />
             {createNewsMutation.isError && (
                 <MessageCard
