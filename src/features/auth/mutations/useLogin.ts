@@ -1,17 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { login } from "../api/authApi";
-import { type AuthUser, type AuthResponse } from "../types/AuthUser";
-import type { LoginFormData } from "../schemas/loginSchema";
 
-export function useLogin(){
+import { login } from "../api/authApi";
+import { queryKeys } from "../../../queryKeys";
+
+export function useLogin() {
     const queryClient = useQueryClient();
 
-    return useMutation<AuthResponse, Error, LoginFormData>({
+    return useMutation({
         mutationFn: login,
-        onSuccess: ({ user }) => {
-            queryClient.setQueryData<AuthUser>(
-                ["auth", "me"],
-                user
+
+        onSuccess: (response) => {
+            queryClient.setQueryData(
+                queryKeys.auth.currentUser,
+                response
             );
         },
     });

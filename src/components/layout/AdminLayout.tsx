@@ -12,7 +12,7 @@ export default function AdminLayout(){
     function handleLogout(){
         logoutMutation.mutate(undefined, {
             onSuccess:()=>{
-                navigate("/admin/login", {
+                navigate("/login", {
                     replace: true,
                 });
             },

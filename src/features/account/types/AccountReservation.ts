@@ -1,5 +1,3 @@
-import { string } from "zod";
-
 export type AccountReservationStatus = 
     | "PENDING"
     | "CONFIRMED"
@@ -15,7 +13,7 @@ export type AccountReservation = {
     departureDate: string;
     notes: string | null;
     status: AccountReservationStatus;
-    spot {
+    spot: {
         id: string;
         name: string;
         imageUrl: string;

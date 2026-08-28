@@ -1,4 +1,8 @@
 export const queryKeys = {
+    auth: {
+        currentUser: ["auth", "currentUser"] as const,
+    },
+
     admin: {
         dashboard: ["admin", "dashboard"] as const,
 
@@ -47,10 +51,11 @@ export const queryKeys = {
         all: ["spots"] as const,
         detail: (spotId: string) =>
             ["spots", spotId] as const,
+
         availability: (
             spotId: string | undefined,
             startDate: string,
-            endDate: string
+            endDate: string,
         ) => [
             "spots",
             spotId,
@@ -61,7 +66,6 @@ export const queryKeys = {
     },
 
     account: {
-        current: ["account", "current"] as const,
         reservations: ["account", "reservations"] as const,
     },
 } as const;

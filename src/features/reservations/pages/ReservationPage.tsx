@@ -1,11 +1,17 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import Button from "../../../components/ui/Button";
+import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
+
+import ReservationStartPage from "../components/ReservationStartPage";
+
+import { useCurrentUser } from "../../auth/queries/useCurrentUser";
 import { useSpot } from "../../spots/queries/useSpot";
 import { useCreateReservation } from "../mutations/useCreateReservation";
-import ReservationStartPage from "../components/ReservationStartPage";
 
 import {
     reservationSchema,
@@ -14,23 +20,36 @@ import {
 } from "../schemas/reservationSchema";
 
 import styles from "./ReservationPage.module.css";
-import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
 
 export default function ReservationPage() {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const spotId = searchParams.get("spotId") ?? undefined;
-    const arrivalDate = searchParams.get("arrivalDate") ?? "";
-    const departureDate = searchParams.get("departureDate") ?? "";
+
+    const spotId =
+        searchParams.get("spotId") ?? undefined;
+
+    const arrivalDate =
+        searchParams.get("arrivalDate") ?? "";
+
+    const departureDate =
+        searchParams.get("departureDate") ?? "";
+
     const { data: spot } = useSpot(spotId);
-    const createReservationMutation = useCreateReservation();
+    const { data: auth } = useCurrentUser();
+
+    const createReservationMutation =
+        useCreateReservation();
 
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
-    } = useForm<ReservationFormInput, unknown, ReservationFormData>({
+    } = useForm<
+        ReservationFormInput,
+        unknown,
+        ReservationFormData
+    >({
         resolver: zodResolver(reservationSchema),
         defaultValues: {
             firstName: "",
@@ -44,58 +63,109 @@ export default function ReservationPage() {
         },
     });
 
-    function onSubmit(data: ReservationFormData) {
-        if (!spotId) return;
+    const customer =
+        auth?.user?.role === "CUSTOMER"
+            ? auth.user
+            : undefined;
+
+    useEffect(() => {
+        if (!customer) {
+            return;
+        }
+
+        setValue(
+            "firstName",
+            customer.firstName
+        );
+
+        setValue(
+            "lastName",
+            customer.lastName
+        );
+
+        setValue(
+            "email",
+            customer.email
+        );
+    }, [customer, setValue]);
+
+    function onSubmit(
+        data: ReservationFormData
+    ) {
+        if (!spotId) {
+            return;
+        }
+
         createReservationMutation.mutate(
             {
                 spotId,
-                ...data
+                ...data,
             },
             {
                 onSuccess: () => {
                     navigate("/bevestiging");
-                }
-            },
+                },
+            }
         );
     }
 
     if (!spot) {
-        return (
-            <ReservationStartPage />
-        );
+        return <ReservationStartPage />;
     }
 
     return (
         <section className={styles.page}>
             <div className={styles.summary}>
-                <span className={styles.badge}>Je gekozen plek</span>
+                <span className={styles.badge}>
+                    Je gekozen plek
+                </span>
+
                 <h1>{spot.name}</h1>
+
                 <p>{spot.description}</p>
 
                 <div className={styles.meta}>
-                    <span>👥 Max. {spot.capacity} personen</span>
-                    <span>€ {spot.pricePerNight}/nacht</span>
-                    <span>{spot.size}m²</span>
+                    <span>
+                        👥 Max. {spot.capacity} personen
+                    </span>
+
+                    <span>
+                        € {spot.pricePerNight}/nacht
+                    </span>
+
+                    <span>
+                        {spot.size}m²
+                    </span>
                 </div>
             </div>
 
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form
+                className={styles.form}
+                onSubmit={handleSubmit(onSubmit)}
+                noValidate
+            >
                 <h2>Reserveringsgegevens</h2>
+
                 <FormRow>
                     <FormField
                         label="Voornaam"
                         htmlFor="firstName"
-                        error={errors.firstName?.message}
+                        error={
+                            errors.firstName?.message
+                        }
                     >
                         <input
                             id="firstName"
                             {...register("firstName")}
                         />
                     </FormField>
+
                     <FormField
                         label="Achternaam"
                         htmlFor="lastName"
-                        error={errors.lastName?.message}
+                        error={
+                            errors.lastName?.message
+                        }
                     >
                         <input
                             id="lastName"
@@ -103,14 +173,16 @@ export default function ReservationPage() {
                         />
                     </FormField>
                 </FormRow>
+
                 <FormField
                     label="E-mail"
-                    htmlFor="emial"
+                    htmlFor="email"
                     error={errors.email?.message}
                 >
                     <input
                         id="email"
                         type="email"
+                        readOnly={Boolean(customer)}
                         {...register("email")}
                     />
                 </FormField>
@@ -131,26 +203,37 @@ export default function ReservationPage() {
                     <FormField
                         label="Aankomst"
                         htmlFor="arrivalDate"
-                        error={errors.arrivalDate?.message}
+                        error={
+                            errors.arrivalDate?.message
+                        }
                     >
                         <input
                             id="arrivalDate"
                             type="date"
                             readOnly={Boolean(arrivalDate)}
-                            {...register("arrivalDate")}
+                            {...register(
+                                "arrivalDate"
+                            )}
                         />
                     </FormField>
 
                     <FormField
                         label="Vertrek"
                         htmlFor="departureDate"
-                        error={errors.departureDate?.message}
+                        error={
+                            errors.departureDate
+                                ?.message
+                        }
                     >
                         <input
                             id="departureDate"
                             type="date"
-                            readOnly={Boolean(departureDate)}
-                            {...register("departureDate")}
+                            readOnly={Boolean(
+                                departureDate
+                            )}
+                            {...register(
+                                "departureDate"
+                            )}
                         />
                     </FormField>
                 </FormRow>
@@ -165,16 +248,30 @@ export default function ReservationPage() {
                         {...register("guests")}
                     >
                         {Array.from(
-                            { length: spot.capacity},
-                            (_, index) => index + 1
-                        ).map((guestCount) => (
-                            <option
-                                key={guestCount}
-                                value={guestCount}
-                            >
-                                {guestCount}{" "}{guestCount === 1 ? "persoon" : "personen"}
-                            </option>
-                        ))}
+                            {
+                                length:
+                                    spot.capacity,
+                            },
+                            (_, index) =>
+                                index + 1
+                        ).map(
+                            (guestCount) => (
+                                <option
+                                    key={
+                                        guestCount
+                                    }
+                                    value={
+                                        guestCount
+                                    }
+                                >
+                                    {guestCount}{" "}
+                                    {guestCount ===
+                                    1
+                                        ? "persoon"
+                                        : "personen"}
+                                </option>
+                            )
+                        )}
                     </select>
                 </FormField>
 
@@ -190,17 +287,25 @@ export default function ReservationPage() {
                 </FormField>
 
                 {createReservationMutation.isError && (
-                    <p className={styles.error}>
-                        Reservering kon niet worden geplaatst.
-                        Controleer je gegevens of kies anderes datums.
+                    <p
+                        className={
+                            styles.error
+                        }
+                    >
+                        Reservering kon niet
+                        worden geplaatst.
+                        Controleer je gegevens
+                        of kies andere datums.
                     </p>
                 )}
 
                 <Button
                     as="button"
                     type="submit"
-                    disabled={createReservationMutation.isPending}
-                    >
+                    disabled={
+                        createReservationMutation.isPending
+                    }
+                >
                     {createReservationMutation.isPending
                         ? "Bezig met plaatsen..."
                         : "Reservering plaatsen"}

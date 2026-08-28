@@ -3,7 +3,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import { useCurrentUser } from "../queries/useCurrentUser";
 
-export default function ProtectedAdminRoute() {
+export default function ProtectedAccountRoute() {
     const location = useLocation();
 
     const {
@@ -12,7 +12,7 @@ export default function ProtectedAdminRoute() {
     } = useCurrentUser();
 
     if (isLoading) {
-        return <LoadingState message="Beheeromgeving laden..." />;
+        return <LoadingState message="Account laden..." />;
     }
 
     if (!data?.user) {
@@ -25,8 +25,8 @@ export default function ProtectedAdminRoute() {
         );
     }
 
-    if (data.user.role !== "ADMIN") {
-        return <Navigate to="/" replace />;
+    if (data.user.role !== "CUSTOMER") {
+        return <Navigate to="/admin" replace />;
     }
 
     return <Outlet />;
