@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 import styles from "./Header.module.css";
 import Button from "../ui/Button";
+import AccountButton from "../ui/AccountButton/AccountButton";
 
 export default function Header() {
     return (
@@ -12,9 +13,16 @@ export default function Header() {
             
             <Navigation />
             
-            <Button to="/reserveren" className={styles.cta}>
-                Reserveer
-            </Button>
+            <div className={styles.actions}>
+                <AccountButton />
+
+                <Button
+                    to="/reserveren"
+                    className={styles.cta}
+                >
+                    Reserveer
+                </Button>
+                </div>
         </header>
     );
 }

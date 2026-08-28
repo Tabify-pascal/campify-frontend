@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { login } from "../api/authApi";
+import { register } from "../api/authApi";
 import { queryKeys } from "../../../queryKeys";
 
-export function useLogin() {
+export function useRegister() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: login,
+        mutationFn: register,
 
         onSuccess: (response) => {
             queryClient.setQueryData(
