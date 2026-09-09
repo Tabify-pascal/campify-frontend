@@ -161,7 +161,7 @@ export default function AdminReservationDetailPage() {
                     />
 
                     <AdminDangerSection
-                        title="Bericht verwijderen"
+                        title="Reservering verwijderen"
                         buttonLabel="Verwijderen"
                         description="Verwijder alleen testreserveringen, spam of foutieve dubbele reserveringen."
                         onClick={() => setIsDeleteModalOpen(true)}
