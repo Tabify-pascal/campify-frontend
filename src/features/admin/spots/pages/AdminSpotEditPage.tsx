@@ -10,6 +10,7 @@ import { useUpdateSpot } from "../mutations/useUpdateSpot";
 import type { SpotFormData } from "../schemas/spotSchema";
 import { getImageUrl } from "../../../../utils/getImageUrl";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+import { useAdminCampings } from "../../campings/queries/useAdminCampings";
 
 export default function AdminSpotEditPage() {
     const { spotId } = useParams();
@@ -23,8 +24,13 @@ export default function AdminSpotEditPage() {
 
     const updateSpotMutation = useUpdateSpot();
 
-    if (isLoading) {
-        return <LoadingState/>;
+    const {
+        data: campings = [],
+        isLoading: isCampingsLoading,
+    } = useAdminCampings();
+
+    if (isLoading || isCampingsLoading) {
+        return <LoadingState />;
     }
 
     if (error || !spot || !spotId) {
@@ -69,22 +75,24 @@ export default function AdminSpotEditPage() {
                 />
             )}
             <SpotForm
-            defaultValues={{
-                name: spot.name,
-                description: spot.description,
-                capacity: spot.capacity,
-                pricePerNight: spot.pricePerNight,
-                size: spot.size,
-                electricity: spot.electricity,
-                waterConnection: spot.waterConnection,
-                features: spot.features.map((feature) => ({
-                    name: feature.name,
-                })),
-            }}
-            currentImageUrl={getImageUrl(spot.imageUrl)}
-            onSubmit={handleSubmit}
-            isSubmitting={updateSpotMutation.isPending}
-            submitLabel="Wijzigingen opslaan"
+                campings={campings}
+                defaultValues={{
+                    campingId: spot.campingId,
+                    name: spot.name,
+                    description: spot.description,
+                    capacity: spot.capacity,
+                    pricePerNight: spot.pricePerNight,
+                    size: spot.size,
+                    electricity: spot.electricity,
+                    waterConnection: spot.waterConnection,
+                    features: spot.features.map((feature) => ({
+                        name: feature.name,
+                    })),
+                }}
+                currentImageUrl={getImageUrl(spot.imageUrl)}
+                onSubmit={handleSubmit}
+                isSubmitting={updateSpotMutation.isPending}
+                submitLabel="Wijzigingen opslaan"
             />
         </>
     )

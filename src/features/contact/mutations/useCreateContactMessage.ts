@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { createContactMessage } from "../api/contact";
 import { queryKeys } from "../../../queryKeys";
 import { queryClient } from "../../../app/queryClient";

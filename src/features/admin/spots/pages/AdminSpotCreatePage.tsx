@@ -6,10 +6,16 @@ import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import SpotForm from "../components/SpotForm";
 import { useCreateSpot } from "../mutations/useCreateSpot";
 import type { SpotFormData } from "../schemas/spotSchema";
+import { useAdminCampings } from "../../campings/queries/useAdminCampings";
+import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
 export default function AdminSpotCreatePage() {
     const navigate = useNavigate();
     const createSpotMutation = useCreateSpot();
+    const {
+        data: campings = [],
+        isLoading: isCampingsLoading,
+    } = useAdminCampings();
 
     function handleSubmit(data: SpotFormData) {
          if (!data.image?.[0]) {
@@ -20,6 +26,10 @@ export default function AdminSpotCreatePage() {
                 navigate("/admin/spots");
             },
         });
+    }
+
+    if (isCampingsLoading) {
+        return <LoadingState />;
     }
 
     return (
@@ -39,12 +49,12 @@ export default function AdminSpotCreatePage() {
             )}
 
             <SpotForm
+                campings={campings}
                 onSubmit={handleSubmit}
                 isSubmitting={createSpotMutation.isPending}
                 submitLabel="Campingplaats toevoegen"
                 requireImage
             />
-
         </>
     );
 }

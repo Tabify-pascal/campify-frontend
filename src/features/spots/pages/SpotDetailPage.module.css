@@ -1,126 +1,241 @@
 .detail {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 32px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
 
-  padding: 32px;
+    padding: 32px;
 
-  background: var(--color-surface);
-  border-radius: 36px;
-  box-shadow: var(--shadow-soft);
+    background: var(--color-surface);
+    border-radius: 36px;
+    box-shadow: var(--shadow-soft);
 }
 
 .image {
-  height: 560px;
-  overflow: hidden;
-  border-radius: 28px;
+    height: 560px;
+    overflow: hidden;
+
+    border-radius: 28px;
 }
 
 .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.badge {
-  align-self: flex-start;
+/* Camping */
 
-  padding: 8px 14px;
-  border-radius: var(--radius-pill);
+.camping {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 12px;
 
-  background: #f4f6f2;
-  font-size: 0.85rem;
-  font-weight: 600;
+    padding: 8px 12px 8px 8px;
+
+    border: 1px solid #e6ebe3;
+    border-radius: 16px;
+
+    background: #f7f9f5;
+    color: inherit;
+    text-decoration: none;
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        transform 150ms ease;
 }
+
+.camping:hover {
+    background: #f1f5ee;
+    border-color: #d5dfd0;
+    transform: translateY(-1px);
+}
+
+.campingLogo {
+    width: 48px;
+    height: 48px;
+
+    padding: 4px;
+
+    object-fit: contain;
+
+    background: var(--color-surface);
+    border-radius: 12px;
+}
+
+.campingInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.campingInfo span {
+    color: var(--color-muted);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.campingInfo strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.campingArrow {
+    margin-left: 4px;
+
+    color: var(--color-muted);
+    font-size: 1.1rem;
+
+    transition: transform 150ms ease;
+}
+
+.camping:hover .campingArrow {
+    transform: translateX(2px);
+}
+
+/* Spot */
 
 .content h1 {
-  margin: 20px 0 12px;
+    margin: 18px 0 12px;
 
-  font-size: 4rem;
-  line-height: 1;
-  letter-spacing: -0.05em;
+    font-size: 4rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
 }
 
-.content p {
-  color: var(--color-muted);
-  line-height: 1.7;
+.content > p {
+    margin: 0;
+
+    color: var(--color-muted);
+    line-height: 1.7;
 }
+
+/* Details */
 
 .meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 
-  margin: 28px 0;
+    margin: 28px 0;
 }
 
 .meta div {
-  padding: 20px;
+    padding: 20px;
 
-  border-radius: 24px;
-  background: #f4f6f2;
+    background: #f4f6f2;
+    border-radius: 24px;
 }
 
 .meta strong {
-  display: block;
+    display: block;
 
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 .meta span {
-  color: var(--color-muted);
+    color: var(--color-muted);
 }
 
-
-@media (max-width: 900px) {
-  .detail {
-    grid-template-columns: 1fr;
-  }
-
-  .image {
-    min-height: 320px;
-  }
-
-  .image img {
-    min-height: 320px;
-  }
-
-  .content h1 {
-    font-size: 3rem;
-  }
-}
+/* Facilities */
 
 .facilities {
-  margin-bottom: 28px;
+    margin-bottom: 28px;
 }
 
 .facilities h2 {
-  margin-bottom: 12px;
-  font-size: 1.3rem;
+    margin: 0 0 12px;
+
+    font-size: 1.3rem;
 }
 
 .facilities ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: grid;
+    gap: 10px;
 
-  display: grid;
-  gap: 10px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 .facilities li {
-  color: var(--color-muted);
-  font-weight: 600;
+    color: var(--color-muted);
+    font-weight: 600;
+}
+
+/* Calendar */
+
+.calender {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .hint {
-  color: var(--color-muted);
-  font-weight: 700;
+    margin: 0;
+
+    color: var(--color-muted);
+    font-weight: 700;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .detail {
+        grid-template-columns: 1fr;
+
+        padding: 24px;
+        border-radius: 28px;
+    }
+
+    .image {
+        height: 420px;
+        min-height: 320px;
+    }
+
+    .content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .detail {
+        gap: 24px;
+        padding: 16px;
+
+        border-radius: 24px;
+    }
+
+    .image {
+        height: 320px;
+        border-radius: 20px;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .meta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .meta div {
+        padding: 16px;
+        border-radius: 18px;
+    }
 }

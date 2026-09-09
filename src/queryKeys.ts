@@ -35,6 +35,11 @@ export const queryKeys = {
             detail: (spotId: string) =>
                 ["admin", "spots", spotId] as const,
         },
+        campings: {
+            all: ["admin", "campings"] as const,
+            detail: (campingId: string) =>
+                ["admin", "campings", campingId] as const,
+        },
     },
 
     news: {
@@ -49,6 +54,18 @@ export const queryKeys = {
 
     spots: {
         all: ["spots"] as const,
+
+        list: (params?: {
+            campingId?: string | null;
+            arrivalDate?: string | null;
+            departureDate?: string | null;
+            guests?: string | null;
+        }) => [
+            "spots",
+            "list",
+            params ?? {},
+        ] as const,
+
         detail: (spotId: string) =>
             ["spots", spotId] as const,
 
@@ -63,6 +80,11 @@ export const queryKeys = {
             startDate,
             endDate,
         ] as const,
+    },
+    campings: {
+        all: ["campings"] as const,
+        detail: (campingId: string) =>
+            ["campings", campingId] as const,
     },
 
     account: {

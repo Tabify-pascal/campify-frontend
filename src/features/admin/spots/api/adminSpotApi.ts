@@ -10,16 +10,24 @@ function createSpotFormData(data: SpotFormData) {
     formData.append("capacity", String(data.capacity));
     formData.append("pricePerNight", String(data.pricePerNight));
     formData.append("size", String(data.size));
+    formData.append("campingId", data.campingId);
 
-    formData.append("electricity", String(data.electricity));
-    formData.append("waterConnection", String(data.waterConnection));
+    formData.append(
+        "electricity",
+        String(data.electricity)
+    );
+
+    formData.append(
+        "waterConnection",
+        String(data.waterConnection)
+    );
 
     formData.append(
         "features",
         JSON.stringify(
-            data.features
-            .map(({ name }) => name.trim())
-            .filter((name) => name.length > 0)
+            data.features!
+                .map(({ name }) => name.trim())
+                .filter((name) => name.length > 0)
         )
     );
 

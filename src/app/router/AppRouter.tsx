@@ -57,6 +57,11 @@ import AdminFaqCreatePage from "../../features/admin/faqs/pages/AdminCreateFaq";
 // Admin messages
 import AdminMessagePage from "../../features/admin/messages/pages/adminMessagePage";
 import AdminMessageDetailPage from "../../features/admin/messages/pages/adminMessageDetailPage";
+import AdminCampingsPage from "../../features/admin/campings/pages/AdminCampingsPage";
+import AdminCampingCreatePage from "../../features/admin/campings/pages/AdminCampingCreatePage";
+import AdminCampingEditPage from "../../features/admin/campings/pages/AdminCampingEditPage";
+import CampingDetailPage from "../../features/campings/pages/CampingDetailPage";
+import CampingsPage from "../../features/campings/pages/CampingsPage";
 
 const router = createBrowserRouter([
     {
@@ -68,7 +73,6 @@ const router = createBrowserRouter([
                 index: true,
                 element: <HomePage />,
             },
-
             // Public
             {
                 path: "plaatsen",
@@ -101,6 +105,14 @@ const router = createBrowserRouter([
             {
                 path: "nieuws/:newsId",
                 element: <NewsDetailPage />,
+            },
+            {
+                path: "campings",
+                element: <CampingsPage />,
+            },
+            {
+                path: "campings/:campingId",
+                element: <CampingDetailPage />,
             },
 
             // Unified auth
@@ -204,6 +216,18 @@ const router = createBrowserRouter([
                     {
                         path: "messages/:messageId",
                         element: <AdminMessageDetailPage />,
+                    },
+                    {
+                        path: "campings",
+                        element: <AdminCampingsPage />,
+                    },
+                    {
+                        path: "campings/new",
+                        element: <AdminCampingCreatePage />,
+                    },
+                    {
+                        path: "campings/:campingId/edit",
+                        element: <AdminCampingEditPage />,
                     },
                 ],
             },

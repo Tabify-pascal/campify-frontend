@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../components/ui/Button";
 import FormField from "../../../../components/ui/Forms/FormField/Formfield";
 import FormRow from "../../../../components/ui/Forms/FormRow/FormRow";
+import type { Camping } from "../../../campings/types/Camping";
+
 
 import FeatureFields from "./FeatureFields";
 
@@ -23,6 +25,7 @@ type Props = {
     isSubmitting?: boolean;
     submitLabel?: string;
     requireImage?: boolean;
+    campings: Camping[];
 };
 
 export default function SpotForm({
@@ -32,6 +35,7 @@ export default function SpotForm({
     submitLabel = "Opslaan",
     currentImageUrl,
     requireImage = false,
+    campings,
 }: Props) {
     const {
         register,
@@ -41,6 +45,7 @@ export default function SpotForm({
     } = useForm<SpotFormInput, unknown, SpotFormData>({
         resolver: zodResolver(spotSchema),
         defaultValues: {
+            campingId: "",
             name: "",
             description: "",
             capacity: 2,
@@ -80,6 +85,26 @@ export default function SpotForm({
                     rows={5}
                     {...register("description")}
                 />
+            </FormField>
+
+            <FormField
+                label="Camping"
+                htmlFor="campingId"
+                error={errors.campingId?.message}
+            >
+                <select
+                    id="campingId"
+                    {...register("campingId")}
+                >
+                    {campings.map((camping) => (
+                        <option
+                            key={camping.id}
+                            value={camping.id}
+                        >
+                            {camping.name}
+                        </option>
+                    ))}
+                </select>
             </FormField>
 
             <FormRow>

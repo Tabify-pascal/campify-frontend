@@ -90,6 +90,13 @@ export default function AdminLayout(){
                     >
                         Veelgestelde vragen
                     </NavLink>
+
+                    <NavLink
+                        to="/admin/campings"
+                        className={getNavLinkClass}
+                    >
+                        Campings
+                    </NavLink>
                 </nav>
 
                 <div className={styles.footer}>

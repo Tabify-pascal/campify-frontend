@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import Button from "../../../components/ui/Button";
 import { useSpot } from "../queries/useSpot";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
@@ -13,7 +13,7 @@ import { useState } from "react";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 export default function SpotDetailPage() {
-    const [ searchParams ] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const { spotId } = useParams();
     const { data: spot, isLoading, error } = useSpot(spotId);
 
@@ -22,8 +22,8 @@ export default function SpotDetailPage() {
 
     const [arrivalDate, setArrivalDate] = useState<string | null>(initialArrivalDate);
     const [departureDate, setDepartureDate] = useState<string | null>(initialDepartureDate);
-    
-    const [ currentMonth, setCurrentMonth] = useState(() => {
+
+    const [currentMonth, setCurrentMonth] = useState(() => {
         if (initialArrivalDate) {
             const date = new Date(initialArrivalDate);
 
@@ -64,7 +64,7 @@ export default function SpotDetailPage() {
         }
 
         setDepartureDate(date);
-    }      
+    }
 
     const { startDate, endDate } = getMonthRange(
         currentMonth.year,
@@ -78,7 +78,7 @@ export default function SpotDetailPage() {
     );
 
 
-    if (isLoading) return <LoadingState/>;
+    if (isLoading) return <LoadingState />;
 
     if (error || !spot) {
         return (
@@ -94,15 +94,15 @@ export default function SpotDetailPage() {
     function previousMonth() {
         setCurrentMonth((current) => {
             if (current.month === 1) {
-            return {
-                year: current.year - 1,
-                month: 12,
-            };
+                return {
+                    year: current.year - 1,
+                    month: 12,
+                };
             }
 
             return {
-            ...current,
-            month: current.month - 1,
+                ...current,
+                month: current.month - 1,
             };
         });
     }
@@ -110,20 +110,20 @@ export default function SpotDetailPage() {
     function nextMonth() {
         setCurrentMonth((current) => {
             if (current.month === 12) {
-            return {
-                year: current.year + 1,
-                month: 1,
-            };
+                return {
+                    year: current.year + 1,
+                    month: 1,
+                };
             }
 
             return {
-            ...current,
-            month: current.month + 1,
+                ...current,
+                month: current.month + 1,
             };
         });
     }
 
-    function isCurrentMonth(year: number, month: number){
+    function isCurrentMonth(year: number, month: number) {
         const today = new Date();
 
         return (
@@ -142,8 +142,31 @@ export default function SpotDetailPage() {
             </div>
 
             <div className={styles.content}>
-                <span className={styles.badge}></span>
+                <Link
+                    to={`/campings/${spot.camping.id}`}
+                    className={styles.camping}
+                >
+                    {spot.camping.logoUrl && (
+                        <img
+                            src={getImageUrl(spot.camping.logoUrl)}
+                            alt=""
+                            className={styles.campingLogo}
+                        />
+                    )}
+
+                    <div className={styles.campingInfo}>
+                        <strong>{spot.camping.name}</strong>
+                    </div>
+
+                    <span
+                        className={styles.campingArrow}
+                        aria-hidden="true"
+                    >
+                        →
+                    </span>
+                </Link>
                 <h1>{spot.name}</h1>
+
                 <p>{spot.description}</p>
 
                 <div className={styles.meta}>
@@ -175,7 +198,7 @@ export default function SpotDetailPage() {
                     </ul>
                 </div>
 
-                
+
             </div>
             <div className={styles.calender}>
                 {availability && (
@@ -201,12 +224,12 @@ export default function SpotDetailPage() {
                     >
                         Reserveer deze periode
                     </Button>
-                ): (
+                ) : (
                     <p className={styles.hint}>Kies eerst een aankomst- en vertrekdatum.</p>
                 )}
 
             </div>
-            
+
         </section>
     );
 }

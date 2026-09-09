@@ -1,43 +1,51 @@
 import { api } from "../../../api/client";
+
 import type { Spot } from "../types/Spot";
 import type { Availability } from "../types/Availability";
 
 export type GetSpotsParams = {
-  arrivalDate?: string | null;
-  departureDate?: string | null;
-  guests?: string | null;
+    campingId?: string | null;
+    arrivalDate?: string | null;
+    departureDate?: string | null;
+    guests?: string | null;
 };
 
 export function getSpots(params?: GetSpotsParams) {
-  const searchParams = new URLSearchParams();
+    const searchParams = new URLSearchParams();
 
-  if (params?.arrivalDate) {
-    searchParams.set("arrivalDate", params.arrivalDate);
-  }
+    if (params?.campingId) {
+        searchParams.set("campingId", params.campingId);
+    }
 
-  if(params?.departureDate) {
-    searchParams.set("departureDate", params.departureDate);
-  }
+    if (params?.arrivalDate) {
+        searchParams.set("arrivalDate", params.arrivalDate);
+    }
 
-  if (params?.guests) {
-    searchParams.set("guests", params.guests);
-  }
+    if (params?.departureDate) {
+        searchParams.set("departureDate", params.departureDate);
+    }
 
-  const queryString = searchParams.toString();
+    if (params?.guests) {
+        searchParams.set("guests", params.guests);
+    }
 
-  return api<Spot[]>(`/spots${queryString ? `?${queryString}` : ""}`);
+    const queryString = searchParams.toString();
+
+    return api<Spot[]>(
+        `/spots${queryString ? `?${queryString}` : ""}`
+    );
 }
 
 export function getSpot(spotId: string) {
-  return api<Spot>(`/spots/${spotId}`);
+    return api<Spot>(`/spots/${spotId}`);
 }
 
-export function getSpotavailability(
-  spotId: string,
-  startDate: string,
-  endDate: string
+export function getSpotAvailability(
+    spotId: string,
+    startDate: string,
+    endDate: string
 ) {
-  return api<Availability>(
-    `/spots/${spotId}/availability?startDate=${startDate}&endDate=${endDate}`
-  );
+    return api<Availability>(
+        `/spots/${spotId}/availability?startDate=${startDate}&endDate=${endDate}`
+    );
 }

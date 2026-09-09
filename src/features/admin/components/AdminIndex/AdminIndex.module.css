@@ -10,3 +10,10 @@
     gap: 0.5rem;
     white-space: nowrap;
 }
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
