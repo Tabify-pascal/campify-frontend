@@ -62,6 +62,7 @@ import AdminCampingCreatePage from "../../features/admin/campings/pages/AdminCam
 import AdminCampingEditPage from "../../features/admin/campings/pages/AdminCampingEditPage";
 import CampingDetailPage from "../../features/campings/pages/CampingDetailPage";
 import CampingsPage from "../../features/campings/pages/CampingsPage";
+import ProtectedAdminOnlyRoute from "../../features/auth/route/ProtectedAdminOnlyRoute";
 
 const router = createBrowserRouter([
     {
@@ -166,6 +167,14 @@ const router = createBrowserRouter([
                         element: <AdminDashboardPage />,
                     },
                     {
+                        path: "campings",
+                        element: <AdminCampingsPage />,
+                    },
+                    {
+                        path: "campings/:campingId/edit",
+                        element: <AdminCampingEditPage />,
+                    },
+                    {
                         path: "spots",
                         element: <AdminSpotsPage />,
                     },
@@ -178,36 +187,12 @@ const router = createBrowserRouter([
                         element: <AdminSpotEditPage />,
                     },
                     {
-                        path: "news",
-                        element: <AdminNewsPage />,
-                    },
-                    {
-                        path: "news/new",
-                        element: <AdminNewsCreatePage />,
-                    },
-                    {
-                        path: "news/:newsId/edit",
-                        element: <AdminNewsEditPage />,
-                    },
-                    {
                         path: "reservations",
                         element: <AdminReservationsPage />,
                     },
                     {
                         path: "reservations/:reservationId",
                         element: <AdminReservationDetailPage />,
-                    },
-                    {
-                        path: "faqs",
-                        element: <AdminFaqPage />,
-                    },
-                    {
-                        path: "faqs/:faqId/edit",
-                        element: <AdminFaqEditPage />,
-                    },
-                    {
-                        path: "faqs/new",
-                        element: <AdminFaqCreatePage />,
                     },
                     {
                         path: "messages",
@@ -217,17 +202,39 @@ const router = createBrowserRouter([
                         path: "messages/:messageId",
                         element: <AdminMessageDetailPage />,
                     },
+
                     {
-                        path: "campings",
-                        element: <AdminCampingsPage />,
-                    },
-                    {
-                        path: "campings/new",
-                        element: <AdminCampingCreatePage />,
-                    },
-                    {
-                        path: "campings/:campingId/edit",
-                        element: <AdminCampingEditPage />,
+                        element: <ProtectedAdminOnlyRoute />,
+                        children: [
+                            {
+                                path: "news",
+                                element: <AdminNewsPage />,
+                            },
+                            {
+                                path: "news/new",
+                                element: <AdminNewsCreatePage />,
+                            },
+                            {
+                                path: "news/:newsId/edit",
+                                element: <AdminNewsEditPage />,
+                            },
+                            {
+                                path: "faqs",
+                                element: <AdminFaqPage />,
+                            },
+                            {
+                                path: "faqs/new",
+                                element: <AdminFaqCreatePage />,
+                            },
+                            {
+                                path: "faqs/:faqId/edit",
+                                element: <AdminFaqEditPage />,
+                            },
+                            {
+                                path: "campings/new",
+                                element: <AdminCampingCreatePage />,
+                            }
+                        ],
                     },
                 ],
             },
@@ -236,5 +243,5 @@ const router = createBrowserRouter([
 ]);
 
 export default function AppRouter() {
-  return <RouterProvider router={router} />;
+    return <RouterProvider router={router} />;
 }

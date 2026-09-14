@@ -13,6 +13,7 @@ import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteBut
 
 import { useAdminCampings } from "../queries/useAdminCampings";
 import { useDeleteCamping } from "../mutations/useDeleteCamping";
+import { useCurrentUser } from "../../../auth/queries/useCurrentUser";
 import { getImageUrl } from "../../../../utils/getImageUrl";
 
 import type { Camping } from "../../../campings/types/Camping";
@@ -44,6 +45,10 @@ export default function AdminCampingsPage() {
         items: campings,
         itemsPerPage: 6,
     });
+
+    const { data: auth } = useCurrentUser();
+
+    const isAdmin = auth?.user.role === "ADMIN";
 
     const [
         campingToDelete,
@@ -90,11 +95,13 @@ export default function AdminCampingsPage() {
                 description="Beheer de campings binnen Campify."
             />
 
-            <div className={styles.actions}>
-                <Button to="/admin/campings/new">
-                    Nieuwe camping toevoegen
-                </Button>
-            </div>
+            {isAdmin && (
+                <div className={styles.actions}>
+                    <Button to="/admin/campings/new">
+                        Nieuwe camping toevoegen
+                    </Button>
+                </div>
+            )}
 
             <AdminTable
                 columns={columns}
@@ -136,14 +143,14 @@ export default function AdminCampingsPage() {
                                     label="Camping bewerken"
                                 />
 
-                                <AdminDeleteButton
-                                    onClick={() =>
-                                        setCampingToDelete(
-                                            camping
-                                        )
-                                    }
-                                    label="Camping verwijderen"
-                                />
+                                {isAdmin && (
+                                    <AdminDeleteButton
+                                        onClick={() =>
+                                            setCampingToDelete(camping)
+                                        }
+                                        label="Camping verwijderen"
+                                    />
+                                )}
                             </div>
                         </td>
                     </>

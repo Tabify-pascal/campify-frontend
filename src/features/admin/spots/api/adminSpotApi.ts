@@ -40,6 +40,14 @@ function createSpotFormData(data: SpotFormData) {
     return formData;
 }
 
+export function getAdminSpots() {
+    return adminApi<Spot[]>("/admin/spots");
+}
+
+export function getAdminSpot(spotId: string) {
+    return adminApi<Spot>(`/admin/spots/${spotId}`);
+}
+
 export function createSpot(data: SpotFormData){
     return adminApi<Spot>("/admin/spots", {
         method: "POST",

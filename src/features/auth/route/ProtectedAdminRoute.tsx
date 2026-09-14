@@ -2,6 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import { useCurrentUser } from "../queries/useCurrentUser";
+import { canAccessAdmin } from "../utils/roles";
 
 export default function ProtectedAdminRoute() {
     const location = useLocation();
@@ -25,7 +26,7 @@ export default function ProtectedAdminRoute() {
         );
     }
 
-    if (data.user.role !== "ADMIN") {
+    if (!canAccessAdmin(data.user.role)) {
         return <Navigate to="/" replace />;
     }
 
