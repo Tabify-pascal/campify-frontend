@@ -34,7 +34,6 @@ export default function ContactPage() {
 
     const {
         data: campings = [],
-        isLoading: isCampingsLoading,
     } = useCampings();
 
     function onSubmit(data: ContactFormData) {
