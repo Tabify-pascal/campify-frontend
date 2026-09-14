@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
-import { useSpot } from "../../../spots/queries/useSpot";
+import { useAdminSpot } from "../queries/useAdminSpot";
 import SpotForm from "../components/SpotForm";
 import { useUpdateSpot } from "../mutations/useUpdateSpot";
 
@@ -20,7 +20,7 @@ export default function AdminSpotEditPage() {
         data: spot,
         isLoading,
         error,
-    } = useSpot(spotId);
+    } = useAdminSpot(spotId);
 
     const updateSpotMutation = useUpdateSpot();
 

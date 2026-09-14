@@ -10,7 +10,7 @@ import AdminTable from "../../components/AdminTable/AdminTable";
 import AdminEditButton from "../../components/AdminActionButton/AdminEditButton";
 import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
 
-import { useSpots } from "../../../spots/queries/useSpots";
+import { useAdminSpots } from "../queries/useAdminSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
 
 import type { Spot } from "../../../spots/types/Spot";
@@ -27,7 +27,7 @@ const columns = [
 ];
 
 export default function AdminSpotsPage() {
-    const { data: spots = [], isLoading, error } = useSpots();
+    const { data: spots = [], isLoading, error } = useAdminSpots();
     const {
         currentPage,
         totalPages,

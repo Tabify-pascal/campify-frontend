@@ -3,13 +3,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import Button from "../../../components/ui/Button";
-import FormError from "../../../components/ui/FormError";
 
 import {
     contactSchema,
     type ContactFormData,
 } from "../schemas/contactSchema";
 import { useCreateContactMessage } from "../mutations/useCreateContactMessage";
+import { useCampings } from "../../campings/queries/useCampings";
 
 import styles from "./ContactPage.module.css"
 import FormField from "../../../components/ui/Forms/FormField/Formfield";
@@ -24,12 +24,18 @@ export default function ContactPage() {
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
         defaultValues: {
+            campingId: "",
             name: "",
             email: "",
             subject: "",
             message: "",
         },
     });
+
+    const {
+        data: campings = [],
+        isLoading: isCampingsLoading,
+    } = useCampings();
 
     function onSubmit(data: ContactFormData) {
         createMessageMutation.mutate(data, {
@@ -66,27 +72,57 @@ export default function ContactPage() {
                         label="Naam"
                         htmlFor="name"
                         error={errors.name?.message}
-                    >  
-                        <input id="name" {...register("name")} />   
+                    >
+                        <input id="name" {...register("name")} />
                     </FormField>
 
-                    <div className={styles.field}>
-                        <label htmlFor="email">E-mail</label>
-                        <input id="email" { ...register("email")} />
-                        <FormError message={errors.email?.message}/>
-                    </div>
+                    <FormField
+                        label="Camping"
+                        htmlFor="campingId"
+                        error={errors.campingId?.message}
+                    >
+                        <select
+                            id="campingId"
+                            {...register("campingId")}
+                        >
+                            <option value="">
+                                Kies een camping
+                            </option>
 
-                    <div className={styles.field}>
-                        <label htmlFor="subject">Onderwerp</label>
+                            {campings.map((camping) => (
+                                <option
+                                    key={camping.id}
+                                    value={camping.id}
+                                >
+                                    {camping.name}
+                                </option>
+                            ))}
+                        </select>
+                    </FormField>
+
+                    <FormField
+                        label="E-mail"
+                        htmlFor="email"
+                        error={errors.email?.message}
+                    >
+                        <input id="email" {...register("email")} />
+                    </FormField>
+
+                    <FormField
+                        label="Onderwerp"
+                        htmlFor="subject"
+                        error={errors.subject?.message}
+                    >
                         <input id="subject" {...register("subject")} />
-                        <FormError message={errors.subject?.message}/>
-                    </div>
+                    </FormField>
 
-                    <div className={ styles.field}>
-                        <label htmlFor="message">Bericht</label>
+                    <FormField
+                        label="Bericht"
+                        htmlFor="message"
+                        error={errors.message?.message}
+                    >
                         <textarea id="message" rows={6} {...register("message")} />
-                        <FormError message={errors.message?.message} />
-                    </div>
+                    </FormField>
 
                     <Button as="button" type="submit">
                         Verstuur bericht

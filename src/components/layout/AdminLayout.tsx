@@ -1,17 +1,72 @@
-import { NavLink, Outlet, useNavigate} from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import Button from "../ui/Button";
-import { useLogout } from "../../features/auth/mutations/useLogout"; 
-import styles from "./AdminLayout.module.css";
 import Header from "./Header";
 
-export default function AdminLayout(){
-    const navigate = useNavigate();
-    const logoutMutation = useLogout();
+import { useLogout } from "../../features/auth/mutations/useLogout";
+import { useCurrentUser } from "../../features/auth/queries/useCurrentUser";
 
-    function handleLogout(){
+import type { UserRole } from "../../features/auth/types/User";
+
+import styles from "./AdminLayout.module.css";
+
+type NavigationItem = {
+    label: string;
+    to: string;
+    roles: UserRole[];
+};
+
+const navigationItems: NavigationItem[] = [
+    {
+        label: "Dashboard",
+        to: "/admin",
+        roles: ["ADMIN", "MANAGER"],
+    },
+    {
+        label: "Campings",
+        to: "/admin/campings",
+        roles: ["ADMIN", "MANAGER"],
+    },
+    {
+        label: "Campingplaatsen",
+        to: "/admin/spots",
+        roles: ["ADMIN", "MANAGER"],
+    },
+    {
+        label: "Reserveringen",
+        to: "/admin/reservations",
+        roles: ["ADMIN", "MANAGER"],
+    },
+    {
+        label: "Berichten",
+        to: "/admin/messages",
+        roles: ["ADMIN", "MANAGER"],
+    },
+    {
+        label: "Nieuws",
+        to: "/admin/news",
+        roles: ["ADMIN"],
+    },
+    {
+        label: "Veelgestelde vragen",
+        to: "/admin/faqs",
+        roles: ["ADMIN"],
+    },
+] as const;
+
+
+
+export default function AdminLayout() {
+    const navigate = useNavigate();
+
+    const logoutMutation = useLogout();
+    const { data: auth } = useCurrentUser();
+
+    const user = auth?.user;
+
+    function handleLogout() {
         logoutMutation.mutate(undefined, {
-            onSuccess:()=>{
+            onSuccess: () => {
                 navigate("/login", {
                     replace: true,
                 });
@@ -19,7 +74,7 @@ export default function AdminLayout(){
         });
     }
 
-      function getNavLinkClass({
+    function getNavLinkClass({
         isActive,
     }: {
         isActive: boolean;
@@ -32,95 +87,61 @@ export default function AdminLayout(){
             .join(" ");
     }
 
-     return (
+    return (
         <>
-        <Header />
-        <div className={styles.layout}>
-            <aside className={styles.sidebar}>
-                <div className={styles.brand}>
-                    <h1 className={styles.brandTitle}>
-                        Campify
-                    </h1>
+            <Header />
 
-                    <p className={styles.brandText}>
-                        Beheeromgeving
-                    </p>
-                </div>
+            <div className={styles.layout}>
+                <aside className={styles.sidebar}>
+                    <div className={styles.brand}>
+                        <h1 className={styles.brandTitle}>
+                            Campify
+                        </h1>
 
-                <nav className={styles.navigation}>
-                    <NavLink
-                        to="/admin"
-                        end
-                        className={getNavLinkClass}
-                    >
-                        Dashboard
-                    </NavLink>
+                        <p className={styles.brandText}>
+                            Beheeromgeving
+                        </p>
+                    </div>
 
-                    <NavLink
-                        to="/admin/spots"
-                        className={getNavLinkClass}
-                    >
-                        Campingplaatsen
-                    </NavLink>
+                    <nav className={styles.navigation}>
+                        {user &&
+                            navigationItems
+                                .filter((item) =>
+                                    item.roles.includes(user.role)
+                                )
+                                .map((item) => (
+                                    <NavLink
+                                        key={item.to}
+                                        to={item.to}
+                                        end={item.to === "/admin"}
+                                        className={getNavLinkClass}
+                                    >
+                                        {item.label}
+                                    </NavLink>
+                                ))}
+                    </nav>
 
-                    <NavLink
-                        to="/admin/news"
-                        className={getNavLinkClass}
-                    >
-                        Nieuws
-                    </NavLink>
+                    <div className={styles.footer}>
+                        <Button
+                            as="button"
+                            type="button"
+                            className={styles.logoutButton}
+                            onClick={handleLogout}
+                            disabled={logoutMutation.isPending}
+                        >
+                            {logoutMutation.isPending
+                                ? "Uitloggen..."
+                                : "Uitloggen"}
+                        </Button>
+                    </div>
+                </aside>
 
-                    <NavLink
-                        to="/admin/reservations"
-                        className={getNavLinkClass}
-                    >
-                        Reserveringen
-                    </NavLink>
-
-                    <NavLink
-                        to="/admin/messages"
-                        className={getNavLinkClass}
-                    >
-                        Berichten
-                    </NavLink>
-
-                    <NavLink
-                        to="/admin/faqs"
-                        className={getNavLinkClass}
-                    >
-                        Veelgestelde vragen
-                    </NavLink>
-
-                    <NavLink
-                        to="/admin/campings"
-                        className={getNavLinkClass}
-                    >
-                        Campings
-                    </NavLink>
-                </nav>
-
-                <div className={styles.footer}>
-                    <Button
-                        as="button"
-                        type="button"
-                        className={styles.logoutButton}
-                        onClick={handleLogout}
-                        disabled={logoutMutation.isPending}
-                    >
-                        {logoutMutation.isPending
-                            ? "Uitloggen..."
-                            : "Uitloggen"}
-                    </Button>
-                </div>
-            </aside>
-
-            <main className={styles.content}>
-                <div className={styles.contentInner}>
-                    <Outlet />
-                </div>
-            </main>
-        </div>
+                <main className={styles.content}>
+                    <div className={styles.contentInner}>
+                        <Outlet />
+                    </div>
+                </main>
+            </div>
         </>
-        
     );
 }
