@@ -10,7 +10,7 @@ export default function ReservationStartPage(){
                 <h1>Kies eerst je periode</h1>
 
                 <p>
-                    Selecteer je aankomst, verttrek en aantal personen. Daarna tonen we de campingplaatsen die passen bij jouw verblijf.
+                    Selecteer je aankomst, vertrek en aantal personen. Daarna tonen we de campingplaatsen die passen bij jouw verblijf.
                 </p>
             </div>
             <BookingSearch />
