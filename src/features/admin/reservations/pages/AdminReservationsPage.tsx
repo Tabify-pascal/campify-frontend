@@ -24,7 +24,8 @@ const columns = [
     {key: "arrivalDate", label: "Aankomst"},
     {key: "guests", label: "Gasten"},
     {key: "status", label: "Status"},
-    {key: "actions", label: "Acties"}
+    { key: "source", label: "Bron" },
+    {key: "actions", label: "Acties"},
 ];
 
 export default function AdminReservationsPage() {
@@ -97,6 +98,19 @@ export default function AdminReservationsPage() {
                         <td>{formatDate(reservation.arrivalDate)}</td>
                         <td>{reservation.guests}</td>
                         <td><AdminStatusBadge status={reservation.status}/></td>
+                        <td>
+                            <span
+                                className={
+                                    reservation.source === "BLOOKERS"
+                                        ? styles.blookersBadge
+                                        : styles.campifyBadge
+                                }
+                            >
+                                {reservation.source === "BLOOKERS"
+                                    ? "Blookers"
+                                    : "Campify"}
+                            </span>
+                        </td>
                         <td>
                             <div className={styles.rowActions}>
                                 <AdminViewButton
