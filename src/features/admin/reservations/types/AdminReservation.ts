@@ -3,6 +3,10 @@ export type ReservationStatus =
     | "CONFIRMED"
     | "CANCELLED";
 
+export type ReservationSource =
+    | "CAMPIFY"
+    | "BLOOKERS";
+
 export type AdminReservation = {
     id: string;
     firstName: string;
@@ -19,5 +23,7 @@ export type AdminReservation = {
         id: string;
         name: string;
     };
+    source: ReservationSource;
+    externalReservationId: string | null;
 };
 

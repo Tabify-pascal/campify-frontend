@@ -4,13 +4,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
-import { formatDate } from "../../../../utils/formatDate" 
+import { formatDate } from "../../../../utils/formatDate"
 
 import { useAdminReservation } from "../queries/useAdminReservation";
 import { useUpdateReservationStatus } from "../mutations/useUpdateReservationStatus";
 import { useDeleteReservation } from "../mutations/useDeleteReservation";
 
-import type { ReservationStatusFormData } from "../schemas/reservationStatusSchema"; 
+import type { ReservationStatusFormData } from "../schemas/reservationStatusSchema";
 import styles from "./AdminReservationDetailPage.module.css";
 import AdminDangerSection from "../../components/AdminDangerSection/AdminDangerSection";
 import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
@@ -33,7 +33,7 @@ export default function AdminReservationDetailPage() {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
     if (isLoading) {
-        return <LoadingState/>;
+        return <LoadingState />;
     }
 
     if (error || !reservation || !reservationId) {
@@ -59,7 +59,7 @@ export default function AdminReservationDetailPage() {
     }
 
     function handleDelete() {
-        deleteReservationMutation.mutate(currentReservationId , {
+        deleteReservationMutation.mutate(currentReservationId, {
             onSuccess: () => {
                 navigate("/admin/reservations", {
                     replace: true,
@@ -97,12 +97,29 @@ export default function AdminReservationDetailPage() {
                     items={[
                         {
                             label: "Naam",
-                            value: `${reservation.firstName} ${reservation.lastName}`
-                        }, 
+                            value: `${reservation.firstName} ${reservation.lastName}`,
+                        },
                         {
                             label: "Kampeerplaats",
-                            value: reservation.spot.name
+                            value: reservation.spot.name,
                         },
+                        {
+                            label: "Bron",
+                            value:
+                                reservation.source === "BLOOKERS"
+                                    ? "Blookers"
+                                    : "Campify",
+                        },
+
+                        ...(reservation.externalReservationId
+                            ? [
+                                {
+                                    label: "Extern reserveringsnummer",
+                                    value: reservation.externalReservationId,
+                                },
+                            ]
+                            : []),
+
                         {
                             label: "E-mail",
                             value: (
@@ -113,7 +130,7 @@ export default function AdminReservationDetailPage() {
                         },
                         {
                             label: "Telefoonnummer",
-                            value: reservation.phone
+                            value: reservation.phone,
                         },
                         {
                             label: "Aankomst",
@@ -126,14 +143,16 @@ export default function AdminReservationDetailPage() {
                         {
                             label: "Aantal gasten",
                             value: reservation.guests,
-                        }, 
+                        },
                         {
                             label: "Status",
                             value: reservation.status,
                         },
                         {
                             label: "Opmerkingen",
-                            value: `${reservation.notes || "Geen opmerkingen"}`,
+                            value:
+                                reservation.notes ||
+                                "Geen opmerkingen",
                             preserveWhitespace: true,
                             fullWidth: true,
                         },
