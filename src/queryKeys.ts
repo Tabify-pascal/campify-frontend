@@ -90,4 +90,9 @@ export const queryKeys = {
     account: {
         reservations: ["account", "reservations"] as const,
     },
+
+    reservations: {
+        checkout: (reservationId: string) =>
+            ["reservations", reservationId, "checkout"] as const,
+    },
 } as const;

@@ -6,7 +6,8 @@ type Status =
     | "CLOSED"
     | "PENDING"
     | "CONFIRMED"
-    | "CANCELLED";
+    | "CANCELLED"
+    |  "COMPLETED"
     
 type Props = { status: Status;};
 
@@ -17,6 +18,7 @@ const statusLabels: Record<Status, string> = {
     PENDING: "In behandeling",
     CONFIRMED: "Bevestigd",
     CANCELLED: "Geannuleerd",
+    COMPLETED: "Afgerond"
 };
 
 export default function AdminStatusBadge({status}: Props) {

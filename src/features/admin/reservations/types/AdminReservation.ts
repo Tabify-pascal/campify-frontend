@@ -1,29 +1,10 @@
-export type ReservationStatus = 
-    | "PENDING"
-    | "CONFIRMED"
-    | "CANCELLED";
+import type { Reservation } from "../../../reservations/types/Reservation";
 
-export type ReservationSource =
-    | "CAMPIFY"
-    | "BLOOKERS";
-
-export type AdminReservation = {
-    id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    guests: number;
-    arrivalDate: string;
-    departureDate: string;
-    notes?: string | null;
-    status: ReservationStatus;
-    createdAt: string;
+export type AdminReservation = Reservation & {
+    source: "CAMPIFY" | "BLOOKERS";
+    externalReservationId: string | null;
     spot: {
         id: string;
         name: string;
     };
-    source: ReservationSource;
-    externalReservationId: string | null;
 };
-

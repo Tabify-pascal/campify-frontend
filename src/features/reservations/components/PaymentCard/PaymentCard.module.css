@@ -1,0 +1,330 @@
+.amount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+
+    background: #f4f6f2;
+    border-radius: 0.9rem;
+}
+
+.amount span {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.amount strong {
+    font-size: 1.4rem;
+}
+
+.intro {
+    margin: 0 0 1rem;
+    color: var(--color-muted);
+}
+
+/* Payment method selection */
+
+.methods {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    padding: 1rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: 0.9rem;
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    transition:
+        border-color 150ms ease,
+        background-color 150ms ease,
+        transform 150ms ease;
+}
+
+.method:hover {
+    transform: translateY(-1px);
+
+    border-color: var(--color-primary);
+    background: #f8faf6;
+}
+
+.paymentLogo {
+    display: block;
+    flex-shrink: 0;
+
+    width: 56px;
+    height: 36px;
+
+    object-fit: contain;
+}
+
+.method > span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.method strong {
+    font-size: 1rem;
+}
+
+.method small {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+
+/* Selected payment screen */
+
+.backButton {
+    margin: 0 0 1.25rem;
+    padding: 0;
+
+    border: 0;
+    background: none;
+    color: var(--color-muted);
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.backButton:hover {
+    color: var(--color-text);
+}
+
+.methodHeading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.methodLogo {
+    display: block;
+    flex-shrink: 0;
+
+    width: 64px;
+    height: 42px;
+
+    object-fit: contain;
+}
+
+.methodHeading h3 {
+    margin: 0 0 0.2rem;
+
+    font-size: 1.15rem;
+}
+
+.methodHeading p {
+    margin: 0;
+
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+/* iDEAL */
+
+.banks {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.bank {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 0.9rem 1rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: 0.8rem;
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 150ms ease,
+        background-color 150ms ease;
+}
+
+.bank:hover {
+    border-color: var(--color-primary);
+    background: #f8faf6;
+}
+
+.bank.selected {
+    border-color: var(--color-primary);
+    background: #f1f8e9;
+}
+
+.bank span:last-child {
+    color: var(--color-muted);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+/* Credit card */
+
+.cardForm {
+    display: grid;
+    gap: 1rem;
+}
+
+.cardForm label {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.cardForm label > span {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.cardForm input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.85rem 0.9rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    font: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 150ms ease,
+        box-shadow 150ms ease;
+}
+
+.cardForm input:focus {
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 0 3px rgba(185, 239, 120, 0.25);
+}
+
+.cardForm input::placeholder {
+    color: #9ca3af;
+}
+
+.cardRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Actions */
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 1.5rem;
+}
+
+.error {
+    margin: 1rem 0 0;
+    padding: 0.75rem 1rem;
+
+    border-radius: 0.75rem;
+
+    background: #fef2f2;
+    color: #b42318;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Successful payment */
+
+.success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1.5rem 0 0;
+
+    text-align: center;
+}
+
+.successIcon {
+    display: grid;
+    place-items: center;
+
+    width: 68px;
+    height: 68px;
+
+    margin-bottom: 1rem;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+    color: #166534;
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.success h3 {
+    margin: 0;
+
+    font-size: 1.3rem;
+}
+
+.success p {
+    max-width: 360px;
+
+    margin: 0.5rem 0 1.5rem;
+
+    color: var(--color-muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .amount {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .methodHeading {
+        align-items: flex-start;
+    }
+
+    .cardRow {
+        grid-template-columns: 1fr;
+    }
+
+    .actions > * {
+        width: 100%;
+    }
+}

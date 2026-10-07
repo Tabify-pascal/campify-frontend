@@ -6,9 +6,11 @@ import { useAccountReservations } from "../queries/useAccountReservations";
 import { getImageUrl } from "../../../utils/getImageUrl";
 import { formatDate } from "../../../utils/formatDate";
 
+import PaymentCard from "../../reservations/components/PaymentCard/PaymentCard";
+
 import styles from "./AccountReservationsPage.module.css";
 
-export default function AccountReservationsPage(){
+export default function AccountReservationsPage() {
     const {
         data: reservations = [],
         isLoading,
@@ -42,6 +44,7 @@ export default function AccountReservationsPage(){
             {reservations.length === 0 ? (
                 <div className={styles.emptyState}>
                     <h2>Nog geen reserveringen</h2>
+
                     <p>
                         Je hebt nog geen reserveringen gemaakt met dit account.
                     </p>
@@ -60,33 +63,40 @@ export default function AccountReservationsPage(){
                                 alt={reservation.spot.name}
                                 className={styles.image}
                             />
+
                             <div className={styles.content}>
-                                <div
-                                    className={styles.header}
-                                >
+                                <div className={styles.header}>
                                     <h2>
                                         {reservation.spot.name}
                                     </h2>
 
                                     <span
-                                        className={`${styles.status} ${ styles[reservation.status.toLowerCase()]}`}
-                                        >
-                                            {reservation.status}
-                                        </span>
+                                        className={`${styles.status} ${
+                                            styles[
+                                                reservation.status.toLowerCase()
+                                            ]
+                                        }`}
+                                    >
+                                        {reservation.status}
+                                    </span>
                                 </div>
 
                                 <dl className={styles.details}>
                                     <div>
                                         <dt>Aankomst</dt>
                                         <dd>
-                                            {formatDate(reservation.arrivalDate)}
+                                            {formatDate(
+                                                reservation.arrivalDate
+                                            )}
                                         </dd>
                                     </div>
 
                                     <div>
                                         <dt>Vertrek</dt>
                                         <dd>
-                                            {formatDate(reservation.departureDate)}
+                                            {formatDate(
+                                                reservation.departureDate
+                                            )}
                                         </dd>
                                     </div>
 
@@ -101,11 +111,17 @@ export default function AccountReservationsPage(){
                                         <div className={styles.notes}>
                                             <dt>Opmerkingen</dt>
                                             <dd>
-                                                { reservation.notes }
+                                                {reservation.notes}
                                             </dd>
                                         </div>
                                     )}
                                 </dl>
+
+                                <PaymentCard
+                                    reservationId={reservation.id}
+                                    paymentStatus={reservation.paymentStatus}
+                                    totalPrice={reservation.totalPrice}
+                                />
                             </div>
                         </article>
                     ))}
