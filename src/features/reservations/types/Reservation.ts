@@ -1,10 +1,5 @@
 import type { PaymentStatus } from "./PaymentStatus";
-
-export type ReservationStatus =
-    | "PENDING"
-    | "CONFIRMED"
-    | "CANCELLED"
-    | "COMPLETED";
+import type { ReservationStatus } from "./ReservationStatus";
 
 export type Reservation = {
     id: string;
