@@ -1,5 +1,6 @@
 import { adminApi } from "../../../../api/adminClient";
-import type { AdminReservation, ReservationStatus } from "../types/AdminReservation";
+import type { AdminReservation } from "../types/AdminReservation";
+import type { ReservationStatus } from "../../../reservations/types/ReservationStatus";
 
 export function getAdminReservations(){
     return adminApi<AdminReservation[]>(`/admin/reservations`);

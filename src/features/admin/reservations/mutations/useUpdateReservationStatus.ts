@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAdminReservationStatus } from "../api/adminReservationApi";
-import type { ReservationStatus } from "../types/AdminReservation";
+import type { ReservationStatus } from "../../../reservations/types/ReservationStatus";
 import { queryKeys } from "../../../../queryKeys";
 
 type UpdateReservationStatusInput = {
