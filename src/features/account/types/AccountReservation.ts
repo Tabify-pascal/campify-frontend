@@ -4,6 +4,10 @@ export type AccountReservationStatus =
     | "CANCELLED"
     | "COMPLETED"
 
+export type PaymentStatus =
+    | "UNPAID"
+    | "PAID";
+
 export type AccountReservation = {
     id: string;
     firstName: string;
@@ -13,9 +17,11 @@ export type AccountReservation = {
     departureDate: string;
     notes: string | null;
     status: AccountReservationStatus;
+    totalPrice: number;
     spot: {
         id: string;
         name: string;
         imageUrl: string;
     };
+    paymentStatus: PaymentStatus;
 }

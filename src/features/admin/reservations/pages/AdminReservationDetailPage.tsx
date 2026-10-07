@@ -149,6 +149,20 @@ export default function AdminReservationDetailPage() {
                             value: reservation.status,
                         },
                         {
+                            label: "Betaalstatus",
+                            value:
+                                reservation.paymentStatus === "PAID"
+                                    ? "Betaald"
+                                    : "Niet betaald",
+                        },
+                        {
+                            label: "Totaalbedrag",
+                            value: new Intl.NumberFormat("nl-NL", {
+                                style: "currency",
+                                currency: "EUR",
+                            }).format(reservation.totalPrice),
+                        },
+                        {
                             label: "Opmerkingen",
                             value:
                                 reservation.notes ||
@@ -173,6 +187,10 @@ export default function AdminReservationDetailPage() {
                             {
                                 value: "CANCELLED",
                                 label: "Geannuleerd"
+                            },
+                            {
+                                value: "COMPLETED",
+                                label: "Afgerond",
                             },
                         ]}
                         isSubmitting={updateStatusMutation.isPending}

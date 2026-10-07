@@ -1,0 +1,108 @@
+.page {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr);
+    gap: 2rem;
+
+    align-items: start;
+}
+
+.summaryCard,
+.paymentCard {
+    padding: 2rem;
+
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+}
+
+.heading {
+    margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+    display: block;
+
+    margin-bottom: 0.35rem;
+
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.heading h2 {
+    margin: 0;
+
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.details > div {
+    padding: 1rem;
+
+    background: #f4f6f2;
+    border-radius: 1rem;
+}
+
+.details span {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.details strong {
+    font-size: 1rem;
+}
+
+.paymentCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.priceRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding-bottom: 1rem;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.priceRow span {
+    color: var(--color-muted);
+}
+
+.total {
+    font-size: 1.4rem;
+}
+
+@media (max-width: 900px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .summaryCard,
+    .paymentCard {
+        padding: 1.25rem;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+    }
+}

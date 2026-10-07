@@ -5,6 +5,7 @@ export const reservationStatusSchema = z.object({
         "PENDING",
         "CONFIRMED",
         "CANCELLED",
+        "COMPLETED",
     ]),
 });
 

@@ -1,22 +1,32 @@
 import { Link } from "react-router-dom";
+
 import Button from "../../../components/ui/Button";
 
 import styles from "./ConfirmationPage.module.css";
 
-export default function ConfirmationPage(){
+export default function ConfirmationPage() {
     return (
         <section className={styles.card}>
-            <span className={styles.badge}>Reservering ontvangen</span>
+            <span className={styles.badge}>
+                Reservering bevestigd
+            </span>
 
-            <h1>Bedankt voor de reservering</h1>
+            <h1>Bedankt voor je reservering</h1>
 
             <p>
-                We hebben je aanvraag ontvangen. Je krijgt binnenkort een bevestiging per e-mail.
+                Je reservering is ontvangen en de betaling is afgerond.
+                Je ontvangt de gegevens ook per e-mail.
             </p>
 
             <div className={styles.actions}>
-                <Button to="/plaatsen">Bekijk meer plekken</Button>
-                <Link to="/" className={styles.link}>
+                <Button to="/account/reservations">
+                    Mijn reserveringen
+                </Button>
+
+                <Link
+                    to="/"
+                    className={styles.link}
+                >
                     Terug naar home
                 </Link>
             </div>

@@ -23,6 +23,7 @@ import FaqPage from "../../features/faq/pages/FaqPage";
 import NewsPage from "../../features/news/pages/NewsPage";
 import NewsDetailPage from "../../features/news/pages/NewsDetailPage";
 
+
 // Auth
 import LoginPage from "../../features/auth/pages/LoginPage";
 import RegisterPage from "../../features/auth/pages/RegisterPage";
@@ -63,6 +64,7 @@ import AdminCampingEditPage from "../../features/admin/campings/pages/AdminCampi
 import CampingDetailPage from "../../features/campings/pages/CampingDetailPage";
 import CampingsPage from "../../features/campings/pages/CampingsPage";
 import ProtectedAdminOnlyRoute from "../../features/auth/route/ProtectedAdminOnlyRoute";
+import CheckoutPage from "../../features/reservations/pages/CheckoutPage";
 
 const router = createBrowserRouter([
     {
@@ -115,6 +117,11 @@ const router = createBrowserRouter([
                 path: "campings/:campingId",
                 element: <CampingDetailPage />,
             },
+            {
+                path: "checkout/:reservationId",
+                element: <CheckoutPage />,
+            },
+            
 
             // Unified auth
             {

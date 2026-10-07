@@ -102,8 +102,10 @@ export default function ReservationPage() {
                 ...data,
             },
             {
-                onSuccess: () => {
-                    navigate("/bevestiging");
+                onSuccess: (response) => {
+                    navigate(
+                        `/checkout/${response.reservation.id}`
+                    );
                 },
             }
         );
