@@ -38,3 +38,25 @@ body,
   min-height: 100vh;
 }
 
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body:has([data-print-reservation]) > #root > *:not(:has([data-print-reservation])) {
+        display: none !important;
+    }
+
+    body:has([data-print-reservation]) header:not([data-print-reservation] header) {
+        display: none !important;
+    }
+
+    body:has([data-print-reservation]),
+    body:has([data-print-reservation]) #root {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+    }
+}

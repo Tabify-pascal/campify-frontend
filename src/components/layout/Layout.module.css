@@ -11,3 +11,24 @@
   margin: 0 auto;
   padding: 16px 24px 48px;
 }
+
+@media print {
+    .app {
+        display: block;
+        min-height: 0;
+        height: auto;
+
+        margin: 0;
+        padding: 0;
+
+        background: white;
+    }
+
+    .main {
+        width: 100%;
+        max-width: none;
+
+        margin: 0;
+        padding: 0;
+    }
+}
