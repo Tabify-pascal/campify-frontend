@@ -129,3 +129,30 @@
         padding: 1.25rem;
     }
 }
+
+@media print {
+    .layout {
+        display: block !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .content,
+    .contentInner {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+    }
+}

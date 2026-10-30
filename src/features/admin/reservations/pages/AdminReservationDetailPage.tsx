@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
+import Button from "../../../../components/ui/Button";
 import { formatDate } from "../../../../utils/formatDate"
 
 import { useAdminReservation } from "../queries/useAdminReservation";
@@ -69,13 +70,23 @@ export default function AdminReservationDetailPage() {
     }
 
     return (
-        <div className={styles.page}>
-            <Link
-                to="/admin/reservations"
-                className={styles.backLink}
-            >
-                ← Terug naar reserveringen
-            </Link>
+        <div className={styles.page} data-print-reservation>
+            <div className={styles.pageActions}>
+                <Link
+                    to="/admin/reservations"
+                    className={styles.backLink}
+                >
+                    ← Terug naar reserveringen
+                </Link>
+
+                <Button
+                    as="button"
+                    type="button"
+                    onClick={() => window.print()}
+                >
+                    Reservering printen
+                </Button>
+            </div>
 
             <PageHeader
                 title={`Reservering van ${reservation.firstName} ${reservation.lastName}`}
@@ -95,6 +106,10 @@ export default function AdminReservationDetailPage() {
                 <AdminDetailSection
                     title="Reserveringsgegevens"
                     items={[
+                        {
+                            label: "Reserveringsnummer",
+                            value: reservation.id,
+                        },
                         {
                             label: "Naam",
                             value: `${reservation.firstName} ${reservation.lastName}`,
