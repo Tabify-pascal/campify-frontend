@@ -25,6 +25,7 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const loginMutation = useLogin();
+    const registrationSuccess = location.state?.registrationSuccess === true;
 
     const {
         register,
