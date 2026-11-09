@@ -4,8 +4,8 @@ import styles from "./MessageCard.module.css";
 type MessageCardProps = {
     title: string;
     message: string;
-    linkTo: string;
-    linkText: string;
+    linkTo?: string;
+    linkText?: string;
 };
 
 export default function MessageCard({
@@ -19,9 +19,10 @@ export default function MessageCard({
             <h1>{title}</h1>
             <p>{message}</p>
 
-            <Link to={linkTo} className={styles.link}>
+            {linkTo && linkText && (<Link to={linkTo} className={styles.link}>
                 {linkText}
             </Link>
+            )}
         </section>
     );
 }

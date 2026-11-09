@@ -37,8 +37,11 @@ export default function RegisterPage() {
     function onSubmit(data: RegisterFormData) {
         registerMutation.mutate(data, {
             onSuccess: () => {
-                navigate("/account/reservations", {
+                navigate("/login", {
                     replace: true,
+                    state: {
+                        registrationSuccess: true,
+                    },
                 });
             },
         });
