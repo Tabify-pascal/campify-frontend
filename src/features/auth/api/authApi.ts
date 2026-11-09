@@ -27,3 +27,28 @@ export function logout() {
 export function getCurrentUser() {
     return api<AuthResponse>("/auth/me");
 }
+
+export type VerifyEmailResponse = {
+    message: string;
+};
+
+export function verifyEmail(token: string) {
+    return api<VerifyEmailResponse>("/auth/verify-email", {
+        method: "POST",
+        body: JSON.stringify({ token }),
+    });
+}
+
+export type ResendVerificationResponse = {
+    message: string;
+};
+
+export function resendVerification(email: string) {
+    return api<ResendVerificationResponse>(
+        "/auth/resend-verification",
+        {
+            method: "POST",
+            body: JSON.stringify({ email }),
+        },
+    );
+}

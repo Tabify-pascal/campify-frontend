@@ -29,6 +29,7 @@ import LoginPage from "../../features/auth/pages/LoginPage";
 import RegisterPage from "../../features/auth/pages/RegisterPage";
 import ProtectedAccountRoute from "../../features/auth/route/ProtectedAccountRoute";
 import ProtectedAdminRoute from "../../features/auth/route/ProtectedAdminRoute";
+import VerifyEmailPage from "../../features/auth/pages/verifyEmailPage";
 
 // Account
 import AccountReservationsPage from "../../features/account/pages/AccountReservationsPage";
@@ -121,9 +122,9 @@ const router = createBrowserRouter([
                 path: "checkout/:reservationId",
                 element: <CheckoutPage />,
             },
-            
 
-            // Unified auth
+
+            // Auth
             {
                 path: "login",
                 element: <LoginPage />,
@@ -131,6 +132,10 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <RegisterPage />,
+            },
+            {
+                path: "verify-email",
+                element: <VerifyEmailPage />,
             },
 
             // Customer account
