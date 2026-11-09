@@ -81,6 +81,13 @@ export default function LoginPage() {
                     />
                 )}
 
+                {registrationSuccess && (
+                    <MessageCard
+                        title="Account aangemaakt"
+                        message="Je account is aangemaakt. Controleer je e-mail om je account te activeren. Daarna kun je inloggen."
+                    />
+                )}
+
                 <form
                     className={styles.form}
                     onSubmit={handleSubmit(onSubmit)}
