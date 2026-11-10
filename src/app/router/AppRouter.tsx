@@ -17,11 +17,14 @@ import SpotDetailPage from "../../features/spots/pages/SpotDetailPage";
 import ReservationPage from "../../features/reservations/pages/ReservationPage";
 import ConfirmationPage from "../../features/confirmations/pages/ConfirmationPage";
 
-import ContactPage from "../../features/contact/pages/ContactPage";
-import FaqPage from "../../features/faq/pages/FaqPage";
 
 import NewsPage from "../../features/news/pages/NewsPage";
 import NewsDetailPage from "../../features/news/pages/NewsDetailPage";
+
+// Footer
+import ContactPage from "../../features/contact/pages/ContactPage";
+import FaqPage from "../../features/faq/pages/FaqPage";
+import PrivacyPage from "../../features/privacy/pages/PrivacyPage";
 
 
 // Auth
@@ -101,6 +104,10 @@ const router = createBrowserRouter([
             {
                 path: "faq",
                 element: <FaqPage />,
+            },
+            {
+                path: "privacy",
+                element: <PrivacyPage />,
             },
             {
                 path: "nieuws",
