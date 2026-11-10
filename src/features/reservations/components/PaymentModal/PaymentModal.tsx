@@ -134,6 +134,7 @@ export default function PaymentModal({
             onClose={handleClose}
             canClose={!isProcessing}
         >
+            <span className={styles.danger}>Simulatie. Geen echte gegevens invullen</span>
             {step !== "SUCCESS" && (
                 <div className={styles.amount}>
                     <span>Te betalen</span>

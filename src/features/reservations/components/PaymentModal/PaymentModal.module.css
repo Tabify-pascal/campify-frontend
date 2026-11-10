@@ -21,6 +21,10 @@
     letter-spacing: -0.02em;
 }
 
+.danger {
+    color: red;
+}
+
 .intro {
     margin: 0 0 1rem;
 
