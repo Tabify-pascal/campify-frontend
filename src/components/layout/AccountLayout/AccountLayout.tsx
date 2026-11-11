@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 
-import Button from "../ui/Button";
-import { useLogout } from "../../features/auth/mutations/useLogout";
+import Button from "../../ui/Button/Button";
+import { useLogout } from "../../../features/auth/mutations/useLogout";
 
 import styles from "./AccountLayout.module.css";
 

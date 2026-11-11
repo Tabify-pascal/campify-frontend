@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import FormError from "../../FormError";
+import FormError from "../FormError/FormError";
 
 import styles from "./FormField.module.css";
 

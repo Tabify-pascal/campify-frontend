@@ -1,12 +1,12 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
-import Button from "../ui/Button";
-import Header from "./Header";
+import Button from "../../ui/Button/Button";
+import Header from "../Header/Header";
 
-import { useLogout } from "../../features/auth/mutations/useLogout";
-import { useCurrentUser } from "../../features/auth/queries/useCurrentUser";
+import { useLogout } from "../../../features/auth/mutations/useLogout";
+import { useCurrentUser } from "../../../features/auth/queries/useCurrentUser";
 
-import type { UserRole } from "../../features/auth/types/User";
+import type { UserRole } from "../../../features/auth/types/User";
 
 import styles from "./AdminLayout.module.css";
 

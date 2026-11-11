@@ -7,7 +7,7 @@ import ResendVerificationForm from "../components/ResendVerificationForm";
 
 import { useVerifyEmail } from "../mutations/useVerifyEmail";
 
-import styles from "./verifyEmailPage.module.css";
+import styles from "./VerifyEmailPage.module.css";
 
 export default function VerifyEmailPage() {
     const [searchParams] = useSearchParams();

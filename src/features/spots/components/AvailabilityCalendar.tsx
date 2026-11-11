@@ -1,4 +1,4 @@
-import styles from "./AvailabilityCalender.module.css";
+import styles from "./AvailabilityCalendar.module.css";
 import { formatDate, getMonthName, getTodayString, isBeforeToday} from "../../../utils/dateUtils";
 import { useMemo } from "react";
 
@@ -17,7 +17,7 @@ type Props = {
 const weekdays = ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"];
 
 
-export default function AvailabilityCalender({
+export default function AvailabilityCalendar({
     year, month, unavailableDates, onPreviousMonth, onNextMonth, isPreviousMonthDisabled, arrivalDate, departureDate, onSelectDate
 }: Props) {
     const firstDayOfMonth = new Date(year, month - 1, 1);

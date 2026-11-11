@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { createContactMessage } from "../api/contact";
+import { createContactMessage } from "../api/contactApi";
 import { queryKeys } from "../../../queryKeys";
 import { queryClient } from "../../../app/queryClient";
 

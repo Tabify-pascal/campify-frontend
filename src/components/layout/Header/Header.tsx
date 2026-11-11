@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Navigation from "./Navigation";
+import Navigation from "../Navigation/Navigation";
 import styles from "./Header.module.css";
-import Button from "../ui/Button";
-import AccountButton from "../ui/AccountButton/AccountButton";
+import Button from "../../ui/Button/Button";
+import AccountButton from "../../ui/AccountButton/AccountButton";
 
 export default function Header() {
     return (

@@ -4,7 +4,7 @@ import { useSpot } from "../queries/useSpot";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 import { useSpotAvailability } from "../queries/useSpotAvailability";
 
-import AvailabilityCalender from "../components/AvailabilityCalender";
+import AvailabilityCalendar from "../components/AvailabilityCalendar";
 import { getMonthRange, rangeContainsUnavailableDate } from "../../../utils/dateUtils";
 import { getImageUrl } from "../../../utils/getImageUrl";
 
@@ -202,7 +202,7 @@ export default function SpotDetailPage() {
             </div>
             <div className={styles.calender}>
                 {availability && (
-                    <AvailabilityCalender
+                    <AvailabilityCalendar
                         year={currentMonth.year}
                         month={currentMonth.month}
                         unavailableDates={availability?.unavailableDates ?? []}

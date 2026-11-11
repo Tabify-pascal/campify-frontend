@@ -10,7 +10,7 @@ import { useContactMessage } from "../queries/useContactMessage";
 import { useUpdateMessageStatus } from "../mutations/useUpdateMessageStatus";
 import { useDeleteMessage } from "../mutations/useDeleteMessage";
 
-import styles from "./adminMessageDetailPage.module.css";
+import styles from "./AdminMessageDetailPage.module.css";
 import type { ContactMessageStatusFormData } from "../schemas/contactMessageStatusSchema";
 import AdminDetailSection from "../../components/AdminDetailSection/AdminDetailSection";
 import AdminStatusForm from "../../components/AdminStatusForm/AdminStatusForm";
