@@ -7,7 +7,7 @@ import Button from "../../../components/ui/Button/Button";
 import FormField from "../../../components/ui/Forms/FormField/FormField";
 import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
 
-import ReservationStartPage from "../components/ReservationStartPage/ReservationStartPage";
+import ReservationStart from "../components/ReservationStart/ReservationStart";
 
 import { useCurrentUser } from "../../auth/queries/useCurrentUser";
 import { useSpot } from "../../spots/queries/useSpot";
@@ -112,7 +112,7 @@ export default function ReservationPage() {
     }
 
     if (!spot) {
-        return <ReservationStartPage />;
+        return <ReservationStart />;
     }
 
     return (

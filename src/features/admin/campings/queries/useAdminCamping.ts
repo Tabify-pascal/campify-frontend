@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getAdminCamping } from "../api/adminCampingApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 export function useAdminCamping(
     campingId: string | undefined

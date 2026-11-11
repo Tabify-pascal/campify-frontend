@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 import { getContactMessages } from "../api/adminContactApi";
 
 export function useContactMessages(){

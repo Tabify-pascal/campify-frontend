@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSpots, type GetSpotsParams } from "../api/spotsApi";
 
-import { queryKeys } from "../../../queryKeys";
+import { queryKeys } from "../../../app/queryKeys";
 
 export function useSpots(params?: GetSpotsParams) {
     return useQuery({

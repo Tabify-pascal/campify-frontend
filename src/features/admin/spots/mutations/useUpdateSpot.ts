@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateSpot } from "../api/adminSpotApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 type UpdateSpotVariables = {
     id: string;

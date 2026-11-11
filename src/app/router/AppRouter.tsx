@@ -8,8 +8,8 @@ import Layout from "../../components/layout/Layout/Layout";
 import AdminLayout from "../../components/layout/AdminLayout/AdminLayout";
 import AccountLayout from "../../components/layout/AccountLayout/AccountLayout";
 
-import HomePage from "../../features/root/pages/HomePage";
-import NotFoundPage from "../../features/root/pages/NotFoundPage";
+import HomePage from "../../features/home/pages/HomePage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 import SpotsPage from "../../features/spots/pages/SpotsPage";
 import SpotDetailPage from "../../features/spots/pages/SpotDetailPage";

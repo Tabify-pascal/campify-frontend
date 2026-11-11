@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateNews } from "../api/adminNewsApi";
 import type { NewsFormData } from "../schemas/newsSchema";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 type Variables = {
     id: string,

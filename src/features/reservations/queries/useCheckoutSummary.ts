@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getCheckoutSummary } from "../api/reservationsApi";
-import { queryKeys } from "../../../queryKeys";
+import { queryKeys } from "../../../app/queryKeys";
 
 export function useCheckoutSummary(
     reservationId: string | undefined

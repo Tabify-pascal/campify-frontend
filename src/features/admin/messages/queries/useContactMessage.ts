@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getContactMessage } from "../api/adminContactApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 export function useContactMessage(messageId: string | undefined) {
     return useQuery({

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updatePaymentStatus } from "../api/reservationsApi";
-import { queryKeys } from "../../../queryKeys";
+import { queryKeys } from "../../../app/queryKeys";
 import type { PaymentStatus } from "../types/PaymentStatus";
 
 type Variables = {
