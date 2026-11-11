@@ -16,8 +16,9 @@ import { useDeleteNews } from "../mutations/useDeleteNews";
 
 import type { NewsItem } from "../../../news/types/NewsItem";
 
-import styles from "../../AdminIndexPage.module.css";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
         { key: "title", label: "Titel"},

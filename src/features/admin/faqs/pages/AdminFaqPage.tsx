@@ -8,12 +8,13 @@ import { useDeleteFaq } from "../mutations/useDeleteFaqs";
 import { type FaqItem } from "../../../faq/types/FaqItem";
 import { usePagination } from "../../../../hooks/usePagination";
 
-import styles from "../../../admin/components/AdminIndex/AdminIndex.module.css";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import AdminTable from "../../components/AdminTable/AdminTable";
 import AdminEditButton from "../../components/AdminActionButton/AdminEditButton";
 import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../../admin/components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
     { key: "question", label: "Vraag" },
@@ -60,7 +61,7 @@ export default function AdminFaqPage() {
                 description="Beheer de veelgestelde vragen"
             />
 
-            <div className={styles.actions}>
+            <div className={styles.actionsRight}>
                 <Button to="/admin/faqs/new">Nieuwe vraag toevoegen</Button>
             </div>
 
@@ -79,7 +80,7 @@ export default function AdminFaqPage() {
                         <td>{faq.question}</td>
                         <td>{faq.answer}</td>
                         <td>
-                            <div className={styles.rowActions}>
+                            <div className={styles.rowActionsCompact}>
                                 <AdminEditButton
                                     to={`/admin/faqs/${faq.id}/edit`}
                                     label="Faq bewerken"

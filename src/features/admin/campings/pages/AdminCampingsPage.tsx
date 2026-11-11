@@ -96,7 +96,7 @@ export default function AdminCampingsPage() {
             />
 
             {isAdmin && (
-                <div className={styles.actions}>
+                <div className={styles.actionsRight}>
                     <Button to="/admin/campings/new">
                         Nieuwe camping toevoegen
                     </Button>

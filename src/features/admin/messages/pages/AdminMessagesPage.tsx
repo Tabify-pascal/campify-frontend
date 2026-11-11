@@ -10,12 +10,13 @@ import { useDeleteMessage } from "../mutations/useDeleteMessage";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import { formatDate } from "../../../../utils/formatDate";
 
-import styles from "../../AdminIndexPage.module.css";
 import AdminStatusBadge from "../../components/AdminStatusBadge/AdminStatusBadge";
 import AdminTable from "../../components/AdminTable/AdminTable";
 import AdminDeleteButton from "../../components/AdminActionButton/AdminDeleteButton";
 import AdminViewButton from "../../components/AdminActionButton/AdminViewButton";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 export default function AdminMessagePage() {
     const {

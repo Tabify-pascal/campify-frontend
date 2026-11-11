@@ -14,9 +14,9 @@ import { useAdminSpots } from "../queries/useAdminSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
 
 import type { Spot } from "../../../spots/types/Spot";
-
-import styles from "../../AdminIndexPage.module.css";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
     {key: "name", label: "Naam"},

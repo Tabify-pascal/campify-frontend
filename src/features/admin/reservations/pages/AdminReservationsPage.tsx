@@ -18,7 +18,7 @@ import { useDeleteReservation } from "../mutations/useDeleteReservation";
 import type { AdminReservation } from "../types/AdminReservation";
 import type { ReservationStatus } from "../../../reservations/types/ReservationStatus";
 
-import styles from "../../AdminIndexPage.module.css";
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
     { key: "name", label: "Naam" },
