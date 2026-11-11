@@ -3,8 +3,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Button from "../../../components/ui/Button";
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import Button from "../../../components/ui/Button/Button";
+import FormField from "../../../components/ui/Forms/FormField/FormField";
 import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
 
 import ReservationStartPage from "../components/ReservationStartPage";

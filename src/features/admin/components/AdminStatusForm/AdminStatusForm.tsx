@@ -1,7 +1,7 @@
 import { useForm, type Path } from "react-hook-form";
 
-import Button from "../../../../components/ui/Button";
-import FormError from "../../../../components/ui/FormError";
+import Button from "../../../../components/ui/Button/Button";
+import FormError from "../../../../components/ui/Forms/FormError/FormError";
 
 import styles from "./AdminStatusForm.module.css";
 

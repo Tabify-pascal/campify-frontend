@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../components/ui/Button";
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import Button from "../../../components/ui/Button/Button";
+import FormField from "../../../components/ui/Forms/FormField/FormField";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import { useLogin } from "../mutations/useLogin";

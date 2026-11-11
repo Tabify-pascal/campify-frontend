@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../components/ui/Button";
+import Button from "../../../components/ui/Button/Button";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 import ResendVerificationForm from "../components/ResendVerificationForm";
 

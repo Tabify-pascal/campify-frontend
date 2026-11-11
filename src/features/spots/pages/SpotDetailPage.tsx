@@ -1,5 +1,5 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import Button from "../../../components/ui/Button";
+import Button from "../../../components/ui/Button/Button";
 import { useSpot } from "../queries/useSpot";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 import { useSpotAvailability } from "../queries/useSpotAvailability";

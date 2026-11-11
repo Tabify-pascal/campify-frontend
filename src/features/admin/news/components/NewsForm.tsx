@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Button from "../../../../components/ui/Button";
-import FormField from "../../../../components/ui/Forms/FormField/Formfield";
+import Button from "../../../../components/ui/Button/Button";
+import FormField from "../../../../components/ui/Forms/FormField/FormField";
 import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 import { newsSchema, type NewsFormData, type NewsFormInput } from "../schemas/newsSchema"

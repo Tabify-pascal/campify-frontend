@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 import { formatDate } from "../../../../utils/formatDate"
 
 import { useAdminReservation } from "../queries/useAdminReservation";

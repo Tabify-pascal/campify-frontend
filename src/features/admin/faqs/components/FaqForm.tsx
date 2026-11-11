@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 import { faqSchema, type FaqFormData, type FaqFormInput } from "../schemas/faqSchema";
 
 import styles from "./FaqForm.module.css";
-import FormField from "../../../../components/ui/Forms/FormField/Formfield";
+import FormField from "../../../../components/ui/Forms/FormField/FormField";
 
 type Props = {
     defaultValues?: Partial<FaqFormInput>;

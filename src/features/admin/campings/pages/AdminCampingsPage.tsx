@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";

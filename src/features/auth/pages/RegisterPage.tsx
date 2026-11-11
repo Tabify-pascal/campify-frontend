@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../components/ui/Button";
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import Button from "../../../components/ui/Button/Button";
+import FormField from "../../../components/ui/Forms/FormField/FormField";
 import FormRow from "../../../components/ui/Forms/FormRow/FormRow";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 

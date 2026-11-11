@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Modal from "../../../../components/ui/Modal/Modal";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 
 import { useUpdatePaymentStatus } from "../../mutations/useUpdatePaymentStatus";
 
