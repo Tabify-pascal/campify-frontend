@@ -1,3 +1,9 @@
+/**
+ * @file AdminReservationDetailPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-04
+ */
+
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 

@@ -1,3 +1,9 @@
+/**
+ * @file CampingsPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";

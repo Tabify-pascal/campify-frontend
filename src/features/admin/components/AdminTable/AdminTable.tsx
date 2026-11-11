@@ -1,3 +1,9 @@
+/**
+ * @file AdminTable.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-18
+ */
+
 import type { ReactNode } from "react"
 import Pagination from "../../../../components/ui/Pagination/Pagination";
 import styles from "./AdminTable.module.css";

@@ -1,3 +1,9 @@
+/**
+ * @file AdminDeleteButton.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-18
+ */
+
 import { Trash2 } from "lucide-react";
 
 import styles from "./AdminActionButton.module.css";

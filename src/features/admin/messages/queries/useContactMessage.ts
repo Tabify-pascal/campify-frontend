@@ -1,3 +1,9 @@
+/**
+ * @file useContactMessage.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 import { useQuery } from "@tanstack/react-query";
 import { getContactMessage } from "../api/adminContactApi";
 import { queryKeys } from "../../../../app/queryKeys";

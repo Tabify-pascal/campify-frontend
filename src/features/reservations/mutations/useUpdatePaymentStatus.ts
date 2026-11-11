@@ -1,3 +1,9 @@
+/**
+ * @file useUpdatePaymentStatus.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-10-07
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updatePaymentStatus } from "../api/reservationsApi";

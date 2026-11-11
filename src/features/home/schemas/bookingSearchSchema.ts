@@ -1,3 +1,9 @@
+/**
+ * @file bookingSearchSchema.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { z } from "zod";
 
 export const bookingSearchSchema = z.object({

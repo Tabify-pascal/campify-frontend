@@ -1,3 +1,9 @@
+/**
+ * @file useAdminCamping.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import { useQuery } from "@tanstack/react-query";
 
 import { getAdminCamping } from "../api/adminCampingApi";

@@ -1,3 +1,9 @@
+/**
+ * @file CheckoutPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-10-07
+ */
+
 import { useParams } from "react-router-dom";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";

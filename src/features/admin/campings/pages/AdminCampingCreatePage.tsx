@@ -1,3 +1,9 @@
+/**
+ * @file AdminCampingCreatePage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import { useNavigate } from "react-router-dom";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";

@@ -1,3 +1,9 @@
+/**
+ * @file AccountLayout.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-28
+ */
+
 import { Outlet, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button/Button";

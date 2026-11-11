@@ -1,3 +1,9 @@
+/**
+ * @file ProtectedAccountRoute.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-22
+ */
+
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";

@@ -1,3 +1,9 @@
+/**
+ * @file useDeleteMessage.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteAdminMessage } from "../api/adminContactApi";
 import { queryKeys } from "../../../../app/queryKeys";

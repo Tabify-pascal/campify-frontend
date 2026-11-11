@@ -1,3 +1,9 @@
+/**
+ * @file CampingForm.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

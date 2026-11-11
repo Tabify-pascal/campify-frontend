@@ -1,3 +1,9 @@
+/**
+ * @file PaymentCard.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-10-07
+ */
+
 import { useState } from "react";
 
 import Button from "../../../../components/ui/Button/Button";

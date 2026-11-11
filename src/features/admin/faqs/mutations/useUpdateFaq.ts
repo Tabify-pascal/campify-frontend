@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateFaq.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateFaq } from "../api/adminFaqApi";
 import { type FaqFormData } from "../schemas/faqSchema";

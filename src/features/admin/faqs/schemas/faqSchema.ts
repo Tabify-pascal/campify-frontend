@@ -1,3 +1,9 @@
+/**
+ * @file faqSchema.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { z } from "zod";
 
 export const faqSchema = z.object({

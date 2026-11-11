@@ -1,3 +1,9 @@
+/**
+ * @file NewsCard.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Link } from "react-router-dom";
 import type { NewsItem } from "../../types/NewsItem";
 import { formatDate } from "../../../../utils/formatDate" 

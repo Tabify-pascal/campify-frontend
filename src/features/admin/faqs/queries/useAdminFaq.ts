@@ -1,3 +1,9 @@
+/**
+ * @file useAdminFaq.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { useQuery } from "@tanstack/react-query";
 import { getAdminFaqById } from "../api/adminFaqApi";
 

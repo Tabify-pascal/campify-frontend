@@ -1,3 +1,9 @@
+/**
+ * @file ConfirmationPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Link } from "react-router-dom";
 
 import Button from "../../../components/ui/Button/Button";

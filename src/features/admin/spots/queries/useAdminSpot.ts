@@ -1,3 +1,9 @@
+/**
+ * @file useAdminSpot.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-14
+ */
+
 import { useQuery } from "@tanstack/react-query";
 
 import { getAdminSpot } from "../api/adminSpotApi";

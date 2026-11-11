@@ -1,3 +1,9 @@
+/**
+ * @file Dashboard.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-22
+ */
+
 import { Link } from "react-router-dom";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";

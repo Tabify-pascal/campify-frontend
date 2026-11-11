@@ -1,3 +1,9 @@
+/**
+ * @file FaqForm.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../../../../../components/ui/Button/Button";

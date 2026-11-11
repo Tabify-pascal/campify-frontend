@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateCamping.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updateCamping } from "../api/adminCampingApi";

@@ -1,3 +1,9 @@
+/**
+ * @file AdminLayout.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-22
+ */
+
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import Button from "../../ui/Button/Button";

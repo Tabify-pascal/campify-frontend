@@ -1,3 +1,9 @@
+/**
+ * @file adminFaqApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { adminApi } from "../../../../api/adminClient";
 import type { FaqItem } from "../../../faq/types/FaqItem";
 import type { FaqFormData } from "../schemas/faqSchema";

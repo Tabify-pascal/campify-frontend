@@ -1,3 +1,9 @@
+/**
+ * @file Modal.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-28
+ */
+
 import { useEffect, useId, type MouseEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 

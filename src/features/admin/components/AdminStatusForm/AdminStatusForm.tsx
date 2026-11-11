@@ -1,3 +1,9 @@
+/**
+ * @file AdminStatusForm.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-19
+ */
+
 import { useForm, type Path } from "react-hook-form";
 
 import Button from "../../../../components/ui/Button/Button";

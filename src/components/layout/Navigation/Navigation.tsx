@@ -1,3 +1,9 @@
+/**
+ * @file Navigation.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { NavLink } from "react-router-dom";
 
 import styles from "./Navigation.module.css";

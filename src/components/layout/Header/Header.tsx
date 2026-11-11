@@ -1,3 +1,9 @@
+/**
+ * @file Header.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import styles from "./Header.module.css";

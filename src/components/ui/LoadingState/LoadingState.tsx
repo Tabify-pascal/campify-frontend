@@ -1,3 +1,9 @@
+/**
+ * @file LoadingState.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-20
+ */
+
 import styles from "./LoadingState.module.css";
 
 type Props = {

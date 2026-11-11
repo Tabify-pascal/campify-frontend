@@ -1,3 +1,9 @@
+/**
+ * @file NewsDetailPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { useParams } from "react-router-dom";
 import Button from "../../../components/ui/Button/Button";
 import { useNewsItem } from "../queries/useNewsItem";

@@ -1,3 +1,9 @@
+/**
+ * @file AvailabilityList.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import styles from "./AvailabilityList.module.css"
 
 type Props = { 

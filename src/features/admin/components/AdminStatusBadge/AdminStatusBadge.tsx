@@ -1,3 +1,9 @@
+/**
+ * @file AdminStatusBadge.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-18
+ */
+
 import styles from "./AdminStatusBadge.module.css";
 
 type Status = 

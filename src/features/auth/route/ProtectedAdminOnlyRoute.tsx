@@ -1,3 +1,9 @@
+/**
+ * @file ProtectedAdminOnlyRoute.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-14
+ */
+
 import { Navigate, Outlet } from "react-router-dom";
 
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";

@@ -1,3 +1,9 @@
+/**
+ * @file AdminNewsEditPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-16
+ */
+
 
 import { useNavigate, useParams } from "react-router-dom";
 

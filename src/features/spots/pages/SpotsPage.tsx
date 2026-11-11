@@ -1,3 +1,9 @@
+/**
+ * @file SpotsPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { useSearchParams } from "react-router-dom";
 import SpotCard from "../components/SpotCard/SpotCard";
 import { useSpots } from "../queries/useSpots";

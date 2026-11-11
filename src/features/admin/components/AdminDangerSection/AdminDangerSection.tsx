@@ -1,3 +1,9 @@
+/**
+ * @file AdminDangerSection.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-19
+ */
+
 import styles from "./AdminDangerSection.module.css";
 
 type Props = {

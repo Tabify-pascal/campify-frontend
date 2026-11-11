@@ -1,3 +1,9 @@
+/**
+ * @file ResendVerificationForm.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-11-09
+ */
+
 import { useState } from "react";
 
 import Button from "../../../components/ui/Button/Button";

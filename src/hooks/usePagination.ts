@@ -1,3 +1,9 @@
+/**
+ * @file usePagination.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-22
+ */
+
 import { useEffect, useMemo, useState } from "react";
 
 type UsePaginationOptions<T> = {
