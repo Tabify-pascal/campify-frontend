@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateMessageStatus.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAdminMessageStatus } from "../api/adminContactApi";
 import type { ContactMessageStatus } from "../types/message";

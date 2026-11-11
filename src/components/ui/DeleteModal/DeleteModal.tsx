@@ -1,3 +1,9 @@
+/**
+ * @file DeleteModal.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-28
+ */
+
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import styles from "./DeleteModal.module.css";

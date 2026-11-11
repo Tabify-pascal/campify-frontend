@@ -1,3 +1,9 @@
+/**
+ * @file AdminDetailSection.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-19
+ */
+
 import type { ReactNode } from "react";
 
 import styles from "./AdminDetailSection.module.css";

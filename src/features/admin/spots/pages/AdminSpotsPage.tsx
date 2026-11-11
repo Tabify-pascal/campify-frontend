@@ -1,3 +1,9 @@
+/**
+ * @file AdminSpotsPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";

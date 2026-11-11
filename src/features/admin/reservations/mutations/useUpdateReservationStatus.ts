@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateReservationStatus.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-28
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAdminReservationStatus } from "../api/adminReservationApi";
 import type { ReservationStatus } from "../../../reservations/types/ReservationStatus";

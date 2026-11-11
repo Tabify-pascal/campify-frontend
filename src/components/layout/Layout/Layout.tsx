@@ -1,3 +1,9 @@
+/**
+ * @file Layout.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Outlet } from "react-router-dom";
 
 import Header from "../Header/Header";

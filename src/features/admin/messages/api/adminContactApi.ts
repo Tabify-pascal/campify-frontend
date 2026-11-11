@@ -1,3 +1,9 @@
+/**
+ * @file adminContactApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 import { adminApi } from "../../../../api/adminClient";
 import type { ContactMessageStatus, AdminContactMessage } from "../types/message";
 

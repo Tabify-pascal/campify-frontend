@@ -1,3 +1,9 @@
+/**
+ * @file useDeleteSpot.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteSpot } from "../api/adminSpotApi";
 import type { Spot } from "../../../spots/types/Spot";

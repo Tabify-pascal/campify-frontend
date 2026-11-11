@@ -1,3 +1,9 @@
+/**
+ * @file ImageUploadField.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-20
+ */
+
 import { useState, type ChangeEvent, type InputHTMLAttributes } from "react";
 import { ImageUp } from "lucide-react";
 

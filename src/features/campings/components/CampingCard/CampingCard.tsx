@@ -1,3 +1,9 @@
+/**
+ * @file CampingCard.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-09-09
+ */
+
 import { Link } from "react-router-dom";
 
 import type { Camping } from "../../types/Camping";

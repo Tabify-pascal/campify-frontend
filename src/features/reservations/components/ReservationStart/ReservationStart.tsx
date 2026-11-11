@@ -1,3 +1,9 @@
+/**
+ * @file ReservationStart.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import BookingSearch from "../../../home/components/BookingSearch/BookingSearch";
 import styles from "./ReservationStart.module.css";
 

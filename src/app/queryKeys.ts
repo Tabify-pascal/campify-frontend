@@ -1,3 +1,9 @@
+/**
+ * @file queryKeys.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 export const queryKeys = {
     auth: {
         currentUser: ["auth", "currentUser"] as const,

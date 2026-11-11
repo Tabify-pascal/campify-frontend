@@ -1,3 +1,9 @@
+/**
+ * @file Pagination.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-22
+ */
+
 import styles from "./Pagination.module.css";
 
 type Props = {

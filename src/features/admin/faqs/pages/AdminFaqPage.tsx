@@ -1,3 +1,9 @@
+/**
+ * @file AdminFaqPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { useState } from "react";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import Button from "../../../../components/ui/Button/Button";

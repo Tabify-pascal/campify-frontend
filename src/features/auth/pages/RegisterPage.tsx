@@ -1,3 +1,9 @@
+/**
+ * @file RegisterPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-28
+ */
+
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";

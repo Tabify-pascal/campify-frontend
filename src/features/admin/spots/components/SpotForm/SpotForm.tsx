@@ -1,3 +1,9 @@
+/**
+ * @file SpotForm.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

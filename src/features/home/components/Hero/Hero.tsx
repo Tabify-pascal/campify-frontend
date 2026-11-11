@@ -1,3 +1,9 @@
+/**
+ * @file Hero.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import Button from "../../../../components/ui/Button/Button";
 import styles from "./Hero.module.css";
 

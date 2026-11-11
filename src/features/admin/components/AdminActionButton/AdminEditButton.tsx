@@ -1,3 +1,9 @@
+/**
+ * @file AdminEditButton.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-18
+ */
+
 import { Link } from "react-router-dom";
 import { Pencil } from "lucide-react";
 

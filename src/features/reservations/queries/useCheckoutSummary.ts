@@ -1,3 +1,9 @@
+/**
+ * @file useCheckoutSummary.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-10-07
+ */
+
 import { useQuery } from "@tanstack/react-query";
 
 import { getCheckoutSummary } from "../api/reservationsApi";

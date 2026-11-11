@@ -1,3 +1,9 @@
+/**
+ * @file FaqPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import { useFaqItems } from "../queries/useFaqs";
 import FaqAccordion from "../components/FaqAccordion/FaqAccordion";

@@ -1,3 +1,9 @@
+/**
+ * @file NewsPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { useNewsItems } from "../queries/useNewsItems";
 import NewsCard from "../components/NewsCard/NewsCard";
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";

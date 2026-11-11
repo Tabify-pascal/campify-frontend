@@ -1,3 +1,9 @@
+/**
+ * @file AdminSpotEditPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { useNavigate, useParams } from "react-router-dom";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";

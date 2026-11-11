@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateSpot.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateSpot } from "../api/adminSpotApi";
 import { queryKeys } from "../../../../app/queryKeys";

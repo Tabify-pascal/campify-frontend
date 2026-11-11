@@ -1,3 +1,9 @@
+/**
+ * @file Reservation.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-10-07
+ */
+
 import type { PaymentStatus } from "./PaymentStatus";
 import type { ReservationStatus } from "./ReservationStatus";
 

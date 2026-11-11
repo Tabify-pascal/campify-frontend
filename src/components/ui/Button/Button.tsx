@@ -1,3 +1,9 @@
+/**
+ * @file Button.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Link, type LinkProps } from "react-router-dom";
 import styles from "./Button.module.css";
 

@@ -1,3 +1,9 @@
+/**
+ * @file AccountReservation.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-24
+ */
+
 export type AccountReservationStatus = 
     | "PENDING"
     | "CONFIRMED"

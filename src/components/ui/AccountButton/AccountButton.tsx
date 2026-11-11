@@ -1,3 +1,9 @@
+/**
+ * @file AccountButton.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-28
+ */
+
 import { Link } from "react-router-dom";
 import { CircleUserRound } from "lucide-react";
 

@@ -1,3 +1,9 @@
+/**
+ * @file MessageCard.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { Link } from "react-router-dom";
 import styles from "./MessageCard.module.css";
 

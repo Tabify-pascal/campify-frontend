@@ -1,3 +1,9 @@
+/**
+ * @file PrivacyPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-11-10
+ */
+
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import { Link } from "react-router-dom";
 

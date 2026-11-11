@@ -1,3 +1,9 @@
+/**
+ * @file newsSchema.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-16
+ */
+
 import { z } from "zod";
 
 export const newsSchema = z.object({

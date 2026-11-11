@@ -1,3 +1,9 @@
+/**
+ * @file useAdminReservation.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-28
+ */
+
 import { useQuery } from "@tanstack/react-query";
 import { getAdminReservationById } from "../api/adminReservationApi";
 import { queryKeys } from "../../../../app/queryKeys";

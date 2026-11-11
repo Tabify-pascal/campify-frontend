@@ -1,3 +1,9 @@
+/**
+ * @file CurrentImage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-20
+ */
+
 import styles from "./CurrentImage.module.css";
 
 type Props = {

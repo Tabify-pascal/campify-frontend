@@ -1,3 +1,9 @@
+/**
+ * @file FeatureFields.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-15
+ */
+
 import {
   useFieldArray,
   type Control,

@@ -1,3 +1,9 @@
+/**
+ * @file ReservationPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";

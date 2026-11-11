@@ -1,3 +1,9 @@
+/**
+ * @file AdminMessageDetailPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 

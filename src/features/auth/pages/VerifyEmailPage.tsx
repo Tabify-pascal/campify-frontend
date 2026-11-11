@@ -1,3 +1,9 @@
+/**
+ * @file VerifyEmailPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-11-09
+ */
+
 import { useSearchParams } from "react-router-dom";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";

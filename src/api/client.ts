@@ -1,3 +1,9 @@
+/**
+ * @file client.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 type ApiOptions = RequestInit;
 
 const API_URL = import.meta.env.VITE_API_URL;

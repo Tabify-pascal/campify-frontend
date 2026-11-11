@@ -1,3 +1,9 @@
+/**
+ * @file message.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-14
+ */
+
 export type ContactMessageStatus = 
     | "NEW"
     | "READ"

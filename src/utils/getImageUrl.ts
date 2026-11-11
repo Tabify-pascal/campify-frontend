@@ -1,3 +1,9 @@
+/**
+ * @file getImageUrl.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 const ASSET_URL = import.meta.env.VITE_ASSET_URL;
 
 export function getImageUrl(

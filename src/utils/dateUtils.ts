@@ -1,3 +1,9 @@
+/**
+ * @file dateUtils.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 export function formatDateString(date: Date) {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
         2, "0"

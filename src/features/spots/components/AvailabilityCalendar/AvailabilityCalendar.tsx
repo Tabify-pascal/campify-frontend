@@ -1,3 +1,9 @@
+/**
+ * @file AvailabilityCalendar.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import styles from "./AvailabilityCalendar.module.css";
 import { formatDate, getMonthName, getTodayString, isBeforeToday} from "../../../../utils/dateUtils";
 import { useMemo } from "react";

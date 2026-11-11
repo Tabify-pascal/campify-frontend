@@ -1,3 +1,9 @@
+/**
+ * @file Footer.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-11-10
+ */
+
 import { Link } from "react-router-dom";
 
 import styles from "./Footer.module.css";

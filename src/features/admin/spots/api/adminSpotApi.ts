@@ -1,3 +1,9 @@
+/**
+ * @file adminSpotApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { adminApi } from "../../../../api/adminClient";
 import type { Spot } from "../../../spots/types/Spot";
 import type { SpotFormData } from "../schemas/spotSchema";

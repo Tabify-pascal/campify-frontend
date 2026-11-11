@@ -1,3 +1,9 @@
+/**
+ * @file FaqAccordion.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { useState } from "react";
 import type { FaqItem } from "../../types/FaqItem";
 

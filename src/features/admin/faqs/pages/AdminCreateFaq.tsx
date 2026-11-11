@@ -1,3 +1,9 @@
+/**
+ * @file AdminCreateFaq.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-30
+ */
+
 import { useNavigate } from "react-router-dom";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";

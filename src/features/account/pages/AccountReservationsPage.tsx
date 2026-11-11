@@ -1,3 +1,9 @@
+/**
+ * @file AccountReservationsPage.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-28
+ */
+
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";

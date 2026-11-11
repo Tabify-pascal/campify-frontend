@@ -1,3 +1,9 @@
+/**
+ * @file adminReservationApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-28
+ */
+
 import { adminApi } from "../../../../api/adminClient";
 import type { AdminReservation } from "../types/AdminReservation";
 import type { ReservationStatus } from "../../../reservations/types/ReservationStatus";

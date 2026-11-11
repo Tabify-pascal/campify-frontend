@@ -1,3 +1,9 @@
+/**
+ * @file adminClient.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-13
+ */
+
 import { api } from "./client";
 
 const ADMIN_API_KEY = import.meta.env.VITE_ADMIN_API_KEY;

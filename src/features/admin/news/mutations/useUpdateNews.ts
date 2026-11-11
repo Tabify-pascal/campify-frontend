@@ -1,3 +1,9 @@
+/**
+ * @file useUpdateNews.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-16
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateNews } from "../api/adminNewsApi";
 import type { NewsFormData } from "../schemas/newsSchema";

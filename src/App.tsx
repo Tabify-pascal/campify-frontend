@@ -1,3 +1,9 @@
+/**
+ * @file App.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { QueryClientProvider } from "@tanstack/react-query";
 import AppRouter from "./app/router/AppRouter";
 import { queryClient } from "./app/queryClient";

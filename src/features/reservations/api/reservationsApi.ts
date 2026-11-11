@@ -1,3 +1,9 @@
+/**
+ * @file reservationsApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 import { api } from "../../../api/client";
 
 import type { ReservationFormData } from "../schemas/reservationSchema";

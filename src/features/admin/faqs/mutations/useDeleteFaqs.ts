@@ -1,3 +1,9 @@
+/**
+ * @file useDeleteFaqs.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-29
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteFaq } from "../api/adminFaqApi";
 import { queryKeys } from "../../../../app/queryKeys";

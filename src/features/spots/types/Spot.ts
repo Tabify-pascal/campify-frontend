@@ -1,3 +1,9 @@
+/**
+ * @file Spot.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-09
+ */
+
 export type SpotFeature = {
     id: string;
     name: string;

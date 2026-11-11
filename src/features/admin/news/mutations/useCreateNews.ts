@@ -1,3 +1,9 @@
+/**
+ * @file useCreateNews.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-16
+ */
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNews } from "../api/adminNewsApi";
 import { queryKeys } from "../../../../app/queryKeys";

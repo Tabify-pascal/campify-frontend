@@ -1,3 +1,9 @@
+/**
+ * @file adminNewsApi.ts
+ * @author Pascal Thomasse Mol
+ * @since 2026-07-16
+ */
+
 import { adminApi } from "../../../../api/adminClient";
 import type { NewsItem } from "../../../news/types/NewsItem";
 import type { NewsFormData } from "../schemas/newsSchema";

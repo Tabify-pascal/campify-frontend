@@ -1,3 +1,9 @@
+/**
+ * @file FormField.tsx
+ * @author Pascal Thomasse Mol
+ * @since 2026-08-20
+ */
+
 import type { ReactNode } from "react";
 
 import FormError from "../FormError/FormError";
