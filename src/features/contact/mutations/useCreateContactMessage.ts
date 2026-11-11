@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { createContactMessage } from "../api/contactApi";
-import { queryKeys } from "../../../queryKeys";
+import { queryKeys } from "../../../app/queryKeys";
 import { queryClient } from "../../../app/queryClient";
 
 export function useCreateContactMessage(){

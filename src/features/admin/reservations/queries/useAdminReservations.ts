@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAdminReservations } from "../api/adminReservationApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 export function useAdminReservations(){
     return useQuery({

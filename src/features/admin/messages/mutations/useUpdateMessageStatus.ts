@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateAdminMessageStatus } from "../api/adminContactApi";
 import type { ContactMessageStatus } from "../types/message";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 type UpdateMessageStatusInput = {
     messageId: string;

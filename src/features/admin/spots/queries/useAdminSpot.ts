@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getAdminSpot } from "../api/adminSpotApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 export function useAdminSpot(
     spotId: string | undefined

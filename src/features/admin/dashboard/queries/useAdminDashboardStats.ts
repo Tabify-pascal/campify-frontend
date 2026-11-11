@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAdminDashboardStats } from "../api/adminDashboardApi";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 export function useAdminDashboardStats(){
     return useQuery({

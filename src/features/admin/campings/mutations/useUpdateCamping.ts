@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updateCamping } from "../api/adminCampingApi";
 import type { CampingFormData } from "../schemas/campingSchema";
-import { queryKeys } from "../../../../queryKeys";
+import { queryKeys } from "../../../../app/queryKeys";
 
 type Variables = {
     id: string;
