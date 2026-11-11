@@ -5,7 +5,7 @@ import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
 import { useNewsItem } from "../../../news/queries/useNewsItem";
-import NewsForm from "../components/NewsForm";
+import NewsForm from "../components/NewsForm/NewsForm";
 import { useUpdateNews } from "../mutations/useUpdateNews";
 
 import type { NewsFormData } from "../schemas/newsSchema";

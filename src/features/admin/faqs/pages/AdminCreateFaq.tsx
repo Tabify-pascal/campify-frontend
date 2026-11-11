@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
-import FaqForm from "../components/FaqForm";
+import FaqForm from "../components/FaqForm/FaqForm";
 import { useCreateFaq } from "../mutations/useCreateFaq";
 import type { FaqFormData } from "../schemas/faqSchema";
 

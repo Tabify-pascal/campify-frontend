@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
-import SpotForm from "../components/SpotForm";
+import SpotForm from "../components/SpotForm/SpotForm";
 import { useCreateSpot } from "../mutations/useCreateSpot";
 import type { SpotFormData } from "../schemas/spotSchema";
 import { useAdminCampings } from "../../campings/queries/useAdminCampings";

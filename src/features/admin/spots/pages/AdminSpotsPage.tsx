@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import { usePagination } from "../../../../hooks/usePagination";
@@ -14,9 +14,9 @@ import { useAdminSpots } from "../queries/useAdminSpots";
 import { useDeleteSpot } from "../mutations/useDeleteSpot";
 
 import type { Spot } from "../../../spots/types/Spot";
-
-import styles from "../../AdminIndexPage.module.css";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
     {key: "name", label: "Naam"},

@@ -4,9 +4,9 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import Layout from "../../components/layout/Layout";
-import AdminLayout from "../../components/layout/AdminLayout";
-import AccountLayout from "../../components/layout/AccountLayout";
+import Layout from "../../components/layout/Layout/Layout";
+import AdminLayout from "../../components/layout/AdminLayout/AdminLayout";
+import AccountLayout from "../../components/layout/AccountLayout/AccountLayout";
 
 import HomePage from "../../features/root/pages/HomePage";
 import NotFoundPage from "../../features/root/pages/NotFoundPage";
@@ -32,7 +32,7 @@ import LoginPage from "../../features/auth/pages/LoginPage";
 import RegisterPage from "../../features/auth/pages/RegisterPage";
 import ProtectedAccountRoute from "../../features/auth/route/ProtectedAccountRoute";
 import ProtectedAdminRoute from "../../features/auth/route/ProtectedAdminRoute";
-import VerifyEmailPage from "../../features/auth/pages/verifyEmailPage";
+import VerifyEmailPage from "../../features/auth/pages/VerifyEmailPage";
 
 // Account
 import AccountReservationsPage from "../../features/account/pages/AccountReservationsPage";
@@ -60,8 +60,8 @@ import AdminFaqEditPage from "../../features/admin/faqs/pages/AdminFaqEditPage";
 import AdminFaqCreatePage from "../../features/admin/faqs/pages/AdminCreateFaq";
 
 // Admin messages
-import AdminMessagePage from "../../features/admin/messages/pages/adminMessagePage";
-import AdminMessageDetailPage from "../../features/admin/messages/pages/adminMessageDetailPage";
+import AdminMessagePage from "../../features/admin/messages/pages/AdminMessagesPage";
+import AdminMessageDetailPage from "../../features/admin/messages/pages/AdminMessageDetailPage";
 import AdminCampingsPage from "../../features/admin/campings/pages/AdminCampingsPage";
 import AdminCampingCreatePage from "../../features/admin/campings/pages/AdminCampingCreatePage";
 import AdminCampingEditPage from "../../features/admin/campings/pages/AdminCampingEditPage";

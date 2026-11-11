@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import SpotCard from "../components/SpotCard";
+import SpotCard from "../components/SpotCard/SpotCard";
 import { useSpots } from "../queries/useSpots";
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import { usePagination } from "../../../hooks/usePagination";

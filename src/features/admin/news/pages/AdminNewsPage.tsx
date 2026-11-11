@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../../components/ui/Button";
+import Button from "../../../../components/ui/Button/Button";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import DeleteModal from "../../../../components/ui/DeleteModal/DeleteModal";
 import { formatDate } from "../../../../utils/formatDate";
@@ -16,8 +16,9 @@ import { useDeleteNews } from "../mutations/useDeleteNews";
 
 import type { NewsItem } from "../../../news/types/NewsItem";
 
-import styles from "../../AdminIndexPage.module.css";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
+
+import styles from "../../components/AdminIndex/AdminIndex.module.css";
 
 const columns = [
         { key: "title", label: "Titel"},

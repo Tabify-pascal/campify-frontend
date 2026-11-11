@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
-import Button from "../../../components/ui/Button";
+import Button from "../../../components/ui/Button/Button";
 
 import {
     contactSchema,
@@ -12,7 +12,7 @@ import { useCreateContactMessage } from "../mutations/useCreateContactMessage";
 import { useCampings } from "../../campings/queries/useCampings";
 
 import styles from "./ContactPage.module.css"
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import FormField from "../../../components/ui/Forms/FormField/FormField";
 
 export default function ContactPage() {
     const createMessageMutation = useCreateContactMessage();

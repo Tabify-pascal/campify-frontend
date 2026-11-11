@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Button from "../../../components/ui/Button";
-import FormField from "../../../components/ui/Forms/FormField/Formfield";
+import Button from "../../../components/ui/Button/Button";
+import FormField from "../../../components/ui/Forms/FormField/FormField";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import { useResendVerification } from "../mutations/useResendVerification";

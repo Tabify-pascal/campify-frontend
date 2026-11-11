@@ -4,7 +4,7 @@ import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
 import { useAdminSpot } from "../queries/useAdminSpot";
-import SpotForm from "../components/SpotForm";
+import SpotForm from "../components/SpotForm/SpotForm";
 import { useUpdateSpot } from "../mutations/useUpdateSpot";
 
 import type { SpotFormData } from "../schemas/spotSchema";
