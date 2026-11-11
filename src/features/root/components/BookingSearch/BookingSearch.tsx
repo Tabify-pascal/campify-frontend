@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../../components/ui/Button/Button";
+import Button from "../../../../components/ui/Button/Button";
 import {
   bookingSearchSchema,
   type BookingSearchFormData,
   type BookingSearchFormInput,
-} from "../schemas/bookingSearchSchema";
+} from "../../schemas/bookingSearchSchema";
 import styles from "./BookingSearch.module.css";
 
 export default function BookingSearch() {

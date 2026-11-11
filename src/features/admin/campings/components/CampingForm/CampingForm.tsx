@@ -1,17 +1,17 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Button from "../../../../components/ui/Button/Button";
-import FormField from "../../../../components/ui/Forms/FormField/FormField";
+import Button from "../../../../../components/ui/Button/Button";
+import FormField from "../../../../../components/ui/Forms/FormField/FormField";
 
 import {
     campingSchema,
     type CampingFormData,
     type CampingFormInput,
-} from "../schemas/campingSchema";
+} from "../../schemas/campingSchema";
 
 import styles from "./CampingForm.module.css";
-import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
+import ImageUploadField from "../../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 type Props = {
     defaultValues?: Partial<CampingFormInput>;

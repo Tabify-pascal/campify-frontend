@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
-import NewsForm from "../components/NewsForm";
+import NewsForm from "../components/NewsForm/NewsForm";
 import { useCreateNews } from "../mutations/useCreateNews";
 import type { NewsFormData } from "../schemas/newsSchema";
 

@@ -2,7 +2,7 @@ import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
-import CampingCard from "../components/CampingCard";
+import CampingCard from "../components/CampingCard/CampingCard";
 import { useCampings } from "../queries/useCampings";
 
 import styles from "./CampingsPage.module.css";

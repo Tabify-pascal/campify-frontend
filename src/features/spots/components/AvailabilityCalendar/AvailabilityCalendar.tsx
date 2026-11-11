@@ -1,5 +1,5 @@
 import styles from "./AvailabilityCalendar.module.css";
-import { formatDate, getMonthName, getTodayString, isBeforeToday} from "../../../utils/dateUtils";
+import { formatDate, getMonthName, getTodayString, isBeforeToday} from "../../../../utils/dateUtils";
 import { useMemo } from "react";
 
 type Props = { 

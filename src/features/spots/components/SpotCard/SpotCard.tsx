@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import type { Spot } from "../types/Spot";
-import { getImageUrl } from "../../../utils/getImageUrl";
+import type { Spot } from "../../types/Spot";
+import { getImageUrl } from "../../../../utils/getImageUrl";
 
 import styles from "./SpotCard.module.css";
 

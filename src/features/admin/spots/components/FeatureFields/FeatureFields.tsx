@@ -5,8 +5,8 @@ import {
   type UseFormRegister,
 } from "react-hook-form";
 
-import FormError from "../../../../components/ui/Forms/FormError/FormError";
-import type { SpotFormInput } from "../schemas/spotSchema";
+import FormError from "../../../../../components/ui/Forms/FormError/FormError";
+import type { SpotFormInput } from "../../schemas/spotSchema";
 
 import styles from "./FeatureFields.module.css";
 

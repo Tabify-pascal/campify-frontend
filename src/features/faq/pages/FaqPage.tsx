@@ -1,6 +1,6 @@
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import { useFaqItems } from "../queries/useFaqs";
-import FaqAccordion from "../components/FaqAccordion";
+import FaqAccordion from "../components/FaqAccordion/FaqAccordion";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
 import { usePagination } from "../../../hooks/usePagination";

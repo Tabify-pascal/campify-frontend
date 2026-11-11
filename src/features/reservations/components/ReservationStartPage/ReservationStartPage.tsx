@@ -1,4 +1,4 @@
-import BookingSearch from "../../root/components/BookingSearch";
+import BookingSearch from "../../../root/components/BookingSearch/BookingSearch";
 import styles from "./ReservationStartPage.module.css";
 
 export default function ReservationStartPage(){

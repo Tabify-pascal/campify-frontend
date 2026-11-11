@@ -4,7 +4,7 @@ import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 
-import SpotCard from "../../spots/components/SpotCard";
+import SpotCard from "../../spots/components/SpotCard/SpotCard";
 import { useCamping } from "../queries/useCamping";
 import { useSpots } from "../../spots/queries/useSpots";
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
-import CampingForm from "../components/CampingForm";
+import CampingForm from "../components/CampingForm/CampingForm";
 import { useCreateCamping } from "../mutations/useCreateCamping";
 
 import type { CampingFormData } from "../schemas/campingSchema";

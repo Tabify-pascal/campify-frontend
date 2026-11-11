@@ -4,7 +4,7 @@ import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
 
-import CampingForm from "../components/CampingForm";
+import CampingForm from "../components/CampingForm/CampingForm";
 
 import { useAdminCamping } from "../queries/useAdminCamping";
 import { useUpdateCamping } from "../mutations/useUpdateCamping";

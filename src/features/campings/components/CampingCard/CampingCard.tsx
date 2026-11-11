@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import type { Camping } from "../types/Camping";
-import { getImageUrl } from "../../../utils/getImageUrl";
+import type { Camping } from "../../types/Camping";
+import { getImageUrl } from "../../../../utils/getImageUrl";
 
 import styles from "./CampingCard.module.css";
 

@@ -4,7 +4,7 @@ import { useSpot } from "../queries/useSpot";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
 import { useSpotAvailability } from "../queries/useSpotAvailability";
 
-import AvailabilityCalendar from "../components/AvailabilityCalendar";
+import AvailabilityCalendar from "../components/AvailabilityCalendar/AvailabilityCalendar";
 import { getMonthRange, rangeContainsUnavailableDate } from "../../../utils/dateUtils";
 import { getImageUrl } from "../../../utils/getImageUrl";
 

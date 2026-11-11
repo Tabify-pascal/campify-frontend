@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import type { NewsItem } from "../types/NewsItem";
-import { formatDate } from "../../../utils/formatDate" 
-import { getImageUrl } from "../../../utils/getImageUrl";
+import type { NewsItem } from "../../types/NewsItem";
+import { formatDate } from "../../../../utils/formatDate" 
+import { getImageUrl } from "../../../../utils/getImageUrl";
 import styles from "./NewsCard.module.css";
 
 type Props = {

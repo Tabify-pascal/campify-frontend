@@ -1,5 +1,5 @@
 import { useNewsItems } from "../queries/useNewsItems";
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../components/NewsCard/NewsCard";
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 
 import styles from "./NewsPage.module.css";

@@ -1,22 +1,22 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Button from "../../../../components/ui/Button/Button";
-import FormField from "../../../../components/ui/Forms/FormField/FormField";
-import FormRow from "../../../../components/ui/Forms/FormRow/FormRow";
-import type { Camping } from "../../../campings/types/Camping";
+import Button from "../../../../../components/ui/Button/Button";
+import FormField from "../../../../../components/ui/Forms/FormField/FormField";
+import FormRow from "../../../../../components/ui/Forms/FormRow/FormRow";
+import type { Camping } from "../../../../campings/types/Camping";
 
 
-import FeatureFields from "./FeatureFields";
+import FeatureFields from "../FeatureFields/FeatureFields";
 
 import {
     spotSchema,
     type SpotFormData,
     type SpotFormInput,
-} from "../schemas/spotSchema";
+} from "../../schemas/spotSchema";
 
 import styles from "./SpotForm.module.css";
-import ImageUploadField from "../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
+import ImageUploadField from "../../../../../components/ui/Forms/ImageUploadField/ImageUploadField";
 
 type Props = {
     defaultValues?: Partial<SpotFormInput>;

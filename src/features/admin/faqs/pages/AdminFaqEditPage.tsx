@@ -4,7 +4,7 @@ import PageHeader from "../../../../components/layout/PageHeader/PageHeader";
 import MessageCard from "../../../../components/ui/MessageCard/MessageCard";
 
 import { useAdminFaq } from "../queries/useAdminFaq";
-import FaqForm from "../components/FaqForm";
+import FaqForm from "../components/FaqForm/FaqForm";
 import { useUpdateFaq } from "../mutations/useUpdateFaq";
 import type { FaqFormData } from "../schemas/faqSchema";
 import LoadingState from "../../../../components/ui/LoadingState/LoadingState";
