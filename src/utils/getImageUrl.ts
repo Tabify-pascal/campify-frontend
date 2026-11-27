@@ -4,13 +4,13 @@
  * @since 2026-07-13
  */
 
-const ASSET_URL = import.meta.env.VITE_ASSET_URL;
+import { ASSET_URL } from "../app/env";
 
 export function getImageUrl(
-    imageUrl : string | null | undefined,
+    imageUrl: string | null | undefined,
     fallback = "/images/campify.png"
 ) {
-    if (!imageUrl){
+    if (!imageUrl) {
         return fallback;
     }
 
@@ -22,7 +22,7 @@ export function getImageUrl(
         return imageUrl;
     }
 
-    if (imageUrl.startsWith("/uploads/")){
+    if (imageUrl.startsWith("/uploads/")) {
         return `${ASSET_URL}${imageUrl}`;
     }
 

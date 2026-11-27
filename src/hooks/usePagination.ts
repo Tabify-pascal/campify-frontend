@@ -4,7 +4,7 @@
  * @since 2026-07-22
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type UsePaginationOptions<T> = {
     items: T[];
@@ -21,19 +21,10 @@ export function usePagination<T>({
         1, Math.ceil(items.length / itemsPerPage)
     );
 
-    useEffect(() => {
-        if (currentPage > totalPages) {
-            setCurrentPage(totalPages);
-        }
-    }, [currentPage, totalPages]);
-
-    const paginatedItems = useMemo(() => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-
-
-        return items.slice(startIndex, endIndex);
-    }, [items, currentPage, itemsPerPage]);
+    // Keep the current page valid when the number of pages decreases.
+    if (currentPage > totalPages) {
+        setCurrentPage(totalPages);
+    }
 
     const startIndex = (currentPage - 1) * itemsPerPage;
 
@@ -41,6 +32,10 @@ export function usePagination<T>({
         startIndex + itemsPerPage,
         items.length
     );
+
+    const paginatedItems = useMemo(() => {
+        return items.slice(startIndex, endIndex);
+    }, [items, startIndex, endIndex]);
 
     function goToPage(page: number) {
         const safePage = Math.min(
