@@ -5,13 +5,16 @@
  */
 
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import PageHeader from "../../../components/layout/PageHeader/PageHeader";
 import Button from "../../../components/ui/Button/Button";
 import FormField from "../../../components/ui/Forms/FormField/FormField";
 import MessageCard from "../../../components/ui/MessageCard/MessageCard";
+import { useCurrentUser } from "../queries/useCurrentUser";
+import { canAccessAdmin } from "../utils/roles";
+import LoadingState from "../../../components/ui/LoadingState/LoadingState";
 
 import { useLogin } from "../mutations/useLogin";
 import {
@@ -31,6 +34,7 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const location = useLocation();
     const loginMutation = useLogin();
+    const { data, isLoading } = useCurrentUser();
     const registrationSuccess = location.state?.registrationSuccess === true;
 
     const {
@@ -59,7 +63,7 @@ export default function LoginPage() {
                 }
 
                 navigate(
-                    response.user.role === "ADMIN"
+                    canAccessAdmin(response.user.role)
                         ? "/admin"
                         : "/account/reservations",
                     {
@@ -68,6 +72,23 @@ export default function LoginPage() {
                 );
             },
         });
+    }
+
+    if (isLoading) {
+        return <LoadingState message="Account controleren..." />;
+    }
+
+    if (data?.user && !loginMutation.isPending && !loginMutation.isSuccess) {
+        return (
+            <Navigate
+                to={
+                    canAccessAdmin(data.user.role)
+                        ? "/admin"
+                        : "/account/reservations"
+                }
+                replace
+            />
+        );
     }
 
     return (

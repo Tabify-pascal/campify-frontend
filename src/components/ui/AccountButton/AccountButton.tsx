@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { CircleUserRound } from "lucide-react";
 
 import { useCurrentUser } from "../../../features/auth/queries/useCurrentUser";
-
+import { canAccessAdmin } from "../../../features/auth/utils/roles";
 import styles from "./AccountButton.module.css";
 
 export default function AccountButton() {
@@ -23,19 +23,21 @@ export default function AccountButton() {
 
     const user = data?.user;
 
-    const to =
-        user?.role === "ADMIN"
-            ? "/admin"
-            : user?.role === "CUSTOMER"
-                ? "/account/reservations"
-                : "/login";
+    const canAccessDashboard = user
+        ? canAccessAdmin(user.role)
+        : false;
 
-    const label =
-        user?.role === "ADMIN"
-            ? "Beheer"
-            : user?.role === "CUSTOMER"
-                ? "Mijn account"
-                : "Inloggen";
+    const to = canAccessDashboard
+        ? "/admin"
+        : user?.role === "CUSTOMER"
+            ? "/account/reservations"
+            : "/login";
+
+    const label = canAccessDashboard
+        ? "Dashboard"
+        : user?.role === "CUSTOMER"
+            ? "Mijn account"
+            : "Inloggen";
 
     return (
         <Link
